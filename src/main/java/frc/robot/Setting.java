@@ -17,13 +17,13 @@ public class Setting {
     public static int leftDriveMotor3PDPPort = 4;
 
     public static int rightDriveMotor1CANID = 5;
-    public static int rigthDriveMotor1PDPPort = 5;
+    public static int rightDriveMotor1PDPPort = 5;
 
     public static int rightDriveMotor2CANID = 6;
-    public static int rigthDriveMotor2PDPPort = 6;
+    public static int rightDriveMotor2PDPPort = 6;
 
     public static int rightDriveMotor3CANID = 7;
-    public static int rigthDriveMotor3PDPPort = 7;
+    public static int rightDriveMotor3PDPPort = 7;
 
     public static MotorType drivebMotorType = MotorType.kBrushless;
     public static IdleMode drivebaseIdleMode = IdleMode.kBrake;
