@@ -1,0 +1,46 @@
+<xml version="1.0">
+<dashboard>
+	<widget field="RightDriveMotor3Current" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="697" y="64"/>
+	</widget>
+	<widget field="RightDriveMotor3Ouput" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="486" y="61"/>
+	</widget>
+	<widget field="RightDriveMotor2Current" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="696" y="39"/>
+	</widget>
+	<widget field="RightDriveMotor2Ouput" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="488" y="38"/>
+	</widget>
+	<widget field="RightDriveMotor1Current" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="698" y="15"/>
+	</widget>
+	<widget field="RightDriveMotor1Ouput" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="489" y="15"/>
+	</widget>
+	<widget field="LeftDriveMotor3Current" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="218" y="65"/>
+		<height>20</height>
+	</widget>
+	<widget field="LeftDriveMotor3Ouput" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="13" y="66"/>
+	</widget>
+	<widget field="LeftDriveMotor2Current" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="219" y="41"/>
+	</widget>
+	<widget field="LeftDriveMotor2Ouput" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="13" y="41"/>
+	</widget>
+	<widget field="LeftDriveMotor1Current" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="219" y="16"/>
+	</widget>
+	<widget field="LeftDriveMotor1Ouput" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="14" y="17"/>
+	</widget>
+	<widget field="Auto choices" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
+		<location x="4" y="113"/>
+	</widget>
+</dashboard>
+<live-window>
+</live-window>
+</xml>
