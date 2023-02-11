@@ -97,7 +97,23 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("LeftDriveMotor1Ouput", leftDriveMotor1.getAppliedOutput());
     SmartDashboard.putNumber("LeftDriveMotor1Current", PDP.getCurrent(Setting.leftDriveMotor1PDPPort));
 
-    //need to duplicate this for all motors
+    SmartDashboard.putNumber("LeftDriveMotor1Ouput", leftDriveMotor1.getAppliedOutput());
+    SmartDashboard.putNumber("LeftDriveMotor1Current", PDP.getCurrent(Setting.leftDriveMotor1PDPPort));
+
+    SmartDashboard.putNumber("LeftDriveMotor2Ouput", leftDriveMotor2.getAppliedOutput());
+    SmartDashboard.putNumber("LeftDriveMotor2Current", PDP.getCurrent(Setting.leftDriveMotor2PDPPort));
+
+    SmartDashboard.putNumber("LeftDriveMotor3Ouput", leftDriveMotor3.getAppliedOutput());
+    SmartDashboard.putNumber("LeftDriveMotor3Current", PDP.getCurrent(Setting.leftDriveMotor3PDPPort));
+
+    SmartDashboard.putNumber("RightDriveMotor1Ouput", rightDriveMotor1.getAppliedOutput());
+    SmartDashboard.putNumber("RightDriveMotor1Current", PDP.getCurrent(Setting.rightDriveMotor1PDPPort));
+
+    SmartDashboard.putNumber("RightDriveMotor2Ouput", rightDriveMotor2.getAppliedOutput());
+    SmartDashboard.putNumber("RightDriveMotor2Current", PDP.getCurrent(Setting.rightDriveMotor2PDPPort));
+
+    SmartDashboard.putNumber("RightDriveMotor3Ouput", rightDriveMotor3.getAppliedOutput());
+    SmartDashboard.putNumber("RightDriveMotor3Current", PDP.getCurrent(Setting.rightDriveMotor3PDPPort));
 
   }
 
