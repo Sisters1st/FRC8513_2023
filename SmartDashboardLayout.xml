@@ -1,5 +1,11 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="rightDriveSpeed" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="488" y="90"/>
+	</widget>
+	<widget field="leftDriveSpeed" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="14" y="93"/>
+	</widget>
 	<widget field="RightDriveMotor3Current" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="697" y="64"/>
 	</widget>
@@ -38,7 +44,7 @@
 		<location x="14" y="17"/>
 	</widget>
 	<widget field="Auto choices" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
-		<location x="4" y="113"/>
+		<location x="4" y="160"/>
 	</widget>
 </dashboard>
 <live-window>

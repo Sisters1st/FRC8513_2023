@@ -34,10 +34,10 @@ public class Setting {
     public static int PDPCANID = 1;
     public static ModuleType PDPType = ModuleType.kCTRE;
 
-    public static int driverJoystickPort = 0;
-    public static int opperatorJotstickPort = 1;
+    public static int driverJoystickPort = 1;
+    public static int opperatorJotstickPort = 0;
 
     public static int driverJoystickLeftStickAxis = 1;
-    public static int driverJoystickRightStickAxis = 3;
+    public static int driverJoystickRightStickAxis = 5;
     
 }

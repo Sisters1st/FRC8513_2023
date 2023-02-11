@@ -37,6 +37,9 @@ public class Robot extends TimedRobot {
   CANSparkMax rightDriveMotor2 = new CANSparkMax(Setting.rightDriveMotor2CANID, Setting.drivebMotorType);
   CANSparkMax rightDriveMotor3 = new CANSparkMax(Setting.rightDriveMotor3CANID, Setting.drivebMotorType);
 
+  double leftSpeed = 0;
+  double rightSpeed = 0;
+
   Joystick driverJoystick = new Joystick(Setting.driverJoystickPort);
   Joystick opperatorJoystick = new Joystick(Setting.opperatorJotstickPort);
 
@@ -116,6 +119,9 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("RightDriveMotor3Ouput", rightDriveMotor3.getAppliedOutput());
     SmartDashboard.putNumber("RightDriveMotor3Current", PDP.getCurrent(Setting.rightDriveMotor3PDPPort));
 
+    SmartDashboard.putNumber ("leftDriveSpeed", leftSpeed);
+    SmartDashboard.putNumber("rightDriveSpeed", rightSpeed);
+
   }
 
   /**
@@ -157,8 +163,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     
-    double leftSpeed = driverJoystick.getRawAxis(Setting.driverJoystickLeftStickAxis);
-    double rightSpeed = driverJoystick.getRawAxis(Setting.driverJoystickLeftStickAxis); 
+    leftSpeed = driverJoystick.getRawAxis(Setting.driverJoystickLeftStickAxis);
+    rightSpeed = driverJoystick.getRawAxis(Setting.driverJoystickLeftStickAxis); 
     drivebase.tankDrive(leftSpeed, rightSpeed);
 
   }
