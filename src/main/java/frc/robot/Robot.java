@@ -7,6 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -40,8 +41,9 @@ public class Robot extends TimedRobot {
   Joystick opperatorJoystick = new Joystick(Setting.opperatorJotstickPort);
 
   PowerDistribution PDP = new PowerDistribution(Setting.PDPCANID, Setting.PDPType);
-  
 
+  DifferentialDrive drivebase = new DifferentialDrive(leftDriveMotor1, rightDriveMotor1);
+  
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -81,7 +83,6 @@ public class Robot extends TimedRobot {
 
     leftDriveMotor2.follow(leftDriveMotor1);
     leftDriveMotor3.follow(leftDriveMotor1);
-
   }
 
   /**
@@ -154,7 +155,13 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during operator control. */
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+    
+    double leftSpeed = driverJoystick.getRawAxis(Setting.driverJoystickLeftStickAxis);
+    double rightSpeed = driverJoystick.getRawAxis(Setting.driverJoystickLeftStickAxis); 
+    drivebase.tankDrive(leftSpeed, rightSpeed);
+
+  }
 
   /** This function is called once when the robot is disabled. */
   @Override

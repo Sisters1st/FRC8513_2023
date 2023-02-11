@@ -36,5 +36,8 @@ public class Setting {
 
     public static int driverJoystickPort = 0;
     public static int opperatorJotstickPort = 1;
+
+    public static int driverJoystickLeftStickAxis = 1;
+    public static int driverJoystickRightStickAxis = 3;
     
 }
