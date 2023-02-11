@@ -8,6 +8,9 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
  * each mode, as described in the TimedRobot documentation. If you change the name of this class or
@@ -15,10 +18,20 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * project.
  */
 public class Robot extends TimedRobot {
+
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
+
+  CANSparkMax leftDriveMotor1 = new CANSparkMax(Setting.leftDriveMotor1CANID, Setting.drivebMotorType);
+  CANSparkMax leftDriveMotor2 = new CANSparkMax(Setting.leftDriveMotor2CANID, Setting.drivebMotorType);
+  CANSparkMax leftDriveMotor3 = new CANSparkMax(Setting.leftDriveMotor3CANID, Setting.drivebMotorType);
+
+  CANSparkMax rightDriveMotor1 = new CANSparkMax(Setting.rightDriveMotor1CANID, Setting.drivebMotorType);
+  CANSparkMax rightDriveMotor2 = new CANSparkMax(Setting.rightDriveMotor2CANID, Setting.drivebMotorType);
+  CANSparkMax rightDriveMotor3 = new CANSparkMax(Setting.rightDriveMotor3CANID, Setting.drivebMotorType);
+  
 
   /**
    * This function is run when the robot is first started up and should be used for any
