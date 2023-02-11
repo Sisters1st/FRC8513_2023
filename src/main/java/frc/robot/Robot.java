@@ -76,6 +76,12 @@ public class Robot extends TimedRobot {
     rightDriveMotor3.setInverted(Setting.rightSideInverted);
     rightDriveMotor3.setSmartCurrentLimit(Setting.drivebaseCurrentLimit);
 
+    rightDriveMotor2.follow(rightDriveMotor1);
+    rightDriveMotor3.follow(rightDriveMotor1);
+
+    leftDriveMotor2.follow(leftDriveMotor1);
+    leftDriveMotor3.follow(leftDriveMotor1);
+
   }
 
   /**
