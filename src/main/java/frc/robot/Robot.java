@@ -4,12 +4,16 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import java.net.http.HttpClient.Redirect;
+import java.util.Set;
+
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -31,6 +35,11 @@ public class Robot extends TimedRobot {
   CANSparkMax rightDriveMotor1 = new CANSparkMax(Setting.rightDriveMotor1CANID, Setting.drivebMotorType);
   CANSparkMax rightDriveMotor2 = new CANSparkMax(Setting.rightDriveMotor2CANID, Setting.drivebMotorType);
   CANSparkMax rightDriveMotor3 = new CANSparkMax(Setting.rightDriveMotor3CANID, Setting.drivebMotorType);
+
+  Joystick driverJoystick = new Joystick(Setting.driverJoystickPort);
+  Joystick opperatorJoystick = new Joystick(Setting.opperatorJotstickPort);
+
+  PowerDistribution PDP = new PowerDistribution(Setting.PDPCANID, Setting.PDPType);
   
 
   /**
@@ -42,6 +51,31 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
+
+    leftDriveMotor1.setIdleMode(Setting.drivebaseIdleMode);
+    leftDriveMotor1.setInverted(Setting.leftSideInverted);
+    leftDriveMotor1.setSmartCurrentLimit(Setting.drivebaseCurrentLimit);
+
+    leftDriveMotor2.setIdleMode(Setting.drivebaseIdleMode);
+    leftDriveMotor2.setInverted(Setting.leftSideInverted);
+    leftDriveMotor2.setSmartCurrentLimit(Setting.drivebaseCurrentLimit);
+
+    leftDriveMotor3.setIdleMode(Setting.drivebaseIdleMode);
+    leftDriveMotor3.setInverted(Setting.leftSideInverted);
+    leftDriveMotor3.setSmartCurrentLimit(Setting.drivebaseCurrentLimit);
+
+    rightDriveMotor1.setIdleMode(Setting.drivebaseIdleMode);
+    rightDriveMotor1.setInverted(Setting.rightSideInverted);
+    rightDriveMotor1.setSmartCurrentLimit(Setting.drivebaseCurrentLimit);
+
+    rightDriveMotor2.setIdleMode(Setting.drivebaseIdleMode);
+    rightDriveMotor2.setInverted(Setting.rightSideInverted);
+    rightDriveMotor2.setSmartCurrentLimit(Setting.drivebaseCurrentLimit);
+
+    rightDriveMotor3.setIdleMode(Setting.drivebaseIdleMode);
+    rightDriveMotor3.setInverted(Setting.rightSideInverted);
+    rightDriveMotor3.setSmartCurrentLimit(Setting.drivebaseCurrentLimit);
+
   }
 
   /**
@@ -52,7 +86,14 @@ public class Robot extends TimedRobot {
    * SmartDashboard integrated updating.
    */
   @Override
-  public void robotPeriodic() {}
+  public void robotPeriodic() {
+
+    SmartDashboard.putNumber("LeftDriveMotor1Ouput", leftDriveMotor1.getAppliedOutput());
+    SmartDashboard.putNumber("LeftDriveMotor1Current", PDP.getCurrent(Setting.leftDriveMotor1PDPPort));
+
+    //need to duplicate this for all motors
+
+  }
 
   /**
    * This autonomous (along with the chooser code above) shows how to select between different
