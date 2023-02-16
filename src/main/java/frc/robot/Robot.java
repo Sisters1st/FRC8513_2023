@@ -10,10 +10,10 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import com.kauailabs.navx.frc.AHRS;
 
 
 import com.revrobotics.CANSparkMax;
@@ -30,6 +30,7 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
+  AHRS ahrs;
 
   CANSparkMax leftDriveMotor1 = new CANSparkMax(Setting.leftDriveMotor1CANID, Setting.drivebMotorType);
   CANSparkMax leftDriveMotor2 = new CANSparkMax(Setting.leftDriveMotor2CANID, Setting.drivebMotorType);
@@ -124,6 +125,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber ("leftDriveSpeed", leftSpeed);
     SmartDashboard.putNumber("rightDriveSpeed", rightSpeed);
 
+    SmartDashboard.putNumber("gyroscope angle", ahrs.getAngle());
     NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
     
     NetworkTableEntry tx = table.getEntry("tx");
