@@ -81,6 +81,14 @@ public class Setting {
     public static double wristPID_i = .0001;
     public static double wristPID_d = .001;
 
+    //Button settings
+    public static final int toggleAutomaticControlButtonNum = 2;
+    public static final int scoreHighButtonNum = 3;
+    public static final int pickUpButtonNum = 4;
+    public static final int drivebaseAutomaticControlButtonNum = 7;
+    public static final int armForwardButtonNum = 10;
+    public static final int armBackwardButtonNum = 11;
+
     //add arm/claw/wrist positions for different scenarios and the buttons associated with them
     
 }

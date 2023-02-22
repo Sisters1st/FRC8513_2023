@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
@@ -37,37 +38,49 @@ public class Robot extends TimedRobot {
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   AHRS ahrs;
   public Timer m_timer = new Timer();
+  //Angle settings
   double autoStartingAngle;
   double currentAngle;
   double goalAngle;
+  //Position settings
   double goalPosition;
-  public PIDController turnPID = new PIDController(Setting.turnPID_p, Setting.turnPID_i, Setting.turnPID_d);
-  public PIDController drivePID = new PIDController(Setting.drivePID_p, Setting.drivePID_i, Setting.drivePID_d);
   double leftPosition;
   double rightPosition;
+
   double autoStartTime;
   double autoWaitTime;
 
-  public Auto auto;
+  public PIDController turnPID = new PIDController(Setting.turnPID_p, Setting.turnPID_i, Setting.turnPID_d);
+  public PIDController drivePID = new PIDController(Setting.drivePID_p, Setting.drivePID_i, Setting.drivePID_d);
+
+  //Arm settings
   public Arm arm;
-  public Drivebase drivebase;
   double armPosition;
-  double wristPosition;
-  double clawPosition;
   double armGoal;
+  public PIDController armPID = new PIDController(Setting.armPID_p, Setting.armPID_i, Setting.armPID_d);
+  public boolean armAutomaticControl = false;
+
+  //Wrist settings
+  double wristPosition;
   double wristGoal;
+  public PIDController wristPID = new PIDController(Setting.wristPID_p, Setting.wristPID_i, Setting.wristPID_d);
+  public boolean wristAutomaticControl = false;
+
+  //Claw settings
+  double clawPosition;
   double clawGoal;
+  public PIDController clawPID = new PIDController(Setting.clawPID_p, Setting.clawPID_i, Setting.clawPID_d);
+  public boolean clawAutomaticControl = false;
+
+  public Auto auto;
+  public Drivebase drivebase;
+
+  public boolean drivebaseAutomaticControl = false;
+
+  //CAN Spark Max settings
   CANSparkMax armMotor = new CANSparkMax(Setting.armMotorCANID, Setting.armMotorType);
   CANSparkMax wristMotor = new CANSparkMax(Setting.wristMotorCANID, Setting.wristMotorType);
   CANSparkMax clawMotor = new CANSparkMax(Setting.clawMotorCANID, Setting.clawMotorType);
-  public PIDController armPID = new PIDController(Setting.armPID_p, Setting.armPID_i, Setting.armPID_d);
-  public PIDController clawPID = new PIDController(Setting.clawPID_p, Setting.clawPID_i, Setting.clawPID_d);
-  public PIDController wristPID = new PIDController(Setting.wristPID_p, Setting.wristPID_i, Setting.wristPID_d);
-  public boolean armAutomaticControl = false;
-  public boolean wristAutomaticControl = false;
-  public boolean clawAutomaticControl = false;
-  
-  public boolean drivebaseAutomaticControl = false;
 
   CANSparkMax leftDriveMotor1 = new CANSparkMax(Setting.leftDriveMotor1CANID, Setting.drivebMotorType);
   CANSparkMax leftDriveMotor2 = new CANSparkMax(Setting.leftDriveMotor2CANID, Setting.drivebMotorType);
@@ -82,6 +95,14 @@ public class Robot extends TimedRobot {
 
   Joystick driverJoystick = new Joystick(Setting.driverJoystickPort);
   Joystick opperatorJoystick = new Joystick(Setting.opperatorJotstickPort);
+
+  //Joystick Buttons
+  JoystickButton toggleAutomaticControlButton = new JoystickButton(opperatorJoystick, Setting.toggleAutomaticControlButtonNum);
+  JoystickButton scoreHighButton = new JoystickButton(opperatorJoystick, Setting.scoreHighButtonNum);
+  JoystickButton pickUpButton = new JoystickButton(opperatorJoystick, Setting.pickUpButtonNum);
+  JoystickButton drivebaseAutomaticControlButton = new JoystickButton(opperatorJoystick, Setting.drivebaseAutomaticControlButtonNum);
+  JoystickButton armForwardButton = new JoystickButton(opperatorJoystick, Setting.armForwardButtonNum);
+  JoystickButton armBackwardButton = new JoystickButton(opperatorJoystick, Setting.armBackwardButtonNum);
 
   PowerDistribution PDP = new PowerDistribution(Setting.PDPCANID, Setting.PDPType);
 
