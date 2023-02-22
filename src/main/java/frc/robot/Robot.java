@@ -7,9 +7,11 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -26,11 +28,46 @@ import com.revrobotics.CANSparkMax;
  */
 public class Robot extends TimedRobot {
 
-  private static final String kDefaultAuto = "Default";
-  private static final String kCustomAuto = "My Auto";
-  private String m_autoSelected;
+  public final String kDefaultAuto = "Default";
+  public final String kDriveStraight = "DriveStraightAuto";
+  public final String kDriveStraightAndMoveArm = "DriveStraightAndMoveArmAuto";
+
+
+  String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   AHRS ahrs;
+  public Timer m_timer = new Timer();
+  double autoStartingAngle;
+  double currentAngle;
+  double goalAngle;
+  double goalPosition;
+  public PIDController turnPID = new PIDController(Setting.turnPID_p, Setting.turnPID_i, Setting.turnPID_d);
+  public PIDController drivePID = new PIDController(Setting.drivePID_p, Setting.drivePID_i, Setting.drivePID_d);
+  double leftPosition;
+  double rightPosition;
+  double autoStartTime;
+  double autoWaitTime;
+
+  public Auto auto;
+  public Arm arm;
+  public Drivebase drivebase;
+  double armPosition;
+  double wristPosition;
+  double clawPosition;
+  double armGoal;
+  double wristGoal;
+  double clawGoal;
+  CANSparkMax armMotor = new CANSparkMax(Setting.armMotorCANID, Setting.armMotorType);
+  CANSparkMax wristMotor = new CANSparkMax(Setting.wristMotorCANID, Setting.wristMotorType);
+  CANSparkMax clawMotor = new CANSparkMax(Setting.clawMotorCANID, Setting.clawMotorType);
+  public PIDController armPID = new PIDController(Setting.armPID_p, Setting.armPID_i, Setting.armPID_d);
+  public PIDController clawPID = new PIDController(Setting.clawPID_p, Setting.clawPID_i, Setting.clawPID_d);
+  public PIDController wristPID = new PIDController(Setting.wristPID_p, Setting.wristPID_i, Setting.wristPID_d);
+  public boolean armAutomaticControl = false;
+  public boolean wristAutomaticControl = false;
+  public boolean clawAutomaticControl = false;
+  
+  public boolean drivebaseAutomaticControl = false;
 
   CANSparkMax leftDriveMotor1 = new CANSparkMax(Setting.leftDriveMotor1CANID, Setting.drivebMotorType);
   CANSparkMax leftDriveMotor2 = new CANSparkMax(Setting.leftDriveMotor2CANID, Setting.drivebMotorType);
@@ -48,7 +85,7 @@ public class Robot extends TimedRobot {
 
   PowerDistribution PDP = new PowerDistribution(Setting.PDPCANID, Setting.PDPType);
 
-  DifferentialDrive drivebase = new DifferentialDrive(leftDriveMotor1, rightDriveMotor1);
+  DifferentialDrive differentialDrivebase = new DifferentialDrive(leftDriveMotor1, rightDriveMotor1);
   
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -57,7 +94,8 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
-    m_chooser.addOption("My Auto", kCustomAuto);
+    m_chooser.addOption("Drive Straigt", kDriveStraight);
+    m_chooser.addOption("DriveStraigt and move arm", kDriveStraightAndMoveArm);
     SmartDashboard.putData("Auto choices", m_chooser);
 
     leftDriveMotor1.setIdleMode(Setting.drivebaseIdleMode);
@@ -84,11 +122,29 @@ public class Robot extends TimedRobot {
     rightDriveMotor3.setInverted(Setting.rightSideInverted);
     rightDriveMotor3.setSmartCurrentLimit(Setting.drivebaseCurrentLimit);
 
+    wristMotor.setIdleMode(Setting.wristMotorIdleMode);
+    wristMotor.setInverted(Setting.wristMotorInverted);
+    wristMotor.setSmartCurrentLimit(Setting.wristMotorCurrentLimit);
+
+    armMotor.setIdleMode(Setting.armMotorIdleMode);
+    armMotor.setInverted(Setting.armMotorInverted);
+    armMotor.setSmartCurrentLimit(Setting.armMotorCurrentLimit);
+
+    clawMotor.setIdleMode(Setting.clawMotorIdleMode);
+    clawMotor.setInverted(Setting.clawMotorInverted);
+    clawMotor.setSmartCurrentLimit(Setting.clawMotorCurrentLimit);
+
     rightDriveMotor2.follow(rightDriveMotor1);
     rightDriveMotor3.follow(rightDriveMotor1);
 
     leftDriveMotor2.follow(leftDriveMotor1);
     leftDriveMotor3.follow(leftDriveMotor1);
+
+    auto = new Auto(this);
+    arm = new Arm(this);
+
+    drivebase = new Drivebase(this);
+  
   }
 
   /**
@@ -125,7 +181,33 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber ("leftDriveSpeed", leftSpeed);
     SmartDashboard.putNumber("rightDriveSpeed", rightSpeed);
 
-    SmartDashboard.putNumber("gyroscope angle", ahrs.getAngle());
+    leftPosition = leftDriveMotor1.getEncoder().getPosition();
+    rightPosition = rightDriveMotor1.getEncoder().getPosition();
+    SmartDashboard.putNumber("leftPosition", leftPosition);
+    SmartDashboard.putNumber("rightPosition", rightPosition);
+
+    SmartDashboard.putNumber("armOutput", armMotor.getAppliedOutput());
+    SmartDashboard.putNumber("clawOutput", clawMotor.getAppliedOutput());
+    SmartDashboard.putNumber("wristOutput", wristMotor.getAppliedOutput());
+   
+    SmartDashboard.putNumber("armCurrent", PDP.getCurrent(Setting.armMotorPDPPort));
+    SmartDashboard.putNumber("clawCurrent", PDP.getCurrent(Setting.clawMotorPDPPort));
+    SmartDashboard.putNumber("wristCurrent", PDP.getCurrent(Setting.wristMotorPDPPort));
+
+    armPosition = armMotor.getEncoder().getPosition();
+    clawPosition = clawMotor.getEncoder().getPosition();
+    wristPosition = wristMotor.getEncoder().getPosition();
+    SmartDashboard.putNumber("armPosition", armPosition);
+    SmartDashboard.putNumber("clawPosition", clawPosition);
+    SmartDashboard.putNumber("wristPosition", wristPosition);
+
+    SmartDashboard.putNumber("armGoal", armGoal);
+    SmartDashboard.putNumber("clawGoal", clawGoal);
+    SmartDashboard.putNumber("wristGoal", wristGoal);
+
+
+    currentAngle = ahrs.getAngle();
+    SmartDashboard.putNumber("gyroscope angle", currentAngle);
     NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
     
     NetworkTableEntry tx = table.getEntry("tx");
@@ -161,20 +243,13 @@ public class Robot extends TimedRobot {
     m_autoSelected = m_chooser.getSelected();
     // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + m_autoSelected);
+    auto.autoInit();
   }
 
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-    switch (m_autoSelected) {
-      case kCustomAuto:
-        // Put custom auto code here
-        break;
-      case kDefaultAuto:
-      default:
-        // Put default auto code here
-        break;
-    }
+    auto.autoPeriodic();
   }
 
   /** This function is called once when teleop is enabled. */
@@ -184,11 +259,8 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    
-    leftSpeed = driverJoystick.getRawAxis(Setting.driverJoystickLeftStickAxis);
-    rightSpeed = driverJoystick.getRawAxis(Setting.driverJoystickLeftStickAxis); 
-    drivebase.tankDrive(leftSpeed, rightSpeed);
-
+    arm.teleopPeriodic();
+    drivebase.teleopPeriodic();
   }
 
   /** This function is called once when the robot is disabled. */

@@ -1,0 +1,5 @@
+Todo:
+    In drivebase and arm add "areWithinThreshold" methods
+    Clean up variabels 
+    Add thresholds and other items to settings
+    GIT COMMIT AND PUSH!!!
