@@ -49,6 +49,7 @@ public class Robot extends TimedRobot {
 
   double autoStartTime;
   double autoWaitTime;
+  int autoStep = 0;
 
   public PIDController turnPID = new PIDController(Setting.turnPID_p, Setting.turnPID_i, Setting.turnPID_d);
   public PIDController drivePID = new PIDController(Setting.drivePID_p, Setting.drivePID_i, Setting.drivePID_d);
@@ -307,4 +308,13 @@ public class Robot extends TimedRobot {
   /** This function is called periodically whilst in simulation. */
   @Override
   public void simulationPeriodic() {}
+
+  public void resetSensors(){
+    leftDriveMotor1.getEncoder().setPosition(0);
+    rightDriveMotor1.getEncoder().setPosition(0);
+    ahrs.reset();
+    armMotor.getEncoder().setPosition(0);
+    clawMotor.getEncoder().setPosition(0);
+    wristMotor.getEncoder().setPosition(0);
+  }
 }

@@ -22,35 +22,105 @@ public class Auto {
         thisRobot.drivePID.reset();
         thisRobot.autoStartTime = System.currentTimeMillis();
         thisRobot.autoWaitTime = Preferences.getInt("AutoWait", 0);
+        thisRobot.autoStep = 0;
     }
 
     public void autoPeriodic(){
-        if (thisRobot.m_autoSelected == thisRobot.kDriveStraightAndMoveArm) {
+        if(System.currentTimeMillis() > thisRobot.autoStartTime + thisRobot.autoWaitTime){
+            if (thisRobot.m_autoSelected == thisRobot.kDriveStraightAndMoveArm) {
+        
+                switch (thisRobot.autoStep) {
+                    case 0:
+                        thisRobot.drivebaseAutomaticControl = true;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 1000;
+                        thisRobot.drivebase.driveDrivebase();
+        
+                        thisRobot.armAutomaticControl = true;
+                        thisRobot.clawAutomaticControl = true;
+                        thisRobot.wristAutomaticControl = true;
+        
+                        thisRobot.wristGoal = 100;
+                        thisRobot.armGoal = 225;
+                        thisRobot.clawGoal = 45;
+                        thisRobot.arm.moveArm();
 
-            thisRobot.drivebaseAutomaticControl = true;
-            thisRobot.goalAngle = 0;
-            thisRobot.goalPosition = 1000;
-            thisRobot.drivebase.driveDrivebase();
+                        if(isRobotWithinThreshold()){
+                            thisRobot.autoStep++;
+                            thisRobot.resetSensors();
+                        }
+                        break;
+                    case 1:
+                        thisRobot.drivebaseAutomaticControl = true;
+                        thisRobot.goalAngle = 90;
+                        thisRobot.goalPosition = 0;
+                        thisRobot.drivebase.driveDrivebase();
+        
+                        thisRobot.armAutomaticControl = true;
+                        thisRobot.clawAutomaticControl = true;
+                        thisRobot.wristAutomaticControl = true;
+        
+                        thisRobot.wristGoal = 220;
+                        thisRobot.armGoal = 500;
+                        thisRobot.clawGoal = 0;
+                        thisRobot.arm.moveArm();
+                        
+                        if(isRobotWithinThreshold()){
+                            thisRobot.autoStep++;
+                            thisRobot.resetSensors();
+                        }
+                        break;
+                    default:
+                        thisRobot.drivebaseAutomaticControl = false;
+                        thisRobot.drivebase.driveDrivebase();
+        
+                        thisRobot.armAutomaticControl = true;
+                        thisRobot.clawAutomaticControl = true;
+                        thisRobot.wristAutomaticControl = true;
+                        thisRobot.arm.moveArm();
+                        //dont drive and holt wrist arm claw in position
+                }
+                
 
-            thisRobot.armAutomaticControl = true;
-            thisRobot.clawAutomaticControl = true;
-            thisRobot.wristAutomaticControl = true;
+            }
+            if (thisRobot.m_autoSelected == thisRobot.kDriveStraight) {
 
-            thisRobot.wristGoal = 100;
-            thisRobot.armGoal = 225;
-            thisRobot.clawGoal = 45;
-            thisRobot.arm.moveArm();
+                thisRobot.drivebaseAutomaticControl = true;
+                thisRobot.goalAngle = 0;
+                thisRobot.goalPosition = 1000;
+                thisRobot.drivebase.driveDrivebase();
 
+            }
+            if (thisRobot.m_autoSelected == thisRobot.kDefaultAuto) {
+            }
+        } else {
+            //wait for time to pass
         }
-        if (thisRobot.m_autoSelected == thisRobot.kDriveStraight) {
+    }
 
-            thisRobot.drivebaseAutomaticControl = true;
-            thisRobot.goalAngle = 0;
-            thisRobot.goalPosition = 1000;
-            thisRobot.drivebase.driveDrivebase();
 
+    public boolean isRobotWithinThreshold(){
+
+        if(Math.abs(thisRobot.wristGoal - thisRobot.wristPosition) > Setting.wristTHold){
+            return false;
         }
-        if (thisRobot.m_autoSelected == thisRobot.kDefaultAuto) {
+
+        if(Math.abs(thisRobot.armGoal - thisRobot.armPosition) > Setting.armTHold){
+            return false;
         }
+
+        if(Math.abs(thisRobot.clawGoal - thisRobot.clawPosition) > Setting.clawTHold){
+            return false;
+        }
+
+        if(Math.abs((thisRobot.leftPosition + thisRobot.rightPosition)/2 - thisRobot.armPosition) > Setting.drivebaseDistanceTHold){
+            return false;
+        }
+
+        if(Math.abs(thisRobot.currentAngle - thisRobot.goalAngle) > Setting.drivebaseAngTHold){
+            return false;
+        }
+
+        return true;
     }
 }

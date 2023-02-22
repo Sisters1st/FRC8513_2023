@@ -31,6 +31,7 @@ public class Setting {
     public static IdleMode wristMotorIdleMode = IdleMode.kBrake;
     public static int wristMotorCurrentLimit = 40;
     public static Boolean wristMotorInverted = false;
+    public static double wristTHold = 5;
 
     public static int armMotorCANID = 8;
     public static int armMotorPDPPort = 8;
@@ -38,6 +39,7 @@ public class Setting {
     public static IdleMode armMotorIdleMode = IdleMode.kBrake;
     public static int armMotorCurrentLimit = 40;
     public static Boolean armMotorInverted = false;
+    public static double armTHold = 5;
 
     public static int clawMotorCANID = 8;
     public static int clawMotorPDPPort = 8;
@@ -45,12 +47,15 @@ public class Setting {
     public static IdleMode clawMotorIdleMode = IdleMode.kBrake;
     public static int clawMotorCurrentLimit = 40;
     public static Boolean clawMotorInverted = false;
+    public static double clawTHold = 5;
 
     public static MotorType drivebMotorType = MotorType.kBrushless;
     public static IdleMode drivebaseIdleMode = IdleMode.kBrake;
     public static int drivebaseCurrentLimit = 80;
     public static Boolean leftSideInverted = false;
     public static Boolean rightSideInverted = true;
+    public static double drivebaseDistanceTHold = 10;
+    public static double drivebaseAngTHold = 10;
 
     public static int PDPCANID = 1;
     public static ModuleType PDPType = ModuleType.kCTRE;
