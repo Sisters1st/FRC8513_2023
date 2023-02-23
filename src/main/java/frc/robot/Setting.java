@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
 
 public class Setting {
 
+    //drive motor settings
     public static int leftDriveMotor1CANID = 2;
     public static int leftDriveMotor1PDPPort = 2;
 
@@ -25,6 +26,7 @@ public class Setting {
     public static int rightDriveMotor3CANID = 7;
     public static int rightDriveMotor3PDPPort = 7;
 
+    //wrist settings
     public static int wristMotorCANID = 8;
     public static int wristMotorPDPPort = 8;
     public static MotorType wristMotorType = MotorType.kBrushless;
@@ -33,6 +35,7 @@ public class Setting {
     public static Boolean wristMotorInverted = false;
     public static double wristTHold = 5;
 
+    //arm settings
     public static int armMotorCANID = 8;
     public static int armMotorPDPPort = 8;
     public static MotorType armMotorType = MotorType.kBrushless;
@@ -41,6 +44,7 @@ public class Setting {
     public static Boolean armMotorInverted = false;
     public static double armTHold = 5;
 
+    //claw settings
     public static int clawMotorCANID = 8;
     public static int clawMotorPDPPort = 8;
     public static MotorType clawMotorType = MotorType.kBrushless;
@@ -49,6 +53,7 @@ public class Setting {
     public static Boolean clawMotorInverted = false;
     public static double clawTHold = 5;
 
+    //drivebase settings
     public static MotorType drivebMotorType = MotorType.kBrushless;
     public static IdleMode drivebaseIdleMode = IdleMode.kBrake;
     public static int drivebaseCurrentLimit = 80;
@@ -66,22 +71,27 @@ public class Setting {
     public static int driverJoystickLeftStickAxis = 1;
     public static int driverJoystickRightStickAxis = 5;
 
+    //turn PID
     public static double turnPID_p = 1;
     public static double turnPID_i = .0001;
     public static double turnPID_d = .01;
 
+    //drive PID
     public static double drivePID_p = 1;
     public static double drivePID_i = .0001;
     public static double drivePID_d = .01;
 
+    //arm PID
     public static double armPID_p = 1;
     public static double armPID_i = .0001;
     public static double armPID_d = .001;
     
+    //claw PID
     public static double clawPID_p = 1;
     public static double clawPID_i = .0001;
     public static double clawPID_d = .001;
 
+    //wrist PID
     public static double wristPID_p = 1;
     public static double wristPID_i = .0001;
     public static double wristPID_d = .001;
@@ -94,6 +104,54 @@ public class Setting {
     public static final int armForwardButtonNum = 10;
     public static final int armBackwardButtonNum = 11;
 
-    //add arm/claw/wrist positions for different scenarios and the buttons associated with them
+
+    //POSITIONS & BUTTONS (arm/claw/wrist)
+    //pickup cube from floor
+    public static int cubePickupFlrButtonNum = 20;
+    public static int cubePickupFlrArmPosition = 100;
+    public static int cubePickupFlrClawPosition = 100;
+    public static int cubePickupFlrWristPosition = 100;
+
+    //pickup cone from floor
+    public static int conePickupFlrButtonNum = 21;
+    public static int conePickupFlrArmPosition = 100;
+    public static int conePickupFlrClawPosition = 100;
+    public static int conePickupFlrWristPosition = 100;
+
+    //pickup cube from human player station
+    public static int cubePickupHPSButtonNum = 22;
+    public static int cubePickupHPSArmPosition = 100;
+    public static int cubePickupHPSClawPosition = 100;
+    public static int cubePickupHPSWristPosition = 100;
+
+    //pickup cone from human player station
+    public static int conePickupHPSButtonNum = 23;
+    public static int conePickupHPSArmPosition = 100;
+    public static int conePickupHPSClawPosition = 100;
+    public static int conePickupHPSWristPosition = 100;
+
+    //place cube on high
+    public static int cubePlaceHighButtonNum = 24;
+    public static int cubePlaceHighArmPosition = 100;
+    public static int cubePlaceHighClawPosition = 100;
+    public static int cubePlaceHighWristPosition = 100;
+
+    //place cube on med
+    public static int cubePlaceMedButtonNum = 25;
+    public static int cubePlaceMedArmPosition = 100;
+    public static int cubePlaceMedClawPosition = 100;
+    public static int cubePlaceMedWristPosition = 100;
+
+    //place cone on high
+    public static int conePlaceHighButtonNum = 26;
+    public static int conePlaceHighArmPosition = 100;
+    public static int conePlaceHighClawPosition = 100;
+    public static int conePlaceHighWristPosition = 100;
+
+    //place cone on med
+    public static int conePlaceMedButtonNum = 27;
+    public static int conePlaceMedArmPosition = 100;
+    public static int conePlaceMedClawPosition = 100;
+    public static int conePlaceMedWristPosition = 100;
     
 }

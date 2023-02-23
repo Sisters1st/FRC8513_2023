@@ -105,6 +105,17 @@ public class Robot extends TimedRobot {
   JoystickButton armForwardButton = new JoystickButton(opperatorJoystick, Setting.armForwardButtonNum);
   JoystickButton armBackwardButton = new JoystickButton(opperatorJoystick, Setting.armBackwardButtonNum);
 
+  //position buttons
+  JoystickButton cubePickupFlrButton = new JoystickButton(opperatorJoystick, Setting.cubePickupFlrButtonNum);
+  JoystickButton conePickupFlrButton = new JoystickButton(opperatorJoystick, Setting.conePickupFlrButtonNum);
+  JoystickButton cubePickupHPSButton = new JoystickButton(opperatorJoystick, Setting.cubePickupHPSButtonNum);
+  JoystickButton conePickupHPSButton = new JoystickButton(opperatorJoystick, Setting.conePickupHPSButtonNum);
+  JoystickButton cubePlaceHighButton = new JoystickButton(opperatorJoystick, Setting.cubePlaceHighButtonNum);
+  JoystickButton cubePlaceMedButton = new JoystickButton(opperatorJoystick, Setting.cubePlaceMedButtonNum);
+  JoystickButton conePlaceHighButton = new JoystickButton(opperatorJoystick, Setting.conePlaceHighButtonNum);
+  JoystickButton conePlaceMedButton = new JoystickButton(opperatorJoystick, Setting.conePlaceMedButtonNum);
+
+
   PowerDistribution PDP = new PowerDistribution(Setting.PDPCANID, Setting.PDPType);
 
   DifferentialDrive differentialDrivebase = new DifferentialDrive(leftDriveMotor1, rightDriveMotor1);
