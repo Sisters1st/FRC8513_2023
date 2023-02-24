@@ -52,6 +52,18 @@ public class Arm {
                 thisRobot.wristGoal = Setting.conePickupHPSWristPosition;
             }
 
+            boolean scoreHighButtonPressed = thisRobot.opperatorJoystick.getRawButtonPressed(Setting.scoreHighButtonNum);
+            if(scoreHighButtonPressed){
+                thisRobot.armGoal = Setting.conePlaceHighArmPosition;
+                thisRobot.wristGoal = Setting.conePlaceHighWristPosition;
+            }
+
+            boolean scoreMidButtonPressed = thisRobot.opperatorJoystick.getRawButtonPressed(Setting.scoreMidButtonNum);
+            if(scoreMidButtonPressed){
+                thisRobot.armGoal = Setting.conePlaceMedArmPosition;
+                thisRobot.wristGoal = Setting.conePlaceMedWristPosition;
+            }
+
         } else{
             //all cube positions
             if(thisRobot.isClawClosed){
@@ -70,6 +82,18 @@ public class Arm {
             if(pickupHPButtonPressed){
                 thisRobot.armGoal = Setting.cubePickupHPSArmPosition;
                 thisRobot.wristGoal = Setting.cubePickupHPSWristPosition;
+            }
+
+            boolean scoreHighButtonPressed = thisRobot.opperatorJoystick.getRawButtonPressed(Setting.scoreHighButtonNum);
+            if(scoreHighButtonPressed){
+                thisRobot.armGoal = Setting.cubePlaceHighArmPosition;
+                thisRobot.wristGoal = Setting.cubePlaceHighWristPosition;
+            }
+
+            boolean scoreMidButtonPressed = thisRobot.opperatorJoystick.getRawButtonPressed(Setting.scoreMidButtonNum);
+            if(scoreMidButtonPressed){
+                thisRobot.armGoal = Setting.cubePlaceMedArmPosition;
+                thisRobot.wristGoal = Setting.cubePlaceMedWristPosition;
             }
         }
 
