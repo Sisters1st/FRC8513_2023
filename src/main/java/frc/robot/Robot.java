@@ -8,10 +8,10 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
@@ -60,6 +60,7 @@ public class Robot extends TimedRobot {
   double armGoal;
   public PIDController armPID = new PIDController(Setting.armPID_p, Setting.armPID_i, Setting.armPID_d);
   public boolean armAutomaticControl = false;
+  public boolean armInConeMode = false;
 
   //Wrist settings
   double wristPosition;
@@ -72,6 +73,7 @@ public class Robot extends TimedRobot {
   double clawGoal;
   public PIDController clawPID = new PIDController(Setting.clawPID_p, Setting.clawPID_i, Setting.clawPID_d);
   public boolean clawAutomaticControl = false;
+  public boolean isClawClosed = false;
 
   public Auto auto;
   public Drivebase drivebase;
@@ -96,24 +98,8 @@ public class Robot extends TimedRobot {
 
   Joystick driverJoystick = new Joystick(Setting.driverJoystickPort);
   Joystick opperatorJoystick = new Joystick(Setting.opperatorJotstickPort);
+  Joystick manualJoystick = new Joystick(Setting.manualJoystickPort);
 
-  //Joystick Buttons
-  JoystickButton toggleAutomaticControlButton = new JoystickButton(opperatorJoystick, Setting.toggleAutomaticControlButtonNum);
-  JoystickButton scoreHighButton = new JoystickButton(opperatorJoystick, Setting.scoreHighButtonNum);
-  JoystickButton pickUpButton = new JoystickButton(opperatorJoystick, Setting.pickUpButtonNum);
-  JoystickButton drivebaseAutomaticControlButton = new JoystickButton(opperatorJoystick, Setting.drivebaseAutomaticControlButtonNum);
-  JoystickButton armForwardButton = new JoystickButton(opperatorJoystick, Setting.armForwardButtonNum);
-  JoystickButton armBackwardButton = new JoystickButton(opperatorJoystick, Setting.armBackwardButtonNum);
-
-  //position buttons
-  JoystickButton cubePickupFlrButton = new JoystickButton(opperatorJoystick, Setting.cubePickupFlrButtonNum);
-  JoystickButton conePickupFlrButton = new JoystickButton(opperatorJoystick, Setting.conePickupFlrButtonNum);
-  JoystickButton cubePickupHPSButton = new JoystickButton(opperatorJoystick, Setting.cubePickupHPSButtonNum);
-  JoystickButton conePickupHPSButton = new JoystickButton(opperatorJoystick, Setting.conePickupHPSButtonNum);
-  JoystickButton cubePlaceHighButton = new JoystickButton(opperatorJoystick, Setting.cubePlaceHighButtonNum);
-  JoystickButton cubePlaceMedButton = new JoystickButton(opperatorJoystick, Setting.cubePlaceMedButtonNum);
-  JoystickButton conePlaceHighButton = new JoystickButton(opperatorJoystick, Setting.conePlaceHighButtonNum);
-  JoystickButton conePlaceMedButton = new JoystickButton(opperatorJoystick, Setting.conePlaceMedButtonNum);
 
 
   PowerDistribution PDP = new PowerDistribution(Setting.PDPCANID, Setting.PDPType);
@@ -173,10 +159,13 @@ public class Robot extends TimedRobot {
     leftDriveMotor2.follow(leftDriveMotor1);
     leftDriveMotor3.follow(leftDriveMotor1);
 
+    ahrs = new AHRS(Port.kMXP);
+
     auto = new Auto(this);
     arm = new Arm(this);
-
     drivebase = new Drivebase(this);
+
+    resetSensors();
   
   }
 
@@ -294,6 +283,9 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     arm.teleopPeriodic();
     drivebase.teleopPeriodic();
+    if(opperatorJoystick.getRawButtonPressed(Setting.resetSensorsButton)){
+      resetSensors();
+    }
   }
 
   /** This function is called once when the robot is disabled. */
