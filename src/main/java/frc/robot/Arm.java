@@ -103,18 +103,17 @@ public class Arm {
     
     public void moveArm(){
         if(thisRobot.armAutomaticControl) {
-            double armError = thisRobot.armGoal - thisRobot.armPosition;
-            double armPower = thisRobot.armPID.calculate(armError, thisRobot.armGoal);
+            double armPower = thisRobot.armPID.calculate(thisRobot.armPosition, thisRobot.armGoal);
             thisRobot.armMotor.set(armPower);
         }
         else {
             boolean armForward = thisRobot.manualJoystick.getRawButtonPressed(Setting.armForwardButtonNum);
             boolean armBackward = thisRobot.manualJoystick.getRawButtonPressed(Setting.armBackwardButtonNum);
             if(armForward) {
-                thisRobot.armMotor.set(0.5);
+                thisRobot.armMotor.set(Setting.armForwardPower);
             }
             if(armBackward) {
-                thisRobot.armMotor.set(-0.5);
+                thisRobot.armMotor.set(Setting.armReversePower);
             }
             if(!(armForward||armBackward)) {
                 thisRobot.armMotor.set(0);
@@ -123,18 +122,17 @@ public class Arm {
 
         
         if(thisRobot.wristAutomaticControl) {
-            double wristError = thisRobot.wristGoal - thisRobot.wristPosition;
-            double wristPower = thisRobot.wristPID.calculate(wristError, thisRobot.wristGoal);
+            double wristPower = thisRobot.wristPID.calculate(thisRobot.wristPosition, thisRobot.wristGoal);
             thisRobot.wristMotor.set(wristPower);
         }
         else {
             boolean wristForward = thisRobot.manualJoystick.getRawButtonPressed(Setting.wristForwardButtonNum);
             boolean wristBackward = thisRobot.manualJoystick.getRawButtonPressed(Setting.wristBackwardButtonNum);
             if(wristForward) {
-                thisRobot.wristMotor.set(0.5);
+                thisRobot.wristMotor.set(Setting.wristForwardPower);
             }
             if(wristBackward) {
-                thisRobot.wristMotor.set(-0.5);
+                thisRobot.wristMotor.set(Setting.wristReversePower);
             }
             if(!(wristForward||wristBackward)) {
                 thisRobot.wristMotor.set(0);
@@ -142,18 +140,17 @@ public class Arm {
         }
 
         if(thisRobot.clawAutomaticControl) {
-            double clawError = thisRobot.clawGoal - thisRobot.clawPosition;
-            double clawPower = thisRobot.clawPID.calculate(clawError, thisRobot.clawGoal);
+            double clawPower = thisRobot.clawPID.calculate(thisRobot.clawPosition, thisRobot.clawGoal);
             thisRobot.clawMotor.set(clawPower);
         }
         else {
             boolean clawForward = thisRobot.manualJoystick.getRawButtonPressed(Setting.clawForwardButtonNum);
             boolean clawBackward = thisRobot.manualJoystick.getRawButtonPressed(Setting.clawBackwardButtonNum);
             if(clawForward) {
-                thisRobot.clawMotor.set(0.5);
+                thisRobot.clawMotor.set(Setting.clawForwardPower);
             }
             if(clawBackward) {
-                thisRobot.clawMotor.set(-0.5);
+                thisRobot.clawMotor.set(Setting.clawReversePower);
             }
             if(!(clawForward||clawBackward)) {
                 thisRobot.clawMotor.set(0);
