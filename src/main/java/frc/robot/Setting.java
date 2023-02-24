@@ -36,8 +36,8 @@ public class Setting {
     public static double wristTHold = 5;
 
     //arm settings
-    public static int armMotorCANID = 8;
-    public static int armMotorPDPPort = 8;
+    public static int armMotorCANID = 9;
+    public static int armMotorPDPPort = 9;
     public static MotorType armMotorType = MotorType.kBrushless;
     public static IdleMode armMotorIdleMode = IdleMode.kBrake;
     public static int armMotorCurrentLimit = 40;
@@ -45,8 +45,8 @@ public class Setting {
     public static double armTHold = 5;
 
     //claw settings
-    public static int clawMotorCANID = 8;
-    public static int clawMotorPDPPort = 8;
+    public static int clawMotorCANID = 10;
+    public static int clawMotorPDPPort = 10;
     public static MotorType clawMotorType = MotorType.kBrushless;
     public static IdleMode clawMotorIdleMode = IdleMode.kBrake;
     public static int clawMotorCurrentLimit = 40;
@@ -65,8 +65,9 @@ public class Setting {
     public static int PDPCANID = 1;
     public static ModuleType PDPType = ModuleType.kCTRE;
 
-    public static int driverJoystickPort = 1;
-    public static int opperatorJotstickPort = 0;
+    public static int driverJoystickPort = 0;
+    public static int opperatorJotstickPort = 1;
+    public static int manualJoystickPort = 2;
 
     public static int driverJoystickLeftStickAxis = 1;
     public static int driverJoystickRightStickAxis = 5;
@@ -96,62 +97,79 @@ public class Setting {
     public static double wristPID_i = .0001;
     public static double wristPID_d = .001;
 
-    //Button settings
-    public static final int toggleAutomaticControlButtonNum = 2;
-    public static final int scoreHighButtonNum = 3;
-    public static final int pickUpButtonNum = 4;
+    //Automatic button settings
+    public static final int toggleConeCubeModeButton = 1;
+    public static final int toggleAutomaticArmControlButtonNum = 2;
     public static final int drivebaseAutomaticControlButtonNum = 7;
-    public static final int armForwardButtonNum = 10;
-    public static final int armBackwardButtonNum = 11;
+    public static final int toggleClawPositionButton = 6;
+    public static final int resetSensorsButton = 8;
+
+    public static final int scoreHighButtonNum = 3;
+    public static final int scoreMidButtonNum = 3;
+    public static final int pickUpHPButtonNum = 4;
+    public static final int pickUpFloorButtonNum = 5;
+    
+    //Manual Button Settings
+    public static final int armForwardButtonNum = 2;
+    public static final int armBackwardButtonNum = 3;
+
+    public static final int wristForwardButtonNum = 4;
+    public static final int wristBackwardButtonNum = 5;
+
+    public static final int clawForwardButtonNum = 6;
+    public static final int clawBackwardButtonNum = 7;
 
 
     //POSITIONS & BUTTONS (arm/claw/wrist)
     //pickup cube from floor
     public static int cubePickupFlrButtonNum = 20;
     public static int cubePickupFlrArmPosition = 100;
-    public static int cubePickupFlrClawPosition = 100;
     public static int cubePickupFlrWristPosition = 100;
 
     //pickup cone from floor
     public static int conePickupFlrButtonNum = 21;
     public static int conePickupFlrArmPosition = 100;
-    public static int conePickupFlrClawPosition = 100;
     public static int conePickupFlrWristPosition = 100;
 
     //pickup cube from human player station
     public static int cubePickupHPSButtonNum = 22;
     public static int cubePickupHPSArmPosition = 100;
-    public static int cubePickupHPSClawPosition = 100;
     public static int cubePickupHPSWristPosition = 100;
 
     //pickup cone from human player station
     public static int conePickupHPSButtonNum = 23;
     public static int conePickupHPSArmPosition = 100;
-    public static int conePickupHPSClawPosition = 100;
     public static int conePickupHPSWristPosition = 100;
 
     //place cube on high
     public static int cubePlaceHighButtonNum = 24;
     public static int cubePlaceHighArmPosition = 100;
-    public static int cubePlaceHighClawPosition = 100;
     public static int cubePlaceHighWristPosition = 100;
 
     //place cube on med
     public static int cubePlaceMedButtonNum = 25;
     public static int cubePlaceMedArmPosition = 100;
-    public static int cubePlaceMedClawPosition = 100;
     public static int cubePlaceMedWristPosition = 100;
 
     //place cone on high
     public static int conePlaceHighButtonNum = 26;
     public static int conePlaceHighArmPosition = 100;
-    public static int conePlaceHighClawPosition = 100;
     public static int conePlaceHighWristPosition = 100;
 
     //place cone on med
     public static int conePlaceMedButtonNum = 27;
     public static int conePlaceMedArmPosition = 100;
-    public static int conePlaceMedClawPosition = 100;
     public static int conePlaceMedWristPosition = 100;
+
+    //claw positions for cone
+    public static int clawClosedConePos = 400;
+    public static int clawOpenConePos = 400;
+
+
+    //claw positions for cube
+    public static int clawClosedCubePos = 400;
+    public static int clawOpenCubePos = 400;
+    
+
     
 }

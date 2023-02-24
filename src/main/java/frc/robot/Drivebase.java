@@ -7,9 +7,7 @@ public class Drivebase {
     }
 
     public void teleopPeriodic(){
-        if(thisRobot.driverJoystick.getRawButtonPressed(7)){
-            thisRobot.drivebaseAutomaticControl = !thisRobot.drivebaseAutomaticControl;
-        }
+        thisRobot.drivebaseAutomaticControl=false;
         driveDrivebase();
     }
 

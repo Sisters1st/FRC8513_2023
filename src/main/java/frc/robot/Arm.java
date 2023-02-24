@@ -8,25 +8,69 @@ public class Arm {
     }
 
     public void teleopPeriodic() {
-        boolean pickUpButton = thisRobot.opperatorJoystick.getRawButtonPressed(4);
-        if(pickUpButton) {
-            thisRobot.armGoal = 0;
-            thisRobot.clawGoal = 0;
-            thisRobot.wristGoal = 0;
-        }
-
-        boolean scoreHighButton = thisRobot.opperatorJoystick.getRawButtonPressed(3);
-        if(scoreHighButton) {
-            thisRobot.armGoal = 800;
-            thisRobot.clawGoal = 800;
-            thisRobot.wristGoal = 800;
-        }
-
-        boolean toggleAutomaticControlButton = thisRobot.opperatorJoystick.getRawButtonPressed(2);
-        if(toggleAutomaticControlButton) {
+        boolean toggleAutomaticControlButtonPressed = thisRobot.opperatorJoystick.getRawButtonPressed(Setting.toggleAutomaticArmControlButtonNum) ||
+            thisRobot.manualJoystick.getRawButtonPressed(Setting.toggleAutomaticArmControlButtonNum);
+        if(toggleAutomaticControlButtonPressed) {
             thisRobot.armAutomaticControl = !thisRobot.armAutomaticControl;
             thisRobot.clawAutomaticControl = !thisRobot.clawAutomaticControl;
             thisRobot.wristAutomaticControl = !thisRobot.wristAutomaticControl;
+            thisRobot.armGoal = thisRobot.armPosition;
+            thisRobot.wristGoal = thisRobot.wristPosition;
+            thisRobot.clawGoal = thisRobot.clawPosition;
+        }
+
+        //If toggel button pressed on the operator jostick, toggle cube cone mode
+        boolean toggleCubeConeButtonPressed = thisRobot.opperatorJoystick.getRawButtonPressed(Setting.toggleConeCubeModeButton);
+        if(toggleCubeConeButtonPressed){
+            thisRobot.armInConeMode = !thisRobot.armInConeMode;
+        }
+
+        //toggel claw open close
+        boolean toggleClawButtonPressed = thisRobot.opperatorJoystick.getRawButtonPressed(Setting.toggleClawPositionButton);
+        if(toggleClawButtonPressed){
+            thisRobot.isClawClosed = !thisRobot.isClawClosed;
+        }
+
+        //if in cone mode, use cone setpoints. If in cube mode use cube setpoints
+        if(thisRobot.armInConeMode){
+            
+            if(thisRobot.isClawClosed){
+                thisRobot.clawGoal = Setting.clawClosedConePos;
+            } else {
+                thisRobot.clawGoal = Setting.clawOpenConePos;
+            }
+
+            boolean pickupFloorButtonPressed = thisRobot.opperatorJoystick.getRawButtonPressed(Setting.pickUpFloorButtonNum);
+            if(pickupFloorButtonPressed){
+                thisRobot.armGoal = Setting.conePickupFlrArmPosition;
+                thisRobot.wristGoal = Setting.conePickupFlrWristPosition;
+            }
+
+            boolean pickupHPButtonPressed = thisRobot.opperatorJoystick.getRawButtonPressed(Setting.pickUpHPButtonNum);
+            if(pickupHPButtonPressed){
+                thisRobot.armGoal = Setting.conePickupHPSArmPosition;
+                thisRobot.wristGoal = Setting.conePickupHPSWristPosition;
+            }
+
+        } else{
+            //all cube positions
+            if(thisRobot.isClawClosed){
+                thisRobot.clawGoal = Setting.clawClosedCubePos;
+            } else {
+                thisRobot.clawGoal = Setting.clawOpenCubePos;
+            }
+
+            boolean pickupFloorButtonPressed = thisRobot.opperatorJoystick.getRawButtonPressed(Setting.pickUpFloorButtonNum);
+            if(pickupFloorButtonPressed){
+                thisRobot.armGoal = Setting.cubePickupFlrArmPosition;
+                thisRobot.wristGoal = Setting.cubePickupFlrWristPosition;
+            }
+
+            boolean pickupHPButtonPressed = thisRobot.opperatorJoystick.getRawButtonPressed(Setting.pickUpHPButtonNum);
+            if(pickupHPButtonPressed){
+                thisRobot.armGoal = Setting.cubePickupHPSArmPosition;
+                thisRobot.wristGoal = Setting.cubePickupHPSWristPosition;
+            }
         }
 
         moveArm();
@@ -40,8 +84,8 @@ public class Arm {
             thisRobot.armMotor.set(armPower);
         }
         else {
-            boolean armForward = thisRobot.opperatorJoystick.getRawButtonPressed(10);
-            boolean armBackward = thisRobot.opperatorJoystick.getRawButtonPressed(11);
+            boolean armForward = thisRobot.manualJoystick.getRawButtonPressed(Setting.armForwardButtonNum);
+            boolean armBackward = thisRobot.manualJoystick.getRawButtonPressed(Setting.armBackwardButtonNum);
             if(armForward) {
                 thisRobot.armMotor.set(0.5);
             }
@@ -60,8 +104,8 @@ public class Arm {
             thisRobot.wristMotor.set(wristPower);
         }
         else {
-            boolean wristForward = thisRobot.opperatorJoystick.getRawButtonPressed(10);
-            boolean wristBackward = thisRobot.opperatorJoystick.getRawButtonPressed(11);
+            boolean wristForward = thisRobot.manualJoystick.getRawButtonPressed(Setting.wristForwardButtonNum);
+            boolean wristBackward = thisRobot.manualJoystick.getRawButtonPressed(Setting.wristBackwardButtonNum);
             if(wristForward) {
                 thisRobot.wristMotor.set(0.5);
             }
@@ -79,8 +123,8 @@ public class Arm {
             thisRobot.clawMotor.set(clawPower);
         }
         else {
-            boolean clawForward = thisRobot.opperatorJoystick.getRawButtonPressed(10);
-            boolean clawBackward = thisRobot.opperatorJoystick.getRawButtonPressed(11);
+            boolean clawForward = thisRobot.manualJoystick.getRawButtonPressed(Setting.clawForwardButtonNum);
+            boolean clawBackward = thisRobot.manualJoystick.getRawButtonPressed(Setting.clawBackwardButtonNum);
             if(clawForward) {
                 thisRobot.clawMotor.set(0.5);
             }
