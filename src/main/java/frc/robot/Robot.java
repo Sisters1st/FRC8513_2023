@@ -100,11 +100,14 @@ public class Robot extends TimedRobot {
   Joystick opperatorJoystick = new Joystick(Setting.opperatorJotstickPort);
   Joystick manualJoystick = new Joystick(Setting.manualJoystickPort);
 
-
-
   PowerDistribution PDP = new PowerDistribution(Setting.PDPCANID, Setting.PDPType);
 
   DifferentialDrive differentialDrivebase = new DifferentialDrive(leftDriveMotor1, rightDriveMotor1);
+
+  //Limelight values
+  double LL_X = 0;
+  double LL_Y = 0;
+  double LL_Area = 0;
   
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -178,76 +181,30 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-
-    SmartDashboard.putNumber("LeftDriveMotor1Ouput", leftDriveMotor1.getAppliedOutput());
-    SmartDashboard.putNumber("LeftDriveMotor1Current", PDP.getCurrent(Setting.leftDriveMotor1PDPPort));
-
-    SmartDashboard.putNumber("LeftDriveMotor1Ouput", leftDriveMotor1.getAppliedOutput());
-    SmartDashboard.putNumber("LeftDriveMotor1Current", PDP.getCurrent(Setting.leftDriveMotor1PDPPort));
-
-    SmartDashboard.putNumber("LeftDriveMotor2Ouput", leftDriveMotor2.getAppliedOutput());
-    SmartDashboard.putNumber("LeftDriveMotor2Current", PDP.getCurrent(Setting.leftDriveMotor2PDPPort));
-
-    SmartDashboard.putNumber("LeftDriveMotor3Ouput", leftDriveMotor3.getAppliedOutput());
-    SmartDashboard.putNumber("LeftDriveMotor3Current", PDP.getCurrent(Setting.leftDriveMotor3PDPPort));
-
-    SmartDashboard.putNumber("RightDriveMotor1Ouput", rightDriveMotor1.getAppliedOutput());
-    SmartDashboard.putNumber("RightDriveMotor1Current", PDP.getCurrent(Setting.rightDriveMotor1PDPPort));
-
-    SmartDashboard.putNumber("RightDriveMotor2Ouput", rightDriveMotor2.getAppliedOutput());
-    SmartDashboard.putNumber("RightDriveMotor2Current", PDP.getCurrent(Setting.rightDriveMotor2PDPPort));
-
-    SmartDashboard.putNumber("RightDriveMotor3Ouput", rightDriveMotor3.getAppliedOutput());
-    SmartDashboard.putNumber("RightDriveMotor3Current", PDP.getCurrent(Setting.rightDriveMotor3PDPPort));
-
-    SmartDashboard.putNumber ("leftDriveSpeed", leftSpeed);
-    SmartDashboard.putNumber("rightDriveSpeed", rightSpeed);
+    //update vars 
 
     leftPosition = leftDriveMotor1.getEncoder().getPosition();
     rightPosition = rightDriveMotor1.getEncoder().getPosition();
-    SmartDashboard.putNumber("leftPosition", leftPosition);
-    SmartDashboard.putNumber("rightPosition", rightPosition);
-
-    SmartDashboard.putNumber("armOutput", armMotor.getAppliedOutput());
-    SmartDashboard.putNumber("clawOutput", clawMotor.getAppliedOutput());
-    SmartDashboard.putNumber("wristOutput", wristMotor.getAppliedOutput());
-   
-    SmartDashboard.putNumber("armCurrent", PDP.getCurrent(Setting.armMotorPDPPort));
-    SmartDashboard.putNumber("clawCurrent", PDP.getCurrent(Setting.clawMotorPDPPort));
-    SmartDashboard.putNumber("wristCurrent", PDP.getCurrent(Setting.wristMotorPDPPort));
 
     armPosition = armMotor.getEncoder().getPosition();
     clawPosition = clawMotor.getEncoder().getPosition();
     wristPosition = wristMotor.getEncoder().getPosition();
-    SmartDashboard.putNumber("armPosition", armPosition);
-    SmartDashboard.putNumber("clawPosition", clawPosition);
-    SmartDashboard.putNumber("wristPosition", wristPosition);
-
-    SmartDashboard.putNumber("armGoal", armGoal);
-    SmartDashboard.putNumber("clawGoal", clawGoal);
-    SmartDashboard.putNumber("wristGoal", wristGoal);
-
-
     currentAngle = ahrs.getAngle();
-    SmartDashboard.putNumber("gyroscope angle", currentAngle);
+
+    //LL Get from NT
     NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
-    
     NetworkTableEntry tx = table.getEntry("tx");
     NetworkTableEntry ty = table.getEntry("ty");
     NetworkTableEntry ta = table.getEntry("ta");
     NetworkTableEntry ledMode = table.getEntry("ledMode");
 
     //read values periodically
-    double x = tx.getDouble(0.0);
-    double y = ty.getDouble(0.0);
+    LL_X = tx.getDouble(0.0);
+    LL_Y = ty.getDouble(0.0);
     ledMode.setDouble(3);
-    double area = ta.getDouble(0.0);
+    LL_Area = ta.getDouble(0.0);
 
-    //post to smart dashboard periodically
-    SmartDashboard.putNumber("LimelightX", x);
-    SmartDashboard.putNumber("LimelightY", y);
-    SmartDashboard.putNumber("LimelightArea", area);
-
+    putToSmartDashboard();
   }
 
   /**
@@ -319,5 +276,64 @@ public class Robot extends TimedRobot {
     armMotor.getEncoder().setPosition(0);
     clawMotor.getEncoder().setPosition(0);
     wristMotor.getEncoder().setPosition(0);
+  }
+
+  public void putToSmartDashboard(){
+
+    SmartDashboard.putNumber("LeftDriveMotor1Ouput", leftDriveMotor1.getAppliedOutput());
+    SmartDashboard.putNumber("LeftDriveMotor1Current", PDP.getCurrent(Setting.leftDriveMotor1PDPPort));
+
+    SmartDashboard.putNumber("LeftDriveMotor1Ouput", leftDriveMotor1.getAppliedOutput());
+    SmartDashboard.putNumber("LeftDriveMotor1Current", PDP.getCurrent(Setting.leftDriveMotor1PDPPort));
+
+    SmartDashboard.putNumber("LeftDriveMotor2Ouput", leftDriveMotor2.getAppliedOutput());
+    SmartDashboard.putNumber("LeftDriveMotor2Current", PDP.getCurrent(Setting.leftDriveMotor2PDPPort));
+
+    SmartDashboard.putNumber("LeftDriveMotor3Ouput", leftDriveMotor3.getAppliedOutput());
+    SmartDashboard.putNumber("LeftDriveMotor3Current", PDP.getCurrent(Setting.leftDriveMotor3PDPPort));
+
+    SmartDashboard.putNumber("RightDriveMotor1Ouput", rightDriveMotor1.getAppliedOutput());
+    SmartDashboard.putNumber("RightDriveMotor1Current", PDP.getCurrent(Setting.rightDriveMotor1PDPPort));
+
+    SmartDashboard.putNumber("RightDriveMotor2Ouput", rightDriveMotor2.getAppliedOutput());
+    SmartDashboard.putNumber("RightDriveMotor2Current", PDP.getCurrent(Setting.rightDriveMotor2PDPPort));
+
+    SmartDashboard.putNumber("RightDriveMotor3Ouput", rightDriveMotor3.getAppliedOutput());
+    SmartDashboard.putNumber("RightDriveMotor3Current", PDP.getCurrent(Setting.rightDriveMotor3PDPPort));
+
+    SmartDashboard.putNumber ("leftDriveSpeed", leftSpeed);
+    SmartDashboard.putNumber("rightDriveSpeed", rightSpeed);
+
+    SmartDashboard.putNumber("leftPosition", leftPosition);
+    SmartDashboard.putNumber("rightPosition", rightPosition);
+
+    SmartDashboard.putNumber("armOutput", armMotor.getAppliedOutput());
+    SmartDashboard.putNumber("clawOutput", clawMotor.getAppliedOutput());
+    SmartDashboard.putNumber("wristOutput", wristMotor.getAppliedOutput());
+   
+    SmartDashboard.putNumber("armCurrent", PDP.getCurrent(Setting.armMotorPDPPort));
+    SmartDashboard.putNumber("clawCurrent", PDP.getCurrent(Setting.clawMotorPDPPort));
+    SmartDashboard.putNumber("wristCurrent", PDP.getCurrent(Setting.wristMotorPDPPort));
+
+    SmartDashboard.putNumber("armPosition", armPosition);
+    SmartDashboard.putNumber("clawPosition", clawPosition);
+    SmartDashboard.putNumber("wristPosition", wristPosition);
+
+    SmartDashboard.putNumber("armGoal", armGoal);
+    SmartDashboard.putNumber("clawGoal", clawGoal);
+    SmartDashboard.putNumber("wristGoal", wristGoal);
+
+    SmartDashboard.putNumber("gyroscope angle", currentAngle);
+
+    SmartDashboard.putBoolean("isClawClosed", isClawClosed);
+    SmartDashboard.putBoolean("coneMode", armInConeMode);
+
+    SmartDashboard.putBoolean("Drivebase Automatic", drivebaseAutomaticControl);
+    SmartDashboard.putBoolean("ArmAutomatic", armAutomaticControl);
+
+    //post to smart dashboard periodically
+    SmartDashboard.putNumber("LimelightX", LL_X);
+    SmartDashboard.putNumber("LimelightY", LL_Y);
+    SmartDashboard.putNumber("LimelightArea", LL_Area);
   }
 }
