@@ -14,13 +14,10 @@ public class Drivebase {
     public void driveDrivebase(){
         if(thisRobot.drivebaseAutomaticControl){
             double avgDist = (thisRobot.leftPosition + thisRobot.rightPosition) / 2;
-            double errorDist = thisRobot.goalPosition - avgDist;
 
-            double angError = thisRobot.goalAngle - thisRobot.currentAngle;
+            double turnOut = thisRobot.turnPID.calculate(thisRobot.currentAngle, thisRobot.goalAngle);
 
-            double turnOut = thisRobot.turnPID.calculate(angError, thisRobot.goalAngle);
-
-            double driveOut = thisRobot.drivePID.calculate(errorDist, thisRobot.goalPosition);
+            double driveOut = thisRobot.drivePID.calculate(avgDist, thisRobot.goalPosition);
 
             thisRobot.differentialDrivebase.tankDrive(driveOut, turnOut);
         } else {

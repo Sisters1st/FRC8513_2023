@@ -34,6 +34,8 @@ public class Setting {
     public static int wristMotorCurrentLimit = 40;
     public static Boolean wristMotorInverted = false;
     public static double wristTHold = 5;
+    public static double wristForwardPower = 0.5;
+    public static double wristReversePower = -0.5;
 
     //arm settings
     public static int armMotorCANID = 9;
@@ -43,6 +45,8 @@ public class Setting {
     public static int armMotorCurrentLimit = 40;
     public static Boolean armMotorInverted = false;
     public static double armTHold = 5;
+    public static double armForwardPower = 0.5;
+    public static double armReversePower = -0.5;
 
     //claw settings
     public static int clawMotorCANID = 10;
@@ -52,6 +56,8 @@ public class Setting {
     public static int clawMotorCurrentLimit = 40;
     public static Boolean clawMotorInverted = false;
     public static double clawTHold = 5;
+    public static double clawForwardPower = 0.5;
+    public static double clawReversePower = -0.5;
 
     //drivebase settings
     public static MotorType drivebMotorType = MotorType.kBrushless;
