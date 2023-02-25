@@ -8,26 +8,26 @@ import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
 public class Setting {
 
     //drive motor settings
-    public static int leftDriveMotor1CANID = 2;
+    public static int leftDriveMotor1CANID = 5;
     public static int leftDriveMotor1PDPPort = 2;
 
-    public static int leftDriveMotor2CANID = 3;
+    public static int leftDriveMotor2CANID = 6;
     public static int leftDriveMotor2PDPPort = 3;
 
-    public static int leftDriveMotor3CANID = 4;
+    public static int leftDriveMotor3CANID = 7;
     public static int leftDriveMotor3PDPPort = 4;
 
-    public static int rightDriveMotor1CANID = 5;
+    public static int rightDriveMotor1CANID = 2;
     public static int rightDriveMotor1PDPPort = 5;
 
-    public static int rightDriveMotor2CANID = 6;
+    public static int rightDriveMotor2CANID = 3;
     public static int rightDriveMotor2PDPPort = 6;
 
-    public static int rightDriveMotor3CANID = 7;
+    public static int rightDriveMotor3CANID = 4;
     public static int rightDriveMotor3PDPPort = 7;
 
     //wrist settings
-    public static int wristMotorCANID = 8;
+    public static int wristMotorCANID = 11;
     public static int wristMotorPDPPort = 8;
     public static MotorType wristMotorType = MotorType.kBrushless;
     public static IdleMode wristMotorIdleMode = IdleMode.kBrake;
@@ -38,7 +38,7 @@ public class Setting {
     public static double wristReversePower = -0.5;
 
     //arm settings
-    public static int armMotorCANID = 9;
+    public static int armMotorCANID = 1;
     public static int armMotorPDPPort = 9;
     public static MotorType armMotorType = MotorType.kBrushless;
     public static IdleMode armMotorIdleMode = IdleMode.kBrake;
@@ -49,7 +49,7 @@ public class Setting {
     public static double armReversePower = -0.5;
 
     //claw settings
-    public static int clawMotorCANID = 10;
+    public static int clawMotorCANID = 9;
     public static int clawMotorPDPPort = 10;
     public static MotorType clawMotorType = MotorType.kBrushless;
     public static IdleMode clawMotorIdleMode = IdleMode.kBrake;
@@ -68,7 +68,7 @@ public class Setting {
     public static double drivebaseDistanceTHold = 10;
     public static double drivebaseAngTHold = 10;
 
-    public static int PDPCANID = 1;
+    public static int PDPCANID = 0;
     public static ModuleType PDPType = ModuleType.kCTRE;
 
     public static int driverJoystickPort = 0;
