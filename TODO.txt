@@ -1,2 +1,2 @@
 Todo:
-    Add the rest of the read buttos and set goal in arm.java
+    Add the rest of the read buttons and set goal in arm.java

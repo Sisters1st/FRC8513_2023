@@ -63,8 +63,8 @@ public class Setting {
     public static MotorType drivebMotorType = MotorType.kBrushless;
     public static IdleMode drivebaseIdleMode = IdleMode.kBrake;
     public static int drivebaseCurrentLimit = 80;
-    public static Boolean leftSideInverted = false;
-    public static Boolean rightSideInverted = true;
+    public static Boolean leftSideInverted = true;
+    public static Boolean rightSideInverted = false;
     public static double drivebaseDistanceTHold = 10;
     public static double drivebaseAngTHold = 10;
 

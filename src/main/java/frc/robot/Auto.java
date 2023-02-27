@@ -93,6 +93,168 @@ public class Auto {
             }
             if (thisRobot.m_autoSelected == thisRobot.kDefaultAuto) {
             }
+            if(thisRobot.m_autoSelected == thisRobot.kScoreConeAndStation) {
+                switch (thisRobot.autoStep) {
+                    case 0:
+                        thisRobot.drivebaseAutomaticControl = false;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 1000;
+        
+                        thisRobot.armAutomaticControl = true;
+                        thisRobot.clawAutomaticControl = true;
+                        thisRobot.wristAutomaticControl = true;
+        
+                        thisRobot.wristGoal = Setting.conePlaceHighWristPosition;
+                        thisRobot.armGoal = Setting.conePlaceHighArmPosition;
+                        thisRobot.clawGoal = Setting.clawClosedConePos;
+                        thisRobot.arm.moveArm();
+
+                        thisRobot.drivebaseAutomaticControl = true;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 1000;
+
+                        if(isRobotWithinThreshold()){
+                            thisRobot.autoStep++;
+                            thisRobot.resetSensors();
+                        }
+                        break;
+                    }
+            }
+            if(thisRobot.m_autoSelected == thisRobot.kScoreCubeAndStation) {
+                switch (thisRobot.autoStep) {
+                    case 0:
+                        thisRobot.drivebaseAutomaticControl = false;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 1000;
+        
+                        thisRobot.armAutomaticControl = true;
+                        thisRobot.clawAutomaticControl = true;
+                        thisRobot.wristAutomaticControl = true;
+        
+                        thisRobot.wristGoal = Setting.cubePlaceHighWristPosition;
+                        thisRobot.armGoal = Setting.cubePlaceHighArmPosition;
+                        thisRobot.clawGoal = Setting.clawClosedCubePos;
+                        thisRobot.arm.moveArm();
+                        thisRobot.clawGoal = Setting.clawOpenCubePos;
+
+                        thisRobot.drivebaseAutomaticControl = true;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 1000;
+
+                        if(isRobotWithinThreshold()){
+                            thisRobot.autoStep++;
+                            thisRobot.resetSensors();
+                        }
+                        break;
+                    }
+            }
+            if(thisRobot.m_autoSelected == thisRobot.kScoreConeReloadScore) {
+                switch (thisRobot.autoStep) {
+                    case 0:
+                        thisRobot.drivebaseAutomaticControl = false;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 1000;
+        
+                        thisRobot.armAutomaticControl = true;
+                        thisRobot.clawAutomaticControl = true;
+                        thisRobot.wristAutomaticControl = true;
+        
+                        thisRobot.wristGoal = Setting.conePlaceHighWristPosition;
+                        thisRobot.armGoal = Setting.conePlaceHighArmPosition;
+                        thisRobot.clawGoal = Setting.clawClosedConePos;
+                        thisRobot.arm.moveArm();
+                        thisRobot.clawGoal = Setting.clawOpenConePos;
+
+                        if(isRobotWithinThreshold()){
+                            thisRobot.autoStep++;
+                            thisRobot.resetSensors();
+                        }
+                        break;
+                    }
+            }
+            if(thisRobot.m_autoSelected == thisRobot.kScoreCubeReloadScore) {
+                switch (thisRobot.autoStep) {
+                    case 0:
+                        thisRobot.drivebaseAutomaticControl = false;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 1000;
+        
+                        thisRobot.armAutomaticControl = true;
+                        thisRobot.clawAutomaticControl = true;
+                        thisRobot.wristAutomaticControl = true;
+        
+                        thisRobot.wristGoal = 100;
+                        thisRobot.armGoal = 225;
+                        thisRobot.clawGoal = Setting.clawClosedCubePos;
+                        thisRobot.arm.moveArm();
+
+                        if(isRobotWithinThreshold()){
+                            thisRobot.autoStep++;
+                            thisRobot.resetSensors();
+                        }
+                        break;
+                    }
+            }
+            if(thisRobot.m_autoSelected == thisRobot.kStation) {
+                switch (thisRobot.autoStep) {
+                    case 0:
+                        thisRobot.drivebaseAutomaticControl = false;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 1000;
+
+                        if(isRobotWithinThreshold()){
+                            thisRobot.autoStep++;
+                            thisRobot.resetSensors();
+                        }
+                        break;
+                    }
+            }
+            if(thisRobot.m_autoSelected == thisRobot.kScoreConeAndBackUp) {
+                switch (thisRobot.autoStep) {
+                    case 0:
+                        thisRobot.drivebaseAutomaticControl = false;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 1000;
+        
+                        thisRobot.armAutomaticControl = true;
+                        thisRobot.clawAutomaticControl = true;
+                        thisRobot.wristAutomaticControl = true;
+        
+                        thisRobot.wristGoal = 100;
+                        thisRobot.armGoal = 225;
+                        thisRobot.clawGoal = Setting.clawClosedCubePos;
+                        thisRobot.arm.moveArm();
+
+                        if(isRobotWithinThreshold()){
+                            thisRobot.autoStep++;
+                            thisRobot.resetSensors();
+                        }
+                        break;
+                    }
+            }
+            if(thisRobot.m_autoSelected == thisRobot.kScoreCubeAndBackUp) {
+                switch (thisRobot.autoStep) {
+                    case 0:
+                        thisRobot.drivebaseAutomaticControl = false;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 1000;
+        
+                        thisRobot.armAutomaticControl = true;
+                        thisRobot.clawAutomaticControl = true;
+                        thisRobot.wristAutomaticControl = true;
+        
+                        thisRobot.wristGoal = 100;
+                        thisRobot.armGoal = 225;
+                        thisRobot.clawGoal = Setting.clawClosedCubePos;
+                        thisRobot.arm.moveArm();
+
+                        if(isRobotWithinThreshold()){
+                            thisRobot.autoStep++;
+                            thisRobot.resetSensors();
+                        }
+                        break;
+                    }
+            }
         } else {
             //wait for time to pass
         }
