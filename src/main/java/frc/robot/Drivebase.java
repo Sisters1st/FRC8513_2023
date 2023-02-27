@@ -22,7 +22,7 @@ public class Drivebase {
             thisRobot.differentialDrivebase.tankDrive(driveOut, turnOut);
         } else {
             thisRobot.leftSpeed = thisRobot.driverJoystick.getRawAxis(Setting.driverJoystickLeftStickAxis);
-            thisRobot.rightSpeed = thisRobot.driverJoystick.getRawAxis(Setting.driverJoystickLeftStickAxis); 
+            thisRobot.rightSpeed = thisRobot.driverJoystick.getRawAxis(Setting.driverJoystickRightStickAxis); 
             thisRobot.differentialDrivebase.tankDrive(thisRobot.leftSpeed, thisRobot.rightSpeed);
         }
     }

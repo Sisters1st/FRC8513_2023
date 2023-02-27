@@ -165,6 +165,34 @@ public class Auto {
                         thisRobot.arm.moveArm();
                         thisRobot.clawGoal = Setting.clawOpenConePos;
 
+                        thisRobot.drivebaseAutomaticControl = true;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 1000;
+
+                        thisRobot.armAutomaticControl = true;
+                        thisRobot.clawAutomaticControl = true;
+                        thisRobot.wristAutomaticControl = true;
+        
+                        thisRobot.wristGoal = Setting.conePickupFlrWristPosition;
+                        thisRobot.armGoal = Setting.conePickupFlrArmPosition;
+                        thisRobot.clawGoal = Setting.clawOpenConePos;
+                        thisRobot.arm.moveArm();
+                        thisRobot.clawGoal = Setting.clawClosedConePos;
+
+                        thisRobot.drivebaseAutomaticControl = true;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 1000;
+        
+                        thisRobot.armAutomaticControl = true;
+                        thisRobot.clawAutomaticControl = true;
+                        thisRobot.wristAutomaticControl = true;
+        
+                        thisRobot.wristGoal = Setting.conePlaceHighWristPosition;
+                        thisRobot.armGoal = Setting.conePlaceHighArmPosition;
+                        thisRobot.clawGoal = Setting.clawClosedConePos;
+                        thisRobot.arm.moveArm();
+                        thisRobot.clawGoal = Setting.clawOpenConePos;
+
                         if(isRobotWithinThreshold()){
                             thisRobot.autoStep++;
                             thisRobot.resetSensors();
@@ -175,18 +203,47 @@ public class Auto {
             if(thisRobot.m_autoSelected == thisRobot.kScoreCubeReloadScore) {
                 switch (thisRobot.autoStep) {
                     case 0:
-                        thisRobot.drivebaseAutomaticControl = false;
-                        thisRobot.goalAngle = 0;
-                        thisRobot.goalPosition = 1000;
-        
-                        thisRobot.armAutomaticControl = true;
-                        thisRobot.clawAutomaticControl = true;
-                        thisRobot.wristAutomaticControl = true;
-        
-                        thisRobot.wristGoal = 100;
-                        thisRobot.armGoal = 225;
-                        thisRobot.clawGoal = Setting.clawClosedCubePos;
-                        thisRobot.arm.moveArm();
+                    thisRobot.drivebaseAutomaticControl = false;
+                    thisRobot.goalAngle = 0;
+                    thisRobot.goalPosition = 1000;
+    
+                    thisRobot.armAutomaticControl = true;
+                    thisRobot.clawAutomaticControl = true;
+                    thisRobot.wristAutomaticControl = true;
+    
+                    thisRobot.wristGoal = Setting.cubePlaceHighWristPosition;
+                    thisRobot.armGoal = Setting.cubePlaceHighArmPosition;
+                    thisRobot.clawGoal = Setting.clawClosedCubePos;
+                    thisRobot.arm.moveArm();
+                    thisRobot.clawGoal = Setting.clawOpenCubePos;
+
+                    thisRobot.drivebaseAutomaticControl = true;
+                    thisRobot.goalAngle = 0;
+                    thisRobot.goalPosition = 1000;
+
+                    thisRobot.armAutomaticControl = true;
+                    thisRobot.clawAutomaticControl = true;
+                    thisRobot.wristAutomaticControl = true;
+    
+                    thisRobot.wristGoal = Setting.cubePickupFlrWristPosition;
+                    thisRobot.armGoal = Setting.cubePickupFlrArmPosition;
+                    thisRobot.clawGoal = Setting.clawOpenCubePos;
+                    thisRobot.arm.moveArm();
+                    thisRobot.clawGoal = Setting.clawClosedCubePos;
+
+                    thisRobot.drivebaseAutomaticControl = true;
+                    thisRobot.goalAngle = 0;
+                    thisRobot.goalPosition = 1000;
+    
+                    thisRobot.armAutomaticControl = true;
+                    thisRobot.clawAutomaticControl = true;
+                    thisRobot.wristAutomaticControl = true;
+    
+                    thisRobot.wristGoal = Setting.cubePlaceHighWristPosition;
+                    thisRobot.armGoal = Setting.cubePlaceHighArmPosition;
+                    thisRobot.clawGoal = Setting.clawClosedCubePos;
+                    thisRobot.arm.moveArm();
+                    thisRobot.clawGoal = Setting.clawOpenCubePos;
 
                         if(isRobotWithinThreshold()){
                             thisRobot.autoStep++;
@@ -198,7 +255,7 @@ public class Auto {
             if(thisRobot.m_autoSelected == thisRobot.kStation) {
                 switch (thisRobot.autoStep) {
                     case 0:
-                        thisRobot.drivebaseAutomaticControl = false;
+                        thisRobot.drivebaseAutomaticControl = true;
                         thisRobot.goalAngle = 0;
                         thisRobot.goalPosition = 1000;
 
@@ -220,10 +277,15 @@ public class Auto {
                         thisRobot.clawAutomaticControl = true;
                         thisRobot.wristAutomaticControl = true;
         
-                        thisRobot.wristGoal = 100;
-                        thisRobot.armGoal = 225;
-                        thisRobot.clawGoal = Setting.clawClosedCubePos;
+                        thisRobot.wristGoal = Setting.conePlaceHighWristPosition;
+                        thisRobot.armGoal = Setting.conePlaceHighArmPosition;
+                        thisRobot.clawGoal = Setting.clawClosedConePos;
                         thisRobot.arm.moveArm();
+                        thisRobot.clawGoal = Setting.clawOpenConePos;
+
+                        thisRobot.drivebaseAutomaticControl = true;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 1000;
 
                         if(isRobotWithinThreshold()){
                             thisRobot.autoStep++;
@@ -243,10 +305,15 @@ public class Auto {
                         thisRobot.clawAutomaticControl = true;
                         thisRobot.wristAutomaticControl = true;
         
-                        thisRobot.wristGoal = 100;
-                        thisRobot.armGoal = 225;
+                        thisRobot.wristGoal = Setting.cubePlaceHighWristPosition;
+                        thisRobot.armGoal = Setting.cubePlaceHighArmPosition;
                         thisRobot.clawGoal = Setting.clawClosedCubePos;
                         thisRobot.arm.moveArm();
+                        thisRobot.clawGoal = Setting.clawOpenCubePos;
+
+                        thisRobot.drivebaseAutomaticControl = true;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 1000;
 
                         if(isRobotWithinThreshold()){
                             thisRobot.autoStep++;
