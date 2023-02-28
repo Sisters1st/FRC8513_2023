@@ -108,6 +108,7 @@ public class Auto {
                         thisRobot.armGoal = Setting.conePlaceHighArmPosition;
                         thisRobot.clawGoal = Setting.clawClosedConePos;
                         thisRobot.arm.moveArm();
+                        thisRobot.clawGoal = Setting.clawOpenCubePos;
 
                         thisRobot.drivebaseAutomaticControl = true;
                         thisRobot.goalAngle = 0;
