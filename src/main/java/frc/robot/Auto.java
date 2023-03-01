@@ -97,10 +97,6 @@ public class Auto {
                 switch (thisRobot.autoStep) {
                     //get arm into high position
                     case 0:
-                        thisRobot.drivebaseAutomaticControl = false;
-                        thisRobot.goalAngle = 0;
-                        thisRobot.goalPosition = 1000;
-        
                         thisRobot.armAutomaticControl = true;
                         thisRobot.clawAutomaticControl = true;
                         thisRobot.wristAutomaticControl = true;
@@ -143,10 +139,6 @@ public class Auto {
                 switch (thisRobot.autoStep) {
                     //get arm into high position
                     case 0:
-                        thisRobot.drivebaseAutomaticControl = false;
-                        thisRobot.goalAngle = 0;
-                        thisRobot.goalPosition = 1000;
-        
                         thisRobot.armAutomaticControl = true;
                         thisRobot.clawAutomaticControl = true;
                         thisRobot.wristAutomaticControl = true;
@@ -189,10 +181,6 @@ public class Auto {
                 switch (thisRobot.autoStep) {
                     //get arm into high position
                     case 0:
-                        thisRobot.drivebaseAutomaticControl = false;
-                        thisRobot.goalAngle = 0;
-                        thisRobot.goalPosition = 1000;
-        
                         thisRobot.armAutomaticControl = true;
                         thisRobot.clawAutomaticControl = true;
                         thisRobot.wristAutomaticControl = true;
@@ -285,10 +273,6 @@ public class Auto {
                 switch (thisRobot.autoStep) {
                     //get arm into high position
                     case 0:
-                        thisRobot.drivebaseAutomaticControl = false;
-                        thisRobot.goalAngle = 0;
-                        thisRobot.goalPosition = 1000;
-        
                         thisRobot.armAutomaticControl = true;
                         thisRobot.clawAutomaticControl = true;
                         thisRobot.wristAutomaticControl = true;
@@ -397,10 +381,6 @@ public class Auto {
                 switch (thisRobot.autoStep) {
                     //get arm into high position
                     case 0:
-                        thisRobot.drivebaseAutomaticControl = false;
-                        thisRobot.goalAngle = 0;
-                        thisRobot.goalPosition = 1000;
-        
                         thisRobot.armAutomaticControl = true;
                         thisRobot.clawAutomaticControl = true;
                         thisRobot.wristAutomaticControl = true;
@@ -443,10 +423,6 @@ public class Auto {
                 switch (thisRobot.autoStep) {
                     //get arm into high position
                     case 0:
-                        thisRobot.drivebaseAutomaticControl = false;
-                        thisRobot.goalAngle = 0;
-                        thisRobot.goalPosition = 1000;
-        
                         thisRobot.armAutomaticControl = true;
                         thisRobot.clawAutomaticControl = true;
                         thisRobot.wristAutomaticControl = true;
