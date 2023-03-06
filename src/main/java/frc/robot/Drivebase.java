@@ -26,4 +26,27 @@ public class Drivebase {
             thisRobot.differentialDrivebase.arcadeDrive(thisRobot.driveSpeed, thisRobot.turnSpeed);
         }
     }
+
+    public void autoBalance(){
+        double pitch = thisRobot.ahrs.getPitch();
+
+        if(pitch > Setting.pitchTHold)
+            thisRobot.differentialDrivebase.arcadeDrive(Setting.autoBalanceSpeed, 0);
+        else if(pitch > -Setting.pitchTHold)
+            thisRobot.differentialDrivebase.arcadeDrive(-Setting.autoBalanceSpeed, 0);
+        else
+            thisRobot.differentialDrivebase.arcadeDrive(0,0);
+
+        if(pitch > -Setting.autoBalanceTHold && pitch < Setting.autoBalanceTHold){
+            thisRobot.balanceCount++;
+        }
+        else
+        {
+            thisRobot.balanceCount = 0;
+        }
+        if(thisRobot.balanceCount > Setting.balanceCountTHold){
+            thisRobot.autoStep++;
+            thisRobot.resetSensors();
+        }
+    }
 }

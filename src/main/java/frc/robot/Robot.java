@@ -118,6 +118,9 @@ public class Robot extends TimedRobot {
   double LL_X = 0;
   double LL_Y = 0;
   double LL_Area = 0;
+
+  //auto balance count
+  int balanceCount = 0;
   
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -355,5 +358,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("LimelightX", LL_X);
     SmartDashboard.putNumber("LimelightY", LL_Y);
     SmartDashboard.putNumber("LimelightArea", LL_Area);
+
+    SmartDashboard.putNumber("pitch", ahrs.getPitch());
+    SmartDashboard.putNumber("balance count", balanceCount);
   }
 }

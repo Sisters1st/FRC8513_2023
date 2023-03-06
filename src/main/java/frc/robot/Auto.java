@@ -133,6 +133,10 @@ public class Auto {
                             thisRobot.resetSensors();
                         }
                         break;
+                    //balance on station
+                    case 3:
+                        thisRobot.drivebase.autoBalance();
+                        break;
                     }
             }
             if(thisRobot.m_autoSelected == thisRobot.kScoreCubeAndStation) {
@@ -174,6 +178,10 @@ public class Auto {
                             thisRobot.autoStep++;
                             thisRobot.resetSensors();
                         }
+                        break;
+                    //balance on station
+                    case 3:
+                        thisRobot.drivebase.autoBalance();
                         break;
                     }
             }
@@ -374,6 +382,10 @@ public class Auto {
                             thisRobot.autoStep++;
                             thisRobot.resetSensors();
                         }
+                        break;
+                    //balance on station
+                    case 3:
+                        thisRobot.drivebase.autoBalance();
                         break;
                     }
             }

@@ -91,31 +91,31 @@ public class Setting {
     public static double drivePID_d = .01;
 
     //arm PID
-    public static double armPID_p = 1;
-    public static double armPID_i = .0001;
-    public static double armPID_d = .001;
+    public static double armPID_p = .1;
+    public static double armPID_i = 0;
+    public static double armPID_d = 0;
     
     //claw PID
-    public static double clawPID_p = 1;
-    public static double clawPID_i = .0001;
-    public static double clawPID_d = .001;
+    public static double clawPID_p = .1;
+    public static double clawPID_i = 0;
+    public static double clawPID_d = 0;
 
     //wrist PID
-    public static double wristPID_p = 1;
-    public static double wristPID_i = .0001;
-    public static double wristPID_d = .001;
+    public static double wristPID_p = .1;
+    public static double wristPID_i = 0;
+    public static double wristPID_d = 0;
 
     //Automatic button settings
-    public static final int toggleConeCubeModeButton = 1;
-    public static final int toggleAutomaticArmControlButtonNum = 2;
-    public static final int drivebaseAutomaticControlButtonNum = 7;
+    public static final int toggleConeCubeModeButton = 5;
+    public static final int toggleAutomaticArmControlButtonNum = 7;
+    public static final int drivebaseAutomaticControlButtonNum = 20;
     public static final int toggleClawPositionButton = 6;
     public static final int resetSensorsButton = 8;
 
-    public static final int scoreHighButtonNum = 3;
-    public static final int scoreMidButtonNum = 3;
-    public static final int pickUpHPButtonNum = 4;
-    public static final int pickUpFloorButtonNum = 5;
+    public static final int scoreHighButtonNum = 0;
+    public static final int scoreMidButtonNum = 1;
+    public static final int pickUpHPButtonNum = 2;
+    public static final int pickUpFloorButtonNum = 3;
     
     //Manual Button Settings
     public static final int armForwardButtonNum = 2;
@@ -177,7 +177,14 @@ public class Setting {
     //claw positions for cube
     public static int clawClosedCubePos = 400;
     public static int clawOpenCubePos = 400;
-    
+
+
+    //CHARGING STATION THRESHOLDS & SPEEDS
+    public static double pitchTHold = 7.0;
+    public static double autoBalanceSpeed = 0.25;
+    public static double autoBalanceTHold = 1;
+    public static double balanceCountTHold = 50;
+
 
     
 }
