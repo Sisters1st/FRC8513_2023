@@ -103,6 +103,8 @@ public class Robot extends TimedRobot {
 
   double leftSpeed = 0;
   double rightSpeed = 0;
+  double driveSpeed = 0;
+  double turnSpeed = 0;
 
   Joystick driverJoystick = new Joystick(Setting.driverJoystickPort);
   Joystick opperatorJoystick = new Joystick(Setting.opperatorJotstickPort);
@@ -248,8 +250,11 @@ public class Robot extends TimedRobot {
 
   /** This function is called once when teleop is enabled. */
   @Override
-  public void teleopInit() {}
-
+  public void teleopInit() {
+    armAutomaticControl = false;
+    clawAutomaticControl = false;
+    wristAutomaticControl = false;
+  }
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {

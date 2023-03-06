@@ -27,7 +27,7 @@ public class Setting {
     public static int rightDriveMotor3PDPPort = 7;
 
     //wrist settings
-    public static int wristMotorCANID = 11;
+    public static int wristMotorCANID = 8;
     public static int wristMotorPDPPort = 8;
     public static MotorType wristMotorType = MotorType.kBrushless;
     public static IdleMode wristMotorIdleMode = IdleMode.kBrake;
@@ -77,6 +77,8 @@ public class Setting {
 
     public static int driverJoystickLeftStickAxis = 1;
     public static int driverJoystickRightStickAxis = 5;
+    public static int driverJoystickDriveAxis = 1;
+    public static int driverJoystickTurnAxis = 4;
 
     //turn PID
     public static double turnPID_p = 1;
@@ -120,10 +122,10 @@ public class Setting {
     public static final int armBackwardButtonNum = 3;
 
     public static final int wristForwardButtonNum = 4;
-    public static final int wristBackwardButtonNum = 5;
+    public static final int wristBackwardButtonNum = 1;
 
     public static final int clawForwardButtonNum = 6;
-    public static final int clawBackwardButtonNum = 7;
+    public static final int clawBackwardButtonNum = 5;
 
 
     //POSITIONS & BUTTONS (arm/claw/wrist)

@@ -8,8 +8,7 @@ public class Arm {
     }
 
     public void teleopPeriodic() {
-        boolean toggleAutomaticControlButtonPressed = thisRobot.opperatorJoystick.getRawButtonPressed(Setting.toggleAutomaticArmControlButtonNum) ||
-            thisRobot.manualJoystick.getRawButtonPressed(Setting.toggleAutomaticArmControlButtonNum);
+        boolean toggleAutomaticControlButtonPressed = thisRobot.opperatorJoystick.getRawButtonPressed(Setting.toggleAutomaticArmControlButtonNum);
         if(toggleAutomaticControlButtonPressed) {
             thisRobot.armAutomaticControl = !thisRobot.armAutomaticControl;
             thisRobot.clawAutomaticControl = !thisRobot.clawAutomaticControl;
@@ -19,7 +18,7 @@ public class Arm {
             thisRobot.clawGoal = thisRobot.clawPosition;
         }
 
-        //If toggel button pressed on the operator jostick, toggle cube cone mode
+        //If toggle button pressed on the operator jostick, toggle cube cone mode
         boolean toggleCubeConeButtonPressed = thisRobot.opperatorJoystick.getRawButtonPressed(Setting.toggleConeCubeModeButton);
         if(toggleCubeConeButtonPressed){
             thisRobot.armInConeMode = !thisRobot.armInConeMode;
@@ -107,8 +106,8 @@ public class Arm {
             thisRobot.armMotor.set(armPower);
         }
         else {
-            boolean armForward = thisRobot.manualJoystick.getRawButtonPressed(Setting.armForwardButtonNum);
-            boolean armBackward = thisRobot.manualJoystick.getRawButtonPressed(Setting.armBackwardButtonNum);
+            boolean armForward = thisRobot.manualJoystick.getRawButton(Setting.armForwardButtonNum);
+            boolean armBackward = thisRobot.manualJoystick.getRawButton(Setting.armBackwardButtonNum);
             if(armForward) {
                 thisRobot.armMotor.set(Setting.armForwardPower);
             }
@@ -126,8 +125,8 @@ public class Arm {
             thisRobot.wristMotor.set(wristPower);
         }
         else {
-            boolean wristForward = thisRobot.manualJoystick.getRawButtonPressed(Setting.wristForwardButtonNum);
-            boolean wristBackward = thisRobot.manualJoystick.getRawButtonPressed(Setting.wristBackwardButtonNum);
+            boolean wristForward = thisRobot.manualJoystick.getRawButton(Setting.wristForwardButtonNum);
+            boolean wristBackward = thisRobot.manualJoystick.getRawButton(Setting.wristBackwardButtonNum);
             if(wristForward) {
                 thisRobot.wristMotor.set(Setting.wristForwardPower);
             }
@@ -144,8 +143,8 @@ public class Arm {
             thisRobot.clawMotor.set(clawPower);
         }
         else {
-            boolean clawForward = thisRobot.manualJoystick.getRawButtonPressed(Setting.clawForwardButtonNum);
-            boolean clawBackward = thisRobot.manualJoystick.getRawButtonPressed(Setting.clawBackwardButtonNum);
+            boolean clawForward = thisRobot.manualJoystick.getRawButton(Setting.clawForwardButtonNum);
+            boolean clawBackward = thisRobot.manualJoystick.getRawButton(Setting.clawBackwardButtonNum);
             if(clawForward) {
                 thisRobot.clawMotor.set(Setting.clawForwardPower);
             }
