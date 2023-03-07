@@ -137,6 +137,14 @@ public class Auto {
                     case 3:
                         thisRobot.drivebase.autoBalance();
                         break;
+                    //stop moving
+                    case 4:
+                        thisRobot.drivebaseAutomaticControl = true;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 0;
+
+                        thisRobot.arm.moveArm();
+                        break;
                     }
             }
             if(thisRobot.m_autoSelected == thisRobot.kScoreCubeAndStation) {
@@ -182,6 +190,14 @@ public class Auto {
                     //balance on station
                     case 3:
                         thisRobot.drivebase.autoBalance();
+                        break;
+                    //stop moving
+                    case 4:
+                        thisRobot.drivebaseAutomaticControl = true;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 0;
+
+                        thisRobot.arm.moveArm();
                         break;
                     }
             }
@@ -275,6 +291,14 @@ public class Auto {
                             thisRobot.resetSensors();
                         }
                         break;
+                    //stop moving
+                    case 6:
+                        thisRobot.drivebaseAutomaticControl = true;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 0;
+
+                        thisRobot.arm.moveArm();
+                        break;
                     }
             }
             if(thisRobot.m_autoSelected == thisRobot.kScoreCubeReloadScore) {
@@ -362,11 +386,19 @@ public class Auto {
                         thisRobot.clawGoal = Setting.clawOpenCubePos;
                         thisRobot.arm.moveArm();
 
-                            if(isRobotWithinThreshold()){
-                                thisRobot.autoStep++;
-                                thisRobot.resetSensors();
-                            }
-                            break;
+                        if(isRobotWithinThreshold()){
+                            thisRobot.autoStep++;
+                            thisRobot.resetSensors();
+                        }
+                        break;
+                    //stop moving
+                    case 6:
+                        thisRobot.drivebaseAutomaticControl = true;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 0;
+
+                        thisRobot.arm.moveArm();
+                        break;
                         }
             }
             if(thisRobot.m_autoSelected == thisRobot.kStation) {
@@ -386,6 +418,14 @@ public class Auto {
                     //balance on station
                     case 3:
                         thisRobot.drivebase.autoBalance();
+                        break;
+                    //stop moving
+                    case 4:
+                        thisRobot.drivebaseAutomaticControl = true;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 0;
+
+                        thisRobot.arm.moveArm();
                         break;
                     }
             }
@@ -429,6 +469,14 @@ public class Auto {
                             thisRobot.resetSensors();
                         }
                         break;
+                    //stop moving
+                    case 3:
+                        thisRobot.drivebaseAutomaticControl = true;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 0;
+
+                        thisRobot.arm.moveArm();
+                        break;
                     }
             }
             if(thisRobot.m_autoSelected == thisRobot.kScoreCubeAndBackUp) {
@@ -470,6 +518,14 @@ public class Auto {
                             thisRobot.autoStep++;
                             thisRobot.resetSensors();
                         }
+                        break;
+                    //stop moving
+                    case 3:
+                        thisRobot.drivebaseAutomaticControl = true;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 0;
+
+                        thisRobot.arm.moveArm();
                         break;
                     }
             }

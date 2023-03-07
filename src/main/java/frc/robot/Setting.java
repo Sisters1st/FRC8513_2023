@@ -173,7 +173,6 @@ public class Setting {
     public static int clawClosedConePos = 400;
     public static int clawOpenConePos = 400;
 
-
     //claw positions for cube
     public static int clawClosedCubePos = 400;
     public static int clawOpenCubePos = 400;
