@@ -27,62 +27,6 @@ public class Auto {
 
     public void autoPeriodic(){
         if(System.currentTimeMillis() > thisRobot.autoStartTime + thisRobot.autoWaitTime){
-            if (thisRobot.m_autoSelected == thisRobot.kDriveStraightAndMoveArm) {
-        
-                switch (thisRobot.autoStep) {
-                    case 0:
-                        thisRobot.drivebaseAutomaticControl = true;
-                        thisRobot.goalAngle = 0;
-                        thisRobot.goalPosition = 1000;
-                        thisRobot.drivebase.driveDrivebase();
-        
-                        thisRobot.armAutomaticControl = true;
-                        thisRobot.clawAutomaticControl = true;
-                        thisRobot.wristAutomaticControl = true;
-        
-                        thisRobot.wristGoal = 100;
-                        thisRobot.armGoal = 225;
-                        thisRobot.clawGoal = 45;
-                        thisRobot.arm.moveArm();
-
-                        if(isRobotWithinThreshold()){
-                            thisRobot.autoStep++;
-                            thisRobot.resetSensors();
-                        }
-                        break;
-                    case 1:
-                        thisRobot.drivebaseAutomaticControl = true;
-                        thisRobot.goalAngle = 90;
-                        thisRobot.goalPosition = 0;
-                        thisRobot.drivebase.driveDrivebase();
-        
-                        thisRobot.armAutomaticControl = true;
-                        thisRobot.clawAutomaticControl = true;
-                        thisRobot.wristAutomaticControl = true;
-        
-                        thisRobot.wristGoal = 220;
-                        thisRobot.armGoal = 500;
-                        thisRobot.clawGoal = 0;
-                        thisRobot.arm.moveArm();
-                        
-                        if(isRobotWithinThreshold()){
-                            thisRobot.autoStep++;
-                            thisRobot.resetSensors();
-                        }
-                        break;
-                    default:
-                        thisRobot.drivebaseAutomaticControl = false;
-                        thisRobot.drivebase.driveDrivebase();
-        
-                        thisRobot.armAutomaticControl = true;
-                        thisRobot.clawAutomaticControl = true;
-                        thisRobot.wristAutomaticControl = true;
-                        thisRobot.arm.moveArm();
-                        //dont drive and holt wrist arm claw in position
-                }
-                
-
-            }
             if (thisRobot.m_autoSelected == thisRobot.kDriveStraight) {
 
                 thisRobot.drivebaseAutomaticControl = true;
