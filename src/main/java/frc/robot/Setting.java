@@ -37,6 +37,8 @@ public class Setting {
     public static double wristForwardPower = 0.5;
     public static double wristReversePower = -0.5;
 
+    public static double armToWristRatio = 0.25; //this is made up and needs to be determined experimentally
+
     //arm settings
     public static int armMotorCANID = 1;
     public static int armMotorPDPPort = 9;
@@ -94,7 +96,7 @@ public class Setting {
     public static double armPID_p = .1;
     public static double armPID_i = 0;
     public static double armPID_d = 0;
-    
+
     //claw PID
     public static double clawPID_p = .1;
     public static double clawPID_i = 0;
@@ -116,7 +118,7 @@ public class Setting {
     public static final int scoreMidButtonNum = 1;
     public static final int pickUpHPButtonNum = 2;
     public static final int pickUpFloorButtonNum = 3;
-    
+
     //Manual Button Settings
     public static final int armForwardButtonNum = 2;
     public static final int armBackwardButtonNum = 3;
@@ -132,42 +134,42 @@ public class Setting {
     //pickup cube from floor
     public static int cubePickupFlrButtonNum = 20;
     public static int cubePickupFlrArmPosition = 100;
-    public static int cubePickupFlrWristPosition = 100;
+    public static int cubePickupFlrWristPosition = 0;
 
     //pickup cone from floor
     public static int conePickupFlrButtonNum = 21;
     public static int conePickupFlrArmPosition = 100;
-    public static int conePickupFlrWristPosition = 100;
+    public static int conePickupFlrWristPosition = 0;
 
     //pickup cube from human player station
     public static int cubePickupHPSButtonNum = 22;
     public static int cubePickupHPSArmPosition = 100;
-    public static int cubePickupHPSWristPosition = 100;
+    public static int cubePickupHPSWristPosition = 0;
 
     //pickup cone from human player station
     public static int conePickupHPSButtonNum = 23;
     public static int conePickupHPSArmPosition = 100;
-    public static int conePickupHPSWristPosition = 100;
+    public static int conePickupHPSWristPosition = 0;
 
     //place cube on high
     public static int cubePlaceHighButtonNum = 24;
     public static int cubePlaceHighArmPosition = 100;
-    public static int cubePlaceHighWristPosition = 100;
+    public static int cubePlaceHighWristPosition = 0;
 
     //place cube on med
     public static int cubePlaceMedButtonNum = 25;
     public static int cubePlaceMedArmPosition = 100;
-    public static int cubePlaceMedWristPosition = 100;
+    public static int cubePlaceMedWristPosition = 0;
 
     //place cone on high
     public static int conePlaceHighButtonNum = 26;
     public static int conePlaceHighArmPosition = 100;
-    public static int conePlaceHighWristPosition = 100;
+    public static int conePlaceHighWristPosition = 0;
 
     //place cone on med
     public static int conePlaceMedButtonNum = 27;
     public static int conePlaceMedArmPosition = 100;
-    public static int conePlaceMedWristPosition = 100;
+    public static int conePlaceMedWristPosition = 0;
 
     //claw positions for cone
     public static int clawClosedConePos = 400;
@@ -177,7 +179,6 @@ public class Setting {
     public static int clawClosedCubePos = 400;
     public static int clawOpenCubePos = 400;
 
-
     //CHARGING STATION THRESHOLDS & SPEEDS
     public static double pitchTHold = 7.0;
     public static double autoBalanceSpeed = 0.25;
@@ -185,5 +186,5 @@ public class Setting {
     public static double balanceCountTHold = 50;
 
 
-    
+
 }

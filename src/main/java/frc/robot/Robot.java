@@ -73,6 +73,7 @@ public class Robot extends TimedRobot {
   //Wrist settings
   double wristPosition;
   double wristGoal;
+  double calculatedWristGoal;
   public PIDController wristPID = new PIDController(Setting.wristPID_p, Setting.wristPID_i, Setting.wristPID_d);
   public boolean wristAutomaticControl = false;
 
@@ -121,7 +122,6 @@ public class Robot extends TimedRobot {
 
   //auto balance count
   int balanceCount = 0;
-  
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -189,7 +189,7 @@ public class Robot extends TimedRobot {
     drivebase = new Drivebase(this);
 
     resetSensors();
-  
+
   }
 
   /**
@@ -201,7 +201,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    //update vars 
+    //update vars
 
     leftPosition = leftDriveMotor1.getEncoder().getPosition();
     rightPosition = rightDriveMotor1.getEncoder().getPosition();
@@ -333,7 +333,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("armOutput", armMotor.getAppliedOutput());
     SmartDashboard.putNumber("clawOutput", clawMotor.getAppliedOutput());
     SmartDashboard.putNumber("wristOutput", wristMotor.getAppliedOutput());
-   
+
     SmartDashboard.putNumber("armCurrent", PDP.getCurrent(Setting.armMotorPDPPort));
     SmartDashboard.putNumber("clawCurrent", PDP.getCurrent(Setting.clawMotorPDPPort));
     SmartDashboard.putNumber("wristCurrent", PDP.getCurrent(Setting.wristMotorPDPPort));
