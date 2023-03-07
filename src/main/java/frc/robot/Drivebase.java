@@ -14,19 +14,39 @@ public class Drivebase {
     public void driveDrivebase(){
         if(thisRobot.drivebaseAutomaticControl){
             double avgDist = (thisRobot.leftPosition + thisRobot.rightPosition) / 2;
-            double errorDist = thisRobot.goalPosition - avgDist;
 
-            double angError = thisRobot.goalAngle - thisRobot.currentAngle;
+            double turnOut = thisRobot.turnPID.calculate(thisRobot.currentAngle, thisRobot.goalAngle);
 
-            double turnOut = thisRobot.turnPID.calculate(angError, thisRobot.goalAngle);
-
-            double driveOut = thisRobot.drivePID.calculate(errorDist, thisRobot.goalPosition);
+            double driveOut = thisRobot.drivePID.calculate(avgDist, thisRobot.goalPosition);
 
             thisRobot.differentialDrivebase.tankDrive(driveOut, turnOut);
         } else {
-            thisRobot.leftSpeed = thisRobot.driverJoystick.getRawAxis(Setting.driverJoystickLeftStickAxis);
-            thisRobot.rightSpeed = thisRobot.driverJoystick.getRawAxis(Setting.driverJoystickLeftStickAxis); 
-            thisRobot.differentialDrivebase.tankDrive(thisRobot.leftSpeed, thisRobot.rightSpeed);
+            thisRobot.driveSpeed = thisRobot.driverJoystick.getRawAxis(Setting.driverJoystickDriveAxis);
+            thisRobot.turnSpeed = thisRobot.driverJoystick.getRawAxis(Setting.driverJoystickTurnAxis); 
+            thisRobot.differentialDrivebase.arcadeDrive(thisRobot.driveSpeed, thisRobot.turnSpeed);
+        }
+    }
+
+    public void autoBalance(){
+        double pitch = thisRobot.ahrs.getPitch();
+
+        if(pitch > Setting.pitchTHold)
+            thisRobot.differentialDrivebase.arcadeDrive(Setting.autoBalanceSpeed, 0);
+        else if(pitch > -Setting.pitchTHold)
+            thisRobot.differentialDrivebase.arcadeDrive(-Setting.autoBalanceSpeed, 0);
+        else
+            thisRobot.differentialDrivebase.arcadeDrive(0,0);
+
+        if(pitch > -Setting.autoBalanceTHold && pitch < Setting.autoBalanceTHold){
+            thisRobot.balanceCount++;
+        }
+        else
+        {
+            thisRobot.balanceCount = 0;
+        }
+        if(thisRobot.balanceCount > Setting.balanceCountTHold){
+            thisRobot.autoStep++;
+            thisRobot.resetSensors();
         }
     }
 }

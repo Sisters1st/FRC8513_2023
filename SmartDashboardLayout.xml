@@ -1,5 +1,71 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="LimelightArea" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="624"/>
+	</widget>
+	<widget field="LimelightY" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="604"/>
+	</widget>
+	<widget field="LimelightX" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="584"/>
+	</widget>
+	<widget field="ArmAutomatic" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="564"/>
+	</widget>
+	<widget field="Drivebase Automatic" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="544"/>
+	</widget>
+	<widget field="coneMode" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="524"/>
+	</widget>
+	<widget field="isClawClosed" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="504"/>
+	</widget>
+	<widget field="gyroscope angle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="484"/>
+	</widget>
+	<widget field="wristGoal" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="464"/>
+	</widget>
+	<widget field="clawGoal" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="444"/>
+	</widget>
+	<widget field="armGoal" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="424"/>
+	</widget>
+	<widget field="wristPosition" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="404"/>
+	</widget>
+	<widget field="clawPosition" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="384"/>
+	</widget>
+	<widget field="armPosition" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="364"/>
+	</widget>
+	<widget field="wristCurrent" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="344"/>
+	</widget>
+	<widget field="clawCurrent" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="324"/>
+	</widget>
+	<widget field="armCurrent" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="304"/>
+	</widget>
+	<widget field="wristOutput" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="284"/>
+	</widget>
+	<widget field="clawOutput" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="264"/>
+	</widget>
+	<widget field="armOutput" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="244"/>
+	</widget>
+	<widget field="rightPosition" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="133"/>
+	</widget>
+	<widget field="leftPosition" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="113"/>
+	</widget>
 	<widget field="rightDriveSpeed" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="488" y="90"/>
 	</widget>

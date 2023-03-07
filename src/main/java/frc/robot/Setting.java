@@ -36,6 +36,7 @@ public class Setting {
     public static double wristTHold = 5;
     public static double wristForwardPower = 0.5;
     public static double wristReversePower = -0.5;
+
     public static double armToWristRatio = 0.25; //this is made up and needs to be determined experimentally
 
     //arm settings
@@ -177,7 +178,6 @@ public class Setting {
     //claw positions for cube
     public static int clawClosedCubePos = 400;
     public static int clawOpenCubePos = 400;
-
 
     //CHARGING STATION THRESHOLDS & SPEEDS
     public static double pitchTHold = 7.0;
