@@ -115,7 +115,8 @@ public class Arm {
                 thisRobot.armMotor.set(Setting.armReversePower);
             }
             if(!(armForward||armBackward)) {
-                thisRobot.armMotor.set(0);
+                double armJoystickPower = thisRobot.manualJoystick.getRawAxis(Setting.armJoystickControlAxis);
+                thisRobot.armMotor.set(armJoystickPower);
             }
         }
 
@@ -128,6 +129,15 @@ public class Arm {
             //this will have the wrist move with the arm, but we can still control its relative position by adding or subtracting some rotations
             thisRobot.calculatedWristGoal = thisRobot.armPosition * Setting.WristToArmRatio + thisRobot.wristGoal;
             double wristPower = thisRobot.wristPID.calculate(thisRobot.wristPosition, thisRobot.calculatedWristGoal);
+
+            //the armFoldedMin and max check ensures when the arm is above the robot, the wrist stays folded in so the robot doesnt break 6'6"
+            double wristPower;
+            if(thisRobot.armPosition > Setting.armFoldedMin && thisRobot.armPosition < Setting.armFoldedMax){
+                wristPower = thisRobot.wristPID.calculate(thisRobot.wristPosition, thisRobot.armPosition * Setting.armToWristRatio);
+            } else {
+                thisRobot.calculatedWristGoal = thisRobot.armPosition * Setting.armToWristRatio + thisRobot.wristGoal;
+                wristPower = thisRobot.wristPID.calculate(thisRobot.wristPosition, thisRobot.calculatedWristGoal);
+            }
             thisRobot.wristMotor.set(wristPower);
         }
         else {
@@ -140,7 +150,8 @@ public class Arm {
                 thisRobot.wristMotor.set(Setting.wristReversePower);
             }
             if(!(wristForward||wristBackward)) {
-                thisRobot.wristMotor.set(0);
+                double wristJoystickPower = thisRobot.manualJoystick.getRawAxis(Setting.wristJoystickControlAxis);
+                thisRobot.wristMotor.set(wristJoystickPower);
             }
         }
 
