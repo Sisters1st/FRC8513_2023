@@ -37,7 +37,7 @@ public class Setting {
     public static double wristForwardPower = 0.5;
     public static double wristReversePower = -0.5;
 
-    public static double armToWristRatio = 0.25; //this is made up and needs to be determined experimentally
+    public static double armToWristRatio = 46/28; //this is made up and needs to be determined experimentally
 
     //arm settings
     public static int armMotorCANID = 1;

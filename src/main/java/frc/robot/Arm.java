@@ -126,7 +126,7 @@ public class Arm {
             //in order to have the wrist not break itslef, we need to move the wrist while the arm is moving in order to keep them in ralation to eachother
             //because of this, the goal for the wrist will be based off the arm position plus/minus our goal
             //this will have the wrist move with the arm, but we can still control its relative position by adding or subtracting some rotations
-            double thisRobot.calculatedWristGoal = thisRobot.armPosition * Setting.armToWristRatio + thisRobot.wristGoal;
+            thisRobot.calculatedWristGoal = thisRobot.armPosition * Setting.armToWristRatio + thisRobot.wristGoal;
             double wristPower = thisRobot.wristPID.calculate(thisRobot.wristPosition, thisRobot.calculatedWristGoal);
             thisRobot.wristMotor.set(wristPower);
         }

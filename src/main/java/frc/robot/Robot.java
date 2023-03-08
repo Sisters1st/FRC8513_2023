@@ -64,22 +64,22 @@ public class Robot extends TimedRobot {
 
   //Arm settings
   public Arm arm;
-  double armPosition;
-  double armGoal;
+  public double armPosition;
+  public double armGoal;
   public PIDController armPID = new PIDController(Setting.armPID_p, Setting.armPID_i, Setting.armPID_d);
   public boolean armAutomaticControl = false;
   public boolean armInConeMode = false;
 
   //Wrist settings
-  double wristPosition;
-  double wristGoal;
-  double calculatedWristGoal;
+  public double wristPosition;
+  public double wristGoal;
+  public double calculatedWristGoal;
   public PIDController wristPID = new PIDController(Setting.wristPID_p, Setting.wristPID_i, Setting.wristPID_d);
   public boolean wristAutomaticControl = false;
 
   //Claw settings
-  double clawPosition;
-  double clawGoal;
+  public double clawPosition;
+  public double clawGoal;
   public PIDController clawPID = new PIDController(Setting.clawPID_p, Setting.clawPID_i, Setting.clawPID_d);
   public boolean clawAutomaticControl = false;
   public boolean isClawClosed = false;
