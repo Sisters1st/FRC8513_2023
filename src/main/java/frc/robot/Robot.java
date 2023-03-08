@@ -81,7 +81,7 @@ public class Robot extends TimedRobot {
   public double clawPosition;
   public double clawGoal;
   public PIDController clawPID = new PIDController(Setting.clawPID_p, Setting.clawPID_i, Setting.clawPID_d);
-  public boolean clawAutomaticControl = false;
+  public boolean clawAutomaticControl = true;
   public boolean isClawClosed = false;
 
   public Auto auto;
@@ -353,6 +353,8 @@ public class Robot extends TimedRobot {
 
     SmartDashboard.putBoolean("Drivebase Automatic", drivebaseAutomaticControl);
     SmartDashboard.putBoolean("ArmAutomatic", armAutomaticControl);
+    SmartDashboard.putBoolean("Wrist automatic control", wristAutomaticControl);
+    SmartDashboard.putBoolean("Claw automatic control", clawAutomaticControl);
 
     //post to smart dashboard periodically
     SmartDashboard.putNumber("LimelightX", LL_X);
@@ -361,5 +363,7 @@ public class Robot extends TimedRobot {
 
     SmartDashboard.putNumber("pitch", ahrs.getPitch());
     SmartDashboard.putNumber("balance count", balanceCount);
+
+  
   }
 }

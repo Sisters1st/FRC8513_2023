@@ -55,7 +55,7 @@ public class Setting {
     public static int clawMotorCANID = 9;
     public static int clawMotorPDPPort = 10;
     public static MotorType clawMotorType = MotorType.kBrushless;
-    public static IdleMode clawMotorIdleMode = IdleMode.kCoast;
+    public static IdleMode clawMotorIdleMode = IdleMode.kBrake;
     public static int clawMotorCurrentLimit = 5;
     public static Boolean clawMotorInverted = false;
     public static double clawTHold = 5;
@@ -99,7 +99,7 @@ public class Setting {
     public static double armPID_d = 0;
 
     //claw PID
-    public static double clawPID_p = .1;
+    public static double clawPID_p = 10;
     public static double clawPID_i = 0;
     public static double clawPID_d = 0;
 
@@ -115,10 +115,10 @@ public class Setting {
     public static final int toggleClawPositionButton = 6;
     public static final int resetSensorsButton = 8;
 
-    public static final int scoreHighButtonNum = 3;
-    public static final int scoreMidButtonNum = 2;
-    public static final int pickUpHPButtonNum = 0;
-    public static final int pickUpFloorButtonNum = 1;
+    public static final int scoreHighButtonNum = 4;
+    public static final int scoreMidButtonNum = 3;
+    public static final int pickUpHPButtonNum = 1;
+    public static final int pickUpFloorButtonNum = 2;
 
     //Manual Button Settings
     public static final int armForwardButtonNum = 2;

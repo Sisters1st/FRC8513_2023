@@ -1,5 +1,7 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 public class Arm {
     public Robot thisRobot;
 
@@ -156,6 +158,7 @@ public class Arm {
         if(thisRobot.clawAutomaticControl) {
             double clawPower = thisRobot.clawPID.calculate(thisRobot.clawPosition, thisRobot.clawGoal);
             thisRobot.clawMotor.set(clawPower);
+            SmartDashboard.putNumber("clawPower", clawPower);
         }
         else {
             boolean clawForward = thisRobot.manualJoystick.getRawButton(Setting.clawForwardButtonNum);
