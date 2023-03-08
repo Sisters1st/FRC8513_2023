@@ -30,21 +30,21 @@ public class Setting {
     public static int wristMotorCANID = 8;
     public static int wristMotorPDPPort = 8;
     public static MotorType wristMotorType = MotorType.kBrushless;
-    public static IdleMode wristMotorIdleMode = IdleMode.kBrake;
-    public static int wristMotorCurrentLimit = 40;
+    public static IdleMode wristMotorIdleMode = IdleMode.kCoast;
+    public static int wristMotorCurrentLimit = 5;
     public static Boolean wristMotorInverted = false;
     public static double wristTHold = 5;
     public static double wristForwardPower = 0.5;
     public static double wristReversePower = -0.5;
 
-    public static double armToWristRatio = 46/28; //this is made up and needs to be determined experimentally
+    public static double WristToArmRatio = 28/46; //this is made up and needs to be determined experimentally
 
     //arm settings
     public static int armMotorCANID = 1;
     public static int armMotorPDPPort = 9;
     public static MotorType armMotorType = MotorType.kBrushless;
-    public static IdleMode armMotorIdleMode = IdleMode.kBrake;
-    public static int armMotorCurrentLimit = 40;
+    public static IdleMode armMotorIdleMode = IdleMode.kCoast;
+    public static int armMotorCurrentLimit = 5;
     public static Boolean armMotorInverted = false;
     public static double armTHold = 5;
     public static double armForwardPower = 0.5;
@@ -54,8 +54,8 @@ public class Setting {
     public static int clawMotorCANID = 9;
     public static int clawMotorPDPPort = 10;
     public static MotorType clawMotorType = MotorType.kBrushless;
-    public static IdleMode clawMotorIdleMode = IdleMode.kBrake;
-    public static int clawMotorCurrentLimit = 40;
+    public static IdleMode clawMotorIdleMode = IdleMode.kCoast;
+    public static int clawMotorCurrentLimit = 5;
     public static Boolean clawMotorInverted = false;
     public static double clawTHold = 5;
     public static double clawForwardPower = 0.5;
