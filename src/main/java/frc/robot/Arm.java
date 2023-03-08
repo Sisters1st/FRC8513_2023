@@ -115,7 +115,8 @@ public class Arm {
                 thisRobot.armMotor.set(Setting.armReversePower);
             }
             if(!(armForward||armBackward)) {
-                thisRobot.armMotor.set(0);
+                double armJoystickPower = thisRobot.manualJoystick.getRawAxis(Setting.armJoystickControlAxis);
+                thisRobot.armMotor.set(armJoystickPower);
             }
         }
 
@@ -147,7 +148,8 @@ public class Arm {
                 thisRobot.wristMotor.set(Setting.wristReversePower);
             }
             if(!(wristForward||wristBackward)) {
-                thisRobot.wristMotor.set(0);
+                double wristJoystickPower = thisRobot.manualJoystick.getRawAxis(Setting.wristJoystickControlAxis);
+                thisRobot.wristMotor.set(wristJoystickPower);
             }
         }
 

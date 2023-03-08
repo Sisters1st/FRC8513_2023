@@ -129,6 +129,9 @@ public class Setting {
     public static final int clawForwardButtonNum = 6;
     public static final int clawBackwardButtonNum = 5;
 
+    public static final int armJoystickControlAxis = 1;
+    public static final int wristJoystickControlAxis = 3;
+
 
     //POSITIONS & BUTTONS (arm/claw/wrist)
     //pickup cube from floor
