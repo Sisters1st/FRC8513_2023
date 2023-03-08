@@ -31,7 +31,7 @@ public class Setting {
     public static int wristMotorPDPPort = 8;
     public static MotorType wristMotorType = MotorType.kBrushless;
     public static IdleMode wristMotorIdleMode = IdleMode.kCoast;
-    public static int wristMotorCurrentLimit = 5;
+    public static int wristMotorCurrentLimit = 15;
     public static Boolean wristMotorInverted = false;
     public static double wristTHold = 5;
     public static double wristForwardPower = 0.5;
@@ -45,7 +45,7 @@ public class Setting {
     public static int armMotorPDPPort = 9;
     public static MotorType armMotorType = MotorType.kBrushless;
     public static IdleMode armMotorIdleMode = IdleMode.kCoast;
-    public static int armMotorCurrentLimit = 5;
+    public static int armMotorCurrentLimit = 25;
     public static Boolean armMotorInverted = false;
     public static double armTHold = 5;
     public static double armForwardPower = 0.5;
@@ -55,8 +55,8 @@ public class Setting {
     public static int clawMotorCANID = 9;
     public static int clawMotorPDPPort = 10;
     public static MotorType clawMotorType = MotorType.kBrushless;
-    public static IdleMode clawMotorIdleMode = IdleMode.kBrake;
-    public static int clawMotorCurrentLimit = 5;
+    public static IdleMode clawMotorIdleMode = IdleMode.kCoast;
+    public static int clawMotorCurrentLimit = 20;
     public static Boolean clawMotorInverted = false;
     public static double clawTHold = 5;
     public static double clawForwardPower = 0.5;
@@ -94,19 +94,19 @@ public class Setting {
     public static double drivePID_d = .01;
 
     //arm PID
-    public static double armPID_p = .1;
-    public static double armPID_i = 0;
-    public static double armPID_d = 0;
+    public static double armPID_p = 0.1;
+    public static double armPID_i = 0.0;
+    public static double armPID_d = 0.01;
 
     //claw PID
-    public static double clawPID_p = 10;
-    public static double clawPID_i = 0;
-    public static double clawPID_d = 0;
+    public static double clawPID_p = 0.1;
+    public static double clawPID_i = 0.0;
+    public static double clawPID_d = 0.01;
 
     //wrist PID
-    public static double wristPID_p = .1;
-    public static double wristPID_i = 0;
-    public static double wristPID_d = 0;
+    public static double wristPID_p = 0.1;
+    public static double wristPID_i = 0.0;
+    public static double wristPID_d = 0.01;
 
     //Automatic button settings
     public static final int toggleConeCubeModeButton = 5;
@@ -131,7 +131,7 @@ public class Setting {
     public static final int clawBackwardButtonNum = 5;
 
     public static final int armJoystickControlAxis = 1;
-    public static final int wristJoystickControlAxis = 3;
+    public static final int wristJoystickControlAxis = 5;
 
 
     //POSITIONS & BUTTONS (arm/claw/wrist)
@@ -184,7 +184,7 @@ public class Setting {
     public static double clawOpenCubePos = -48.7;
 
     //claw folded range
-    public static double armFoldedMin = 0;
+    public static double armFoldedMin = -5;
     public static double armFoldedMax = 120;
 
     //CHARGING STATION THRESHOLDS & SPEEDS

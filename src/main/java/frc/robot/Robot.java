@@ -254,9 +254,9 @@ public class Robot extends TimedRobot {
   /** This function is called once when teleop is enabled. */
   @Override
   public void teleopInit() {
-    armAutomaticControl = false;
-    clawAutomaticControl = false;
-    wristAutomaticControl = false;
+    armAutomaticControl = true;
+    clawAutomaticControl = true;
+    wristAutomaticControl = true;
   }
   /** This function is called periodically during operator control. */
   @Override
@@ -296,9 +296,6 @@ public class Robot extends TimedRobot {
     leftDriveMotor1.getEncoder().setPosition(0);
     rightDriveMotor1.getEncoder().setPosition(0);
     ahrs.reset();
-    armMotor.getEncoder().setPosition(0);
-    clawMotor.getEncoder().setPosition(0);
-    wristMotor.getEncoder().setPosition(0);
   }
 
   public void putToSmartDashboard(){
