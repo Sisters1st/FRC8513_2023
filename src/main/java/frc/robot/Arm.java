@@ -127,9 +127,7 @@ public class Arm {
             //in order to have the wrist not break itslef, we need to move the wrist while the arm is moving in order to keep them in ralation to eachother
             //because of this, the goal for the wrist will be based off the arm position plus/minus our goal
             //this will have the wrist move with the arm, but we can still control its relative position by adding or subtracting some rotations
-            thisRobot.calculatedWristGoal = thisRobot.armPosition * Setting.WristToArmRatio + thisRobot.wristGoal;
-            double wristPower = thisRobot.wristPID.calculate(thisRobot.wristPosition, thisRobot.calculatedWristGoal);
-
+            
             //the armFoldedMin and max check ensures when the arm is above the robot, the wrist stays folded in so the robot doesnt break 6'6"
             double wristPower;
             if(thisRobot.armPosition > Setting.armFoldedMin && thisRobot.armPosition < Setting.armFoldedMax){
