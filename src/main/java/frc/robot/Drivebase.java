@@ -2,17 +2,18 @@ package frc.robot;
 
 public class Drivebase {
     Robot thisRobot;
-    public Drivebase(Robot thisRobotIn){
+
+    public Drivebase(Robot thisRobotIn) {
         thisRobot = thisRobotIn;
     }
 
-    public void teleopPeriodic(){
-        thisRobot.drivebaseAutomaticControl=false;
+    public void teleopPeriodic() {
+        thisRobot.drivebaseAutomaticControl = false;
         driveDrivebase();
     }
 
-    public void driveDrivebase(){
-        if(thisRobot.drivebaseAutomaticControl){
+    public void driveDrivebase() {
+        if (thisRobot.drivebaseAutomaticControl) {
             double avgDist = (thisRobot.leftPosition + thisRobot.rightPosition) / 2;
 
             double turnOut = thisRobot.turnPID.calculate(thisRobot.currentAngle, thisRobot.goalAngle);
@@ -22,29 +23,27 @@ public class Drivebase {
             thisRobot.differentialDrivebase.tankDrive(driveOut, turnOut);
         } else {
             thisRobot.driveSpeed = thisRobot.driverJoystick.getRawAxis(Setting.driverJoystickDriveAxis);
-            thisRobot.turnSpeed = thisRobot.driverJoystick.getRawAxis(Setting.driverJoystickTurnAxis); 
+            thisRobot.turnSpeed = thisRobot.driverJoystick.getRawAxis(Setting.driverJoystickTurnAxis);
             thisRobot.differentialDrivebase.arcadeDrive(thisRobot.driveSpeed, thisRobot.turnSpeed);
         }
     }
 
-    public void autoBalance(){
+    public void autoBalance() {
         double pitch = thisRobot.ahrs.getPitch();
 
-        if(pitch > Setting.pitchTHold)
+        if (pitch > Setting.pitchTHold)
             thisRobot.differentialDrivebase.arcadeDrive(Setting.autoBalanceSpeed, 0);
-        else if(pitch > -Setting.pitchTHold)
+        else if (pitch > -Setting.pitchTHold)
             thisRobot.differentialDrivebase.arcadeDrive(-Setting.autoBalanceSpeed, 0);
         else
-            thisRobot.differentialDrivebase.arcadeDrive(0,0);
+            thisRobot.differentialDrivebase.arcadeDrive(0, 0);
 
-        if(pitch > -Setting.autoBalanceTHold && pitch < Setting.autoBalanceTHold){
+        if (pitch > -Setting.autoBalanceTHold && pitch < Setting.autoBalanceTHold) {
             thisRobot.balanceCount++;
-        }
-        else
-        {
+        } else {
             thisRobot.balanceCount = 0;
         }
-        if(thisRobot.balanceCount > Setting.balanceCountTHold){
+        if (thisRobot.balanceCount > Setting.balanceCountTHold) {
             thisRobot.autoStep++;
             thisRobot.resetSensors();
         }
