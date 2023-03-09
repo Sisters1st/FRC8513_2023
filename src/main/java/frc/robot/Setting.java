@@ -115,6 +115,7 @@ public class Setting {
     public static final int drivebaseAutomaticControlButtonNum = 9;
     public static final int toggleClawPositionButton = 6;
     public static final int resetSensorsButton = 8;
+    public static final int autoBalanceButton = 10;
 
     public static final int scoreHighButtonNum = 4;
     public static final int scoreMidButtonNum = 3;
