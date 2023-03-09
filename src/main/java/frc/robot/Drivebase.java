@@ -9,9 +9,11 @@ public class Drivebase {
 
     public void teleopPeriodic() {
         thisRobot.drivebaseAutomaticControl = false;
-        driveDrivebase();
-        if(thisRobot.opperatorJoystick.getRawButtonPressed(Setting.autoBalanceButton)){
+        if(thisRobot.driverJoystick.getRawButtonPressed(Setting.autoBalanceButton)){
             thisRobot.drivebase.autoBalance();
+        }
+        else{
+            driveDrivebase();
         }
     }
 
