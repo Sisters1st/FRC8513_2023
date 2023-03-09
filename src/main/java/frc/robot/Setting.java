@@ -50,7 +50,7 @@ public class Setting {
     public static double armTHold = 5;
     public static double armForwardPower = 0.5;
     public static double armReversePower = -0.5;
-    public static double armMaxSpeed = 1;
+    public static double armMaxSpeed = .25;
 
     //claw settings
     public static int clawMotorCANID = 9;
@@ -137,11 +137,11 @@ public class Setting {
 
     //POSITIONS & BUTTONS (arm/claw/wrist)
     //pickup cube from floor
-    public static double cubePickupFlrArmPosition = 189.3;
+    public static double cubePickupFlrArmPosition = 185.3;
     public static double cubePickupFlrWristPosition = 88.1; //-101.2
 
     //pickup cone from floor
-    public static double conePickupFlrArmPosition = 189.3;
+    public static double conePickupFlrArmPosition = 185.3;
     public static double conePickupFlrWristPosition = 88.1; //-101.2
 
     //pickup cube from human player station
