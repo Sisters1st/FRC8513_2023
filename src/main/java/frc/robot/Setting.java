@@ -50,6 +50,7 @@ public class Setting {
     public static double armTHold = 5;
     public static double armForwardPower = 0.5;
     public static double armReversePower = -0.5;
+    public static double armMaxSpeed = 1;
 
     //claw settings
     public static int clawMotorCANID = 9;
