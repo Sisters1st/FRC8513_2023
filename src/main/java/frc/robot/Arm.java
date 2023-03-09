@@ -108,7 +108,11 @@ public class Arm {
             double armPower = thisRobot.armPID.calculate(thisRobot.armPosition, thisRobot.armGoal);
             armSpeed = Math.abs(thisRobot.armPosition - thisRobot.prevArmPosition);
             if(armSpeed > Setting.armMaxSpeed){
-                armPower = armPower - (armSpeed - Setting.armMaxSpeed)
+                if(armPower > 0){
+                    armPower = armPower - (armSpeed - Setting.armMaxSpeed)
+                } else {
+                    armPower = armPower + (armSpeed - Setting.armMaxSpeed)
+                }
             }
             thisRobot.armMotor.set(armPower);
 
