@@ -18,13 +18,15 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import com.kauailabs.navx.frc.AHRS;
 
-
 import com.revrobotics.CANSparkMax;
 
 /**
- * The VM is configured to automatically run this class, and to call the functions corresponding to
- * each mode, as described in the TimedRobot documentation. If you change the name of this class or
- * the package after creating this project, you must also update the build.gradle file in the
+ * The VM is configured to automatically run this class, and to call the
+ * functions corresponding to
+ * each mode, as described in the TimedRobot documentation. If you change the
+ * name of this class or
+ * the package after creating this project, you must also update the
+ * build.gradle file in the
  * project.
  */
 public class Robot extends TimedRobot {
@@ -40,17 +42,15 @@ public class Robot extends TimedRobot {
   public final String kScoreConeAndBackUp = "ScoreConeAndBackUpAuto";
   public final String kScoreCubeAndBackUp = "ScoreCubeAndBackUpAuto";
 
-
-
   String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   AHRS ahrs;
   public Timer m_timer = new Timer();
-  //Angle settings
+  // Angle settings
   double autoStartingAngle;
   double currentAngle;
   double goalAngle;
-  //Position settings
+  // Position settings
   double goalPosition;
   double leftPosition;
   double rightPosition;
@@ -62,7 +62,7 @@ public class Robot extends TimedRobot {
   public PIDController turnPID = new PIDController(Setting.turnPID_p, Setting.turnPID_i, Setting.turnPID_d);
   public PIDController drivePID = new PIDController(Setting.drivePID_p, Setting.drivePID_i, Setting.drivePID_d);
 
-  //Arm settings
+  // Arm settings
   public Arm arm;
   public double armPosition;
   public double prevArmPosition;
@@ -71,14 +71,14 @@ public class Robot extends TimedRobot {
   public boolean armAutomaticControl = false;
   public boolean armInConeMode = false;
 
-  //Wrist settings
+  // Wrist settings
   public double wristPosition;
   public double wristGoal;
   public double calculatedWristGoal;
   public PIDController wristPID = new PIDController(Setting.wristPID_p, Setting.wristPID_i, Setting.wristPID_d);
   public boolean wristAutomaticControl = false;
 
-  //Claw settings
+  // Claw settings
   public double clawPosition;
   public double clawGoal;
   public PIDController clawPID = new PIDController(Setting.clawPID_p, Setting.clawPID_i, Setting.clawPID_d);
@@ -90,7 +90,7 @@ public class Robot extends TimedRobot {
 
   public boolean drivebaseAutomaticControl = false;
 
-  //CAN Spark Max settings
+  // CAN Spark Max settings
   CANSparkMax armMotor = new CANSparkMax(Setting.armMotorCANID, Setting.armMotorType);
   CANSparkMax wristMotor = new CANSparkMax(Setting.wristMotorCANID, Setting.wristMotorType);
   CANSparkMax clawMotor = new CANSparkMax(Setting.clawMotorCANID, Setting.clawMotorType);
@@ -116,15 +116,17 @@ public class Robot extends TimedRobot {
 
   DifferentialDrive differentialDrivebase = new DifferentialDrive(leftDriveMotor1, rightDriveMotor1);
 
-  //Limelight values
+  // Limelight values
   double LL_X = 0;
   double LL_Y = 0;
   double LL_Area = 0;
 
-  //auto balance count
+  // auto balance count
   int balanceCount = 0;
+
   /**
-   * This function is run when the robot is first started up and should be used for any
+   * This function is run when the robot is first started up and should be used
+   * for any
    * initialization code.
    */
   @Override
@@ -194,15 +196,18 @@ public class Robot extends TimedRobot {
   }
 
   /**
-   * This function is called every 20 ms, no matter the mode. Use this for items like diagnostics
+   * This function is called every 20 ms, no matter the mode. Use this for items
+   * like diagnostics
    * that you want ran during disabled, autonomous, teleoperated and test.
    *
-   * <p>This runs after the mode specific periodic functions, but before LiveWindow and
+   * <p>
+   * This runs after the mode specific periodic functions, but before LiveWindow
+   * and
    * SmartDashboard integrated updating.
    */
   @Override
   public void robotPeriodic() {
-    //update vars
+    // update vars
 
     leftPosition = leftDriveMotor1.getEncoder().getPosition();
     rightPosition = rightDriveMotor1.getEncoder().getPosition();
@@ -212,14 +217,14 @@ public class Robot extends TimedRobot {
     wristPosition = wristMotor.getEncoder().getPosition();
     currentAngle = ahrs.getAngle();
 
-    //LL Get from NT
+    // LL Get from NT
     NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
     NetworkTableEntry tx = table.getEntry("tx");
     NetworkTableEntry ty = table.getEntry("ty");
     NetworkTableEntry ta = table.getEntry("ta");
     NetworkTableEntry ledMode = table.getEntry("ledMode");
 
-    //read values periodically
+    // read values periodically
     LL_X = tx.getDouble(0.0);
     LL_Y = ty.getDouble(0.0);
     ledMode.setDouble(3);
@@ -229,13 +234,20 @@ public class Robot extends TimedRobot {
   }
 
   /**
-   * This autonomous (along with the chooser code above) shows how to select between different
-   * autonomous modes using the dashboard. The sendable chooser code works with the Java
-   * SmartDashboard. If you prefer the LabVIEW Dashboard, remove all of the chooser code and
-   * uncomment the getString line to get the auto name from the text box below the Gyro
+   * This autonomous (along with the chooser code above) shows how to select
+   * between different
+   * autonomous modes using the dashboard. The sendable chooser code works with
+   * the Java
+   * SmartDashboard. If you prefer the LabVIEW Dashboard, remove all of the
+   * chooser code and
+   * uncomment the getString line to get the auto name from the text box below the
+   * Gyro
    *
-   * <p>You can add additional auto modes by adding additional comparisons to the switch structure
-   * below with additional strings. If using the SendableChooser make sure to add them to the
+   * <p>
+   * You can add additional auto modes by adding additional comparisons to the
+   * switch structure
+   * below with additional strings. If using the SendableChooser make sure to add
+   * them to the
    * chooser code above as well.
    */
   @Override
@@ -258,48 +270,56 @@ public class Robot extends TimedRobot {
     armAutomaticControl = true;
     clawAutomaticControl = true;
     wristAutomaticControl = true;
+    arm.teleopInit();
   }
+
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
     arm.teleopPeriodic();
     drivebase.teleopPeriodic();
-    if(opperatorJoystick.getRawButtonPressed(Setting.resetSensorsButton)){
+    if (opperatorJoystick.getRawButtonPressed(Setting.resetSensorsButton)) {
       resetSensors();
     }
   }
 
   /** This function is called once when the robot is disabled. */
   @Override
-  public void disabledInit() {}
+  public void disabledInit() {
+  }
 
   /** This function is called periodically when disabled. */
   @Override
-  public void disabledPeriodic() {}
+  public void disabledPeriodic() {
+  }
 
   /** This function is called once when test mode is enabled. */
   @Override
-  public void testInit() {}
+  public void testInit() {
+  }
 
   /** This function is called periodically during test mode. */
   @Override
-  public void testPeriodic() {}
+  public void testPeriodic() {
+  }
 
   /** This function is called once when the robot is first started up. */
   @Override
-  public void simulationInit() {}
+  public void simulationInit() {
+  }
 
   /** This function is called periodically whilst in simulation. */
   @Override
-  public void simulationPeriodic() {}
+  public void simulationPeriodic() {
+  }
 
-  public void resetSensors(){
+  public void resetSensors() {
     leftDriveMotor1.getEncoder().setPosition(0);
     rightDriveMotor1.getEncoder().setPosition(0);
     ahrs.reset();
   }
 
-  public void putToSmartDashboard(){
+  public void putToSmartDashboard() {
 
     SmartDashboard.putNumber("LeftDriveMotor1Ouput", leftDriveMotor1.getAppliedOutput());
     SmartDashboard.putNumber("LeftDriveMotor1Current", PDP.getCurrent(Setting.leftDriveMotor1PDPPort));
@@ -322,7 +342,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("RightDriveMotor3Ouput", rightDriveMotor3.getAppliedOutput());
     SmartDashboard.putNumber("RightDriveMotor3Current", PDP.getCurrent(Setting.rightDriveMotor3PDPPort));
 
-    SmartDashboard.putNumber ("leftDriveSpeed", leftSpeed);
+    SmartDashboard.putNumber("leftDriveSpeed", leftSpeed);
     SmartDashboard.putNumber("rightDriveSpeed", rightSpeed);
 
     SmartDashboard.putNumber("leftPosition", leftPosition);
@@ -354,7 +374,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putBoolean("Wrist automatic control", wristAutomaticControl);
     SmartDashboard.putBoolean("Claw automatic control", clawAutomaticControl);
 
-    //post to smart dashboard periodically
+    // post to smart dashboard periodically
     SmartDashboard.putNumber("LimelightX", LL_X);
     SmartDashboard.putNumber("LimelightY", LL_Y);
     SmartDashboard.putNumber("LimelightArea", LL_Area);
@@ -362,6 +382,5 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("pitch", ahrs.getPitch());
     SmartDashboard.putNumber("balance count", balanceCount);
 
-  
   }
 }
