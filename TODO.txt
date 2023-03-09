@@ -1,3 +1,2 @@
 Todo:
-    Add the rest of the read buttons and set goal in arm.java
-    once robot can be driven manually: find setpoints 
+    check PDP ports and update settings to match
