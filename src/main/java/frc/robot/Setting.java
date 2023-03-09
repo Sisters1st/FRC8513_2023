@@ -109,18 +109,16 @@ public class Setting {
     public static double wristPID_i = 0.0;
     public static double wristPID_d = 0.01;
 
-    // Automatic button settings
-    public static final int toggleConeCubeModeButton = 5;
-    public static final int toggleAutomaticArmControlButtonNum = 7;
-    public static final int drivebaseAutomaticControlButtonNum = 9;
-    public static final int toggleClawPositionButton = 6;
-    public static final int resetSensorsButton = 8;
-    public static final int autoBalanceButton = 10;
-
-    public static final int scoreHighButtonNum = 4;
-    public static final int scoreMidButtonNum = 3;
+    // Operator button settings
     public static final int pickUpHPButtonNum = 1;
     public static final int pickUpFloorButtonNum = 2;
+    public static final int scoreMidButtonNum = 3;
+    public static final int scoreHighButtonNum = 4;
+    public static final int toggleConeCubeModeButton = 5;
+    public static final int toggleClawPositionButton = 6;
+    public static final int toggleAutomaticArmControlButtonNum = 7;
+    public static final int resetSensorsButton = 8;
+    public static final int drivebaseAutomaticControlButtonNum = 9;
 
     // Manual Button Settings
     public static final int armForwardButtonNum = 2;
@@ -135,8 +133,10 @@ public class Setting {
     public static final int armJoystickControlAxis = 1;
     public static final int wristJoystickControlAxis = 5;
 
+    // Driver button settings
+    public static final int autoBalanceButton = 6;
 
-    //POSITIONS & BUTTONS (arm/claw/wrist)
+    //POSITIONS (arm/claw/wrist)
     //pickup cube from floor
     public static double cubePickupFlrArmPosition = 189.3;
     public static double cubePickupFlrWristPosition = 88.1; //-101.2
