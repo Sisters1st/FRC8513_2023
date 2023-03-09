@@ -65,6 +65,7 @@ public class Robot extends TimedRobot {
   //Arm settings
   public Arm arm;
   public double armPosition;
+  public double prevArmPosition;
   public double armGoal;
   public PIDController armPID = new PIDController(Setting.armPID_p, Setting.armPID_i, Setting.armPID_d);
   public boolean armAutomaticControl = false;
@@ -205,7 +206,7 @@ public class Robot extends TimedRobot {
 
     leftPosition = leftDriveMotor1.getEncoder().getPosition();
     rightPosition = rightDriveMotor1.getEncoder().getPosition();
-
+    prevArmPosition = armPosition;
     armPosition = armMotor.getEncoder().getPosition();
     clawPosition = clawMotor.getEncoder().getPosition();
     wristPosition = wristMotor.getEncoder().getPosition();
