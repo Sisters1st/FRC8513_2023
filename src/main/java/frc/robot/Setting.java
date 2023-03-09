@@ -118,7 +118,6 @@ public class Setting {
     public static final int toggleClawPositionButton = 6;
     public static final int toggleAutomaticArmControlButtonNum = 7;
     public static final int resetSensorsButton = 8;
-    public static final int drivebaseAutomaticControlButtonNum = 9;
 
     // Manual Button Settings
     public static final int armForwardButtonNum = 2;
@@ -134,6 +133,7 @@ public class Setting {
     public static final int wristJoystickControlAxis = 5;
 
     // Driver button settings
+    public static final int startingConfigButton = 5;
     public static final int autoBalanceButton = 6;
 
     //POSITIONS (arm/claw/wrist)

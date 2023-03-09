@@ -44,6 +44,11 @@ public class Arm {
             thisRobot.isClawClosed = !thisRobot.isClawClosed;
         }
 
+        boolean returnToStartingConfig = thisRobot.driverJoystick.getRawButtonPressed(Setting.startingConfigButton);
+        if(returnToStartingConfig) {
+            thisRobot.armPosition = 15;
+            thisRobot.wristPosition = 0;
+        }
         // if in cone mode, use cone setpoints. If in cube mode use cube setpoints
         if (thisRobot.armInConeMode) {
 
