@@ -119,7 +119,7 @@ public class Arm {
     public void moveArm() {
         if (thisRobot.armAutomaticControl) {
             double armPower = thisRobot.armPID.calculate(thisRobot.armPosition, thisRobot.armGoal);
-            armSpeed = Math.abs(thisRobot.armPosition - thisRobot.prevArmPosition);
+            double armSpeed = Math.abs(thisRobot.armPosition - thisRobot.prevArmPosition);
             if(thisRobot.armPosition > 150){
                 if(armSpeed > Setting.armMaxSpeed / 2){
                     if(armPower > 0){
