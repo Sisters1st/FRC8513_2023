@@ -97,24 +97,31 @@ public class Arm {
                 thisRobot.wristGoal = Setting.cubePlaceMedWristPosition;
             }
         }
-
         moveArm();
-
     }
 
     public void moveArm(){
         if(thisRobot.armAutomaticControl) {
-
             double armPower = thisRobot.armPID.calculate(thisRobot.armPosition, thisRobot.armGoal);
-            double armSpeed = Math.abs(thisRobot.armPosition - thisRobot.prevArmPosition);
-            if(armSpeed > Setting.armMaxSpeed){
-                if(armPower > 0){
-                    armPower = armPower - (armSpeed - Setting.armMaxSpeed);
-                } else {
-                    armPower = armPower + (armSpeed - Setting.armMaxSpeed);
+            armSpeed = Math.abs(thisRobot.armPosition - thisRobot.prevArmPosition);
+            if(thisRobot.armPosition > 150){
+                if(armSpeed > Setting.armMaxSpeed / 2){
+                    if(armPower > 0){
+                        armPower = armPower - (armSpeed - Setting.armMaxSpeed / 2);
+                    } else {
+                        armPower = armPower + (armSpeed - Setting.armMaxSpeed / 2);
+                    }
+                }
+            }else{
+                if(armSpeed > Setting.armMaxSpeed) {
+                    if (armPower > 0) {
+                        armPower = armPower - (armSpeed - Setting.armMaxSpeed);
+                    } else {
+                        armPower = armPower + (armSpeed - Setting.armMaxSpeed);
+                    }
                 }
             }
-            thisRobot.armMotor.set(armPower);
+            armMotor.set(armPower);
 
         }
         else {
