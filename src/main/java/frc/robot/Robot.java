@@ -60,6 +60,7 @@ public class Robot extends TimedRobot {
   double autoStartTime;
   double autoWaitTime;
   int autoStep = 0;
+  int autoTholdCount = 0;
 
   public PIDController turnPID = new PIDController(Setting.turnPID_p, Setting.turnPID_i, Setting.turnPID_d);
   public PIDController drivePID = new PIDController(Setting.drivePID_p, Setting.drivePID_i, Setting.drivePID_d);

@@ -187,5 +187,6 @@ public class Setting {
     public static double autoBalanceSpeed = 0.35;
     public static double autoBalanceTHold = 1;
     public static double balanceCountTHold = 50;
+    public static double inTholdCount = 10;
 
 }

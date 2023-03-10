@@ -483,28 +483,35 @@ public class Auto {
     }
 
     public boolean isRobotWithinThreshold() {
-
+        boolean passedAllChecks = true;
         if (Math.abs(thisRobot.calculatedWristGoal - thisRobot.wristPosition) > Setting.wristTHold) {
-            return false;
+            passedAllChecks = false;
         }
 
         if (Math.abs(thisRobot.armGoal - thisRobot.armPosition) > Setting.armTHold) {
-            return false;
+            passedAllChecks = false;
         }
 
         if (Math.abs(thisRobot.clawGoal - thisRobot.clawPosition) > Setting.clawTHold) {
-            return false;
+            passedAllChecks = false;
         }
 
         if (Math.abs((thisRobot.leftPosition + thisRobot.rightPosition) / 2
                 - thisRobot.goalPosition) > Setting.drivebaseDistanceTHold) {
-            return false;
+            passedAllChecks = false;
         }
 
         if (Math.abs(thisRobot.currentAngle - thisRobot.goalAngle) > Setting.drivebaseAngTHold) {
-            return false;
+            passedAllChecks = false;
         }
+        if(passedAllChecks){
+           thisRobot.autoTholdCount++;
+        } else {
+            thisRobot.autoTholdCount = 0;
+        }
+        if(thisRobot.autoTholdCount > Setting.inTholdCount)
+            return true
 
-        return true;
+        return false;
     }
 }
