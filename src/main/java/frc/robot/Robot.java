@@ -371,6 +371,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("armGoal", armGoal);
     SmartDashboard.putNumber("clawGoal", clawGoal);
     SmartDashboard.putNumber("wristGoal", wristGoal);
+    SmartDashboard.putNumber("CalculatedwristGoal", calculatedWristGoal);
 
     SmartDashboard.putNumber("gyroscope angle", currentAngle);
     SmartDashboard.putNumber("goal angle", goalAngle);
