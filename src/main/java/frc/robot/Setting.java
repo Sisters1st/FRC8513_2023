@@ -97,7 +97,7 @@ public class Setting {
     // arm PID
     public static double armPID_p = 0.125;
     public static double armPID_i = 0.075;
-    public static double armPID_d = 0.05;
+    public static double armPID_d = 0.0;
 
     // claw PID
     public static double clawPID_p = 0.1;
