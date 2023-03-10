@@ -434,8 +434,8 @@ public class Auto {
                         thisRobot.clawAutomaticControl = true;
                         thisRobot.wristAutomaticControl = true;
 
-                        thisRobot.wristGoal = Setting.cubePlaceHighWristPosition;
-                        thisRobot.armGoal = Setting.cubePlaceHighArmPosition;
+                        thisRobot.wristGoal = Setting.cubePlaceMedWristPosition;
+                        thisRobot.armGoal = Setting.cubePlaceMedArmPosition;
                         thisRobot.clawGoal = Setting.clawClosedCubePos;
                         thisRobot.arm.moveArm();
 
@@ -458,8 +458,9 @@ public class Auto {
                     case 2:
                         thisRobot.drivebaseAutomaticControl = true;
                         thisRobot.goalAngle = 0;
-                        thisRobot.goalPosition = 50;
+                        thisRobot.goalPosition = -20; // ths is -20 for testing. Should be -62.4 for competition
                         thisRobot.drivebase.driveDrivebase();
+                        thisRobot.arm.moveArm();
 
                         if (isRobotWithinThreshold()) {
                             thisRobot.autoStep++;
@@ -495,7 +496,8 @@ public class Auto {
             return false;
         }
 
-        if (Math.abs((thisRobot.leftPosition + thisRobot.rightPosition) / 2 - thisRobot.goalPosition) > Setting.drivebaseDistanceTHold) {
+        if (Math.abs((thisRobot.leftPosition + thisRobot.rightPosition) / 2
+                - thisRobot.goalPosition) > Setting.drivebaseDistanceTHold) {
             return false;
         }
 

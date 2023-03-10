@@ -44,8 +44,8 @@ public class Arm {
 
         boolean returnToStartingConfig = thisRobot.driverJoystick.getRawButtonPressed(Setting.startingConfigButton);
         if(returnToStartingConfig) {
-            thisRobot.armPosition = 15;
-            thisRobot.wristPosition = 0;
+            thisRobot.armGoal = 15;
+            thisRobot.wristGoal = 0;
         }
         // if in cone mode, use cone setpoints. If in cube mode use cube setpoints
         if (thisRobot.armInConeMode) {
@@ -121,7 +121,7 @@ public class Arm {
 
     public void moveArm() {
         if (thisRobot.armAutomaticControl) {
-            double armPower = thisRobot.armPID.calculate(thisRobot.armPosition*18/22, thisRobot.armGoal);
+            double armPower = thisRobot.armPID.calculate(thisRobot.armPosition, thisRobot.armGoal);
             if(armPower > 1)
                 armPower = 1;
             if(armPower < -1)

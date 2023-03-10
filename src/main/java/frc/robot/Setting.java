@@ -33,7 +33,7 @@ public class Setting {
     public static IdleMode wristMotorIdleMode = IdleMode.kBrake;
     public static int wristMotorCurrentLimit = 20;
     public static Boolean wristMotorInverted = false;
-    public static double wristTHold = 2.5;
+    public static double wristTHold = 3;
     public static double wristForwardPower = 0.5;
     public static double wristReversePower = -0.5;
 
@@ -47,10 +47,10 @@ public class Setting {
     public static IdleMode armMotorIdleMode = IdleMode.kBrake;
     public static int armMotorCurrentLimit = 25;
     public static Boolean armMotorInverted = false;
-    public static double armTHold = 2.5;
+    public static double armTHold = 7.5;
     public static double armForwardPower = 0.5;
     public static double armReversePower = -0.5;
-    public static double armMaxSpeed = 1;
+    public static double armMaxSpeed = .66;
 
     // claw settings
     public static int clawMotorCANID = 9;
@@ -69,8 +69,8 @@ public class Setting {
     public static int drivebaseCurrentLimit = 40;
     public static Boolean leftSideInverted = true;
     public static Boolean rightSideInverted = false;
-    public static double drivebaseDistanceTHold = 1;
-    public static double drivebaseAngTHold = 2.5;
+    public static double drivebaseDistanceTHold = 2;
+    public static double drivebaseAngTHold = 3;
 
     public static int PDPCANID = 0;
     public static ModuleType PDPType = ModuleType.kCTRE;
@@ -95,9 +95,9 @@ public class Setting {
     public static double drivePID_d = 0.0;
 
     // arm PID
-    public static double armPID_p = 0.1;
-    public static double armPID_i = 0.001;
-    public static double armPID_d = 0.01;
+    public static double armPID_p = 0.125;
+    public static double armPID_i = 0.075;
+    public static double armPID_d = 0.05;
 
     // claw PID
     public static double clawPID_p = 0.1;
@@ -105,8 +105,8 @@ public class Setting {
     public static double clawPID_d = 0.01;
 
     // wrist PID
-    public static double wristPID_p = 0.1;
-    public static double wristPID_i = 0.001;
+    public static double wristPID_p = 0.125;
+    public static double wristPID_i = 0.002;
     public static double wristPID_d = 0.01;
 
     // Operator button settings
@@ -154,8 +154,8 @@ public class Setting {
     public static double conePickupHPSWristPosition = 39.4; // -94.1
 
     // place cube on high
-    public static double cubePlaceHighArmPosition = 141.6;
-    public static double cubePlaceHighWristPosition = 64.1; // -77.5
+    public static double cubePlaceHighArmPosition = 140.0;
+    public static double cubePlaceHighWristPosition = 67.5; // -77.5
 
     // place cube on med
     public static double cubePlaceMedArmPosition = 146.8;
@@ -170,7 +170,7 @@ public class Setting {
     public static double conePlaceMedWristPosition = 39.5; // -95.1
 
     // claw positions for cone
-    public static double clawClosedConePos = -4;
+    public static double clawClosedConePos = -2;
     public static double clawOpenConePos = -45;
 
     // claw positions for cube
