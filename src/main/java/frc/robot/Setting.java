@@ -180,6 +180,7 @@ public class Setting {
     // claw folded range
     public static double armFoldedMin = -5;
     public static double armFoldedMax = 130;
+    public static double armTooLowToBringClawIn = 165;
 
     // CHARGING STATION THRESHOLDS & SPEEDS
     public static double pitchTHold = 4.0;
