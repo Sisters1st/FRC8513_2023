@@ -182,7 +182,7 @@ public class Setting {
     public static double armFoldedMax = 130;
 
     // CHARGING STATION THRESHOLDS & SPEEDS
-    public static double pitchTHold = 7.0;
+    public static double pitchTHold = 4.0;
     public static double autoBalanceSpeed = 0.25;
     public static double autoBalanceTHold = 1;
     public static double balanceCountTHold = 50;

@@ -34,16 +34,15 @@ public class Drivebase {
     }
 
     public void autoBalance() {
-        double pitch = thisRobot.ahrs.getPitch();
 
-        if (pitch > Setting.pitchTHold)
+        if (thisRobot.pitch > Setting.pitchTHold)
             thisRobot.differentialDrivebase.arcadeDrive(Setting.autoBalanceSpeed, 0);
-        else if (pitch > -Setting.pitchTHold)
+        else if (thisRobot.pitch > -Setting.pitchTHold)
             thisRobot.differentialDrivebase.arcadeDrive(-Setting.autoBalanceSpeed, 0);
         else
             thisRobot.differentialDrivebase.arcadeDrive(0, 0);
 
-        if (pitch > -Setting.autoBalanceTHold && pitch < Setting.autoBalanceTHold) {
+        if (thisRobot.pitch > -Setting.autoBalanceTHold && thisRobot.pitch < Setting.autoBalanceTHold) {
             thisRobot.balanceCount++;
         } else {
             thisRobot.balanceCount = 0;
