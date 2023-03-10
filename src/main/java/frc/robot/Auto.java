@@ -518,7 +518,7 @@ public class Auto {
             thisRobot.autoTholdCount = 0;
         }
         if(thisRobot.autoTholdCount > Setting.inTholdCount)
-            return true
+            return true;
 
         return false;
     }

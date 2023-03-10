@@ -175,7 +175,7 @@ public class Arm {
 
             // the armFoldedMin and max check ensures when the arm is above the robot, the
             // wrist stays folded in so the robot doesnt break 6'6"
-            double wristPower;
+            double wristPower = 0;
             if (thisRobot.armPosition > Setting.armFoldedMin && thisRobot.armPosition < Setting.armFoldedMax) {
                 wristPower = thisRobot.wristPID.calculate(thisRobot.wristPosition, thisRobot.armPosition * Setting.armToWristRatio);
                 thisRobot.calculatedWristGoal = thisRobot.wristPosition;
