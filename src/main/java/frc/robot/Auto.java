@@ -16,6 +16,7 @@ public class Auto {
         thisRobot.m_timer.start();
         thisRobot.autoStartingAngle = thisRobot.currentAngle;
         thisRobot.turnPID.reset();
+        thisRobot.ahrs.reset();
         SmartDashboard.putNumber("autoStartingAngle", thisRobot.autoStartingAngle);
         thisRobot.leftDriveMotor1.getEncoder().setPosition(0);
         thisRobot.rightDriveMotor1.getEncoder().setPosition(0);
@@ -382,8 +383,8 @@ public class Auto {
                         thisRobot.clawAutomaticControl = true;
                         thisRobot.wristAutomaticControl = true;
 
-                        thisRobot.wristGoal = Setting.conePlaceHighWristPosition;
-                        thisRobot.armGoal = Setting.conePlaceHighArmPosition;
+                        thisRobot.wristGoal = Setting.conePlaceMedWristPosition;
+                        thisRobot.armGoal = Setting.conePlaceMedArmPosition;
                         thisRobot.clawGoal = Setting.clawClosedConePos;
                         thisRobot.arm.moveArm();
 
@@ -406,8 +407,9 @@ public class Auto {
                     case 2:
                         thisRobot.drivebaseAutomaticControl = true;
                         thisRobot.goalAngle = 0;
-                        thisRobot.goalPosition = 50;
+                        thisRobot.goalPosition = -20;
                         thisRobot.drivebase.driveDrivebase();
+                        thisRobot.arm.moveArm();
 
                         if (isRobotWithinThreshold()) {
                             thisRobot.autoStep++;
@@ -481,7 +483,7 @@ public class Auto {
 
     public boolean isRobotWithinThreshold() {
 
-        if (Math.abs(thisRobot.wristGoal - thisRobot.wristPosition) > Setting.wristTHold) {
+        if (Math.abs(thisRobot.calculatedWristGoal - thisRobot.wristPosition) > Setting.wristTHold) {
             return false;
         }
 
@@ -493,8 +495,7 @@ public class Auto {
             return false;
         }
 
-        if (Math.abs((thisRobot.leftPosition + thisRobot.rightPosition) / 2
-                - thisRobot.armPosition) > Setting.drivebaseDistanceTHold) {
+        if (Math.abs((thisRobot.leftPosition + thisRobot.rightPosition) / 2 - thisRobot.goalPosition) > Setting.drivebaseDistanceTHold) {
             return false;
         }
 

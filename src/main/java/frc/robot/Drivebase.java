@@ -1,5 +1,7 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 public class Drivebase {
     Robot thisRobot;
 
@@ -19,13 +21,14 @@ public class Drivebase {
 
     public void driveDrivebase() {
         if (thisRobot.drivebaseAutomaticControl) {
-            double avgDist = (thisRobot.leftPosition + thisRobot.rightPosition) / 2;
+            double avgDist = -(thisRobot.leftPosition + thisRobot.rightPosition) / 2;
 
             double turnOut = thisRobot.turnPID.calculate(thisRobot.currentAngle, thisRobot.goalAngle);
 
             double driveOut = thisRobot.drivePID.calculate(avgDist, thisRobot.goalPosition);
-
-            thisRobot.differentialDrivebase.tankDrive(driveOut, turnOut);
+            SmartDashboard.putNumber("Turnout", turnOut);
+            SmartDashboard.putNumber("Driveout", driveOut);
+            thisRobot.differentialDrivebase.arcadeDrive(-driveOut, turnOut);
         } else {
             thisRobot.driveSpeed = thisRobot.driverJoystick.getRawAxis(Setting.driverJoystickDriveAxis);
             thisRobot.turnSpeed = thisRobot.driverJoystick.getRawAxis(Setting.driverJoystickTurnAxis);

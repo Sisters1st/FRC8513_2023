@@ -214,7 +214,7 @@ public class Robot extends TimedRobot {
     leftPosition = leftDriveMotor1.getEncoder().getPosition();
     rightPosition = rightDriveMotor1.getEncoder().getPosition();
     prevArmPosition = armPosition;
-    armPosition = armMotor.getEncoder().getPosition();
+    armPosition = armMotor.getEncoder().getPosition()*18/22;
     clawPosition = clawMotor.getEncoder().getPosition();
     wristPosition = wristMotor.getEncoder().getPosition();
     currentAngle = ahrs.getAngle();
@@ -369,6 +369,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("wristGoal", wristGoal);
 
     SmartDashboard.putNumber("gyroscope angle", currentAngle);
+    SmartDashboard.putNumber("goal angle", goalAngle);
 
     SmartDashboard.putBoolean("isClawClosed", isClawClosed);
     SmartDashboard.putBoolean("coneMode", armInConeMode);
@@ -386,6 +387,10 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("pitch", pitch);
     SmartDashboard.putNumber("balance count", balanceCount);
     SmartDashboard.putNumber("roll", roll);
+
+    SmartDashboard.putNumber("left drivebase position", leftPosition);
+    SmartDashboard.putNumber("right drivebase position", rightPosition);
+    SmartDashboard.putNumber("goal position", goalPosition);
 
   }
 }

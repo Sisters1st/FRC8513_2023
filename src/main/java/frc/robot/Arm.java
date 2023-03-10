@@ -12,9 +12,7 @@ public class Arm {
     public void teleopInit() {
         // set the goals to the current position so the bot doesnt move when you enable,
         // default claw to close
-        thisRobot.armGoal = thisRobot.armPosition;
-        thisRobot.wristGoal = thisRobot.wristPosition;
-        thisRobot.clawGoal = thisRobot.clawPosition;
+
         thisRobot.isClawClosed = true;
     }
 
@@ -123,9 +121,13 @@ public class Arm {
 
     public void moveArm() {
         if (thisRobot.armAutomaticControl) {
-            double armPower = thisRobot.armPID.calculate(thisRobot.armPosition, thisRobot.armGoal);
+            double armPower = thisRobot.armPID.calculate(thisRobot.armPosition*18/22, thisRobot.armGoal);
+            if(armPower > 1)
+                armPower = 1;
+            if(armPower < -1)
+                armPower = -1;
             double armSpeed = Math.abs(thisRobot.armPosition - thisRobot.prevArmPosition);
-            if(thisRobot.armPosition > 150){
+            if(thisRobot.armPosition > Setting.armFoldedMax){
                 if(armSpeed > Setting.armMaxSpeed / 2){
                     if(armPower > 0){
                         armPower = armPower - (armSpeed - Setting.armMaxSpeed / 2);
@@ -175,8 +177,8 @@ public class Arm {
             // wrist stays folded in so the robot doesnt break 6'6"
             double wristPower;
             if (thisRobot.armPosition > Setting.armFoldedMin && thisRobot.armPosition < Setting.armFoldedMax) {
-                wristPower = thisRobot.wristPID.calculate(thisRobot.wristPosition,
-                        thisRobot.armPosition * Setting.armToWristRatio);
+                wristPower = thisRobot.wristPID.calculate(thisRobot.wristPosition, thisRobot.armPosition * Setting.armToWristRatio);
+                thisRobot.calculatedWristGoal = thisRobot.wristPosition;
             } else {
                 thisRobot.calculatedWristGoal = thisRobot.armPosition * Setting.armToWristRatio + thisRobot.wristGoal;
                 wristPower = thisRobot.wristPID.calculate(thisRobot.wristPosition, thisRobot.calculatedWristGoal);

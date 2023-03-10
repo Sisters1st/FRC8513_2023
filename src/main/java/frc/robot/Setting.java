@@ -9,31 +9,31 @@ public class Setting {
 
     // drive motor settings
     public static int leftDriveMotor1CANID = 5;
-    public static int leftDriveMotor1PDPPort = 2;
+    public static int leftDriveMotor1PDPPort = 0;
 
     public static int leftDriveMotor2CANID = 6;
-    public static int leftDriveMotor2PDPPort = 3;
+    public static int leftDriveMotor2PDPPort = 1;
 
     public static int leftDriveMotor3CANID = 7;
-    public static int leftDriveMotor3PDPPort = 4;
+    public static int leftDriveMotor3PDPPort = 2;
 
     public static int rightDriveMotor1CANID = 2;
-    public static int rightDriveMotor1PDPPort = 5;
+    public static int rightDriveMotor1PDPPort = 15;
 
     public static int rightDriveMotor2CANID = 3;
-    public static int rightDriveMotor2PDPPort = 6;
+    public static int rightDriveMotor2PDPPort = 14;
 
     public static int rightDriveMotor3CANID = 4;
-    public static int rightDriveMotor3PDPPort = 7;
+    public static int rightDriveMotor3PDPPort = 13;
 
     // wrist settings
     public static int wristMotorCANID = 8;
     public static int wristMotorPDPPort = 8;
     public static MotorType wristMotorType = MotorType.kBrushless;
     public static IdleMode wristMotorIdleMode = IdleMode.kBrake;
-    public static int wristMotorCurrentLimit = 15;
+    public static int wristMotorCurrentLimit = 20;
     public static Boolean wristMotorInverted = false;
-    public static double wristTHold = 5;
+    public static double wristTHold = 2.5;
     public static double wristForwardPower = 0.5;
     public static double wristReversePower = -0.5;
 
@@ -47,7 +47,7 @@ public class Setting {
     public static IdleMode armMotorIdleMode = IdleMode.kBrake;
     public static int armMotorCurrentLimit = 25;
     public static Boolean armMotorInverted = false;
-    public static double armTHold = 5;
+    public static double armTHold = 2.5;
     public static double armForwardPower = 0.5;
     public static double armReversePower = -0.5;
     public static double armMaxSpeed = 1;
@@ -59,18 +59,18 @@ public class Setting {
     public static IdleMode clawMotorIdleMode = IdleMode.kBrake;
     public static int clawMotorCurrentLimit = 20;
     public static Boolean clawMotorInverted = false;
-    public static double clawTHold = 5;
+    public static double clawTHold = 2.5;
     public static double clawForwardPower = 0.5;
     public static double clawReversePower = -0.5;
 
     // drivebase settings
     public static MotorType drivebMotorType = MotorType.kBrushless;
     public static IdleMode drivebaseIdleMode = IdleMode.kBrake;
-    public static int drivebaseCurrentLimit = 80;
+    public static int drivebaseCurrentLimit = 40;
     public static Boolean leftSideInverted = true;
     public static Boolean rightSideInverted = false;
-    public static double drivebaseDistanceTHold = 10;
-    public static double drivebaseAngTHold = 10;
+    public static double drivebaseDistanceTHold = 1;
+    public static double drivebaseAngTHold = 2.5;
 
     public static int PDPCANID = 0;
     public static ModuleType PDPType = ModuleType.kCTRE;
@@ -85,14 +85,14 @@ public class Setting {
     public static int driverJoystickTurnAxis = 4;
 
     // turn PID
-    public static double turnPID_p = 1;
-    public static double turnPID_i = .0001;
-    public static double turnPID_d = .01;
+    public static double turnPID_p = 0.04;
+    public static double turnPID_i = 0.0;
+    public static double turnPID_d = 0.005;
 
     // drive PID
-    public static double drivePID_p = 1;
-    public static double drivePID_i = .0001;
-    public static double drivePID_d = .01;
+    public static double drivePID_p = 0.02;
+    public static double drivePID_i = 0.0025;
+    public static double drivePID_d = 0.0;
 
     // arm PID
     public static double armPID_p = 0.1;
@@ -106,7 +106,7 @@ public class Setting {
 
     // wrist PID
     public static double wristPID_p = 0.1;
-    public static double wristPID_i = 0.0;
+    public static double wristPID_i = 0.001;
     public static double wristPID_d = 0.01;
 
     // Operator button settings
