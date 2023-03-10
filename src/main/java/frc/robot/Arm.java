@@ -128,7 +128,7 @@ public class Arm {
                 armPower = -1;
             double armSpeed = Math.abs(thisRobot.armPosition - thisRobot.prevArmPosition);
 
-            if(thisRobot.armPosition > Setting.armFoldedMax and thisRobot.firstTimeOver == false){
+            if(thisRobot.armPosition > Setting.armFoldedMax && thisRobot.firstTimeOver == false){
                 thisRobot.armPID.reset();
                 thisRobot.firstTimeOver = true;
             }
