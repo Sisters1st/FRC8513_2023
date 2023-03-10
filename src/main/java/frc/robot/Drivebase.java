@@ -9,7 +9,7 @@ public class Drivebase {
 
     public void teleopPeriodic() {
         thisRobot.drivebaseAutomaticControl = false;
-        if(thisRobot.driverJoystick.getRawButtonPressed(Setting.autoBalanceButton)){
+        if(thisRobot.driverJoystick.getRawButton(Setting.autoBalanceButton)){
             thisRobot.drivebase.autoBalance();
         }
         else{
@@ -36,9 +36,9 @@ public class Drivebase {
     public void autoBalance() {
 
         if (thisRobot.pitch > Setting.pitchTHold)
-            thisRobot.differentialDrivebase.arcadeDrive(Setting.autoBalanceSpeed, 0);
-        else if (thisRobot.pitch > -Setting.pitchTHold)
             thisRobot.differentialDrivebase.arcadeDrive(-Setting.autoBalanceSpeed, 0);
+        else if (thisRobot.pitch < -Setting.pitchTHold)
+            thisRobot.differentialDrivebase.arcadeDrive(Setting.autoBalanceSpeed, 0);
         else
             thisRobot.differentialDrivebase.arcadeDrive(0, 0);
 
@@ -49,7 +49,7 @@ public class Drivebase {
         }
         if (thisRobot.balanceCount > Setting.balanceCountTHold) {
             thisRobot.autoStep++;
-            thisRobot.resetSensors();
+            //thisRobot.resetSensors();
         }
     }
 }

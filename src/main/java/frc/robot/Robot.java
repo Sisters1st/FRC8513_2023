@@ -50,7 +50,8 @@ public class Robot extends TimedRobot {
   double autoStartingAngle;
   double currentAngle;
   double goalAngle;
-  double pitch;
+  float pitch;
+  float roll;
   // Position settings
   double goalPosition;
   double leftPosition;
@@ -218,6 +219,7 @@ public class Robot extends TimedRobot {
     wristPosition = wristMotor.getEncoder().getPosition();
     currentAngle = ahrs.getAngle();
     pitch = ahrs.getPitch();
+    roll = ahrs.getRoll();
 
     // LL Get from NT
     NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
@@ -383,6 +385,7 @@ public class Robot extends TimedRobot {
 
     SmartDashboard.putNumber("pitch", pitch);
     SmartDashboard.putNumber("balance count", balanceCount);
+    SmartDashboard.putNumber("roll", roll);
 
   }
 }
