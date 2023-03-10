@@ -82,6 +82,8 @@ public class Auto {
                     // balance on station
                     case 3:
                         thisRobot.drivebase.autoBalance();
+
+                        thisRobot.arm.moveArm();
                         break;
                     // stop moving
                     case 4:
@@ -128,6 +130,8 @@ public class Auto {
                         thisRobot.goalPosition = 50;
                         thisRobot.drivebase.driveDrivebase();
 
+                        thisRobot.arm.moveArm();
+
                         if (isRobotWithinThreshold()) {
                             thisRobot.autoStep++;
                             thisRobot.resetSensors();
@@ -136,6 +140,8 @@ public class Auto {
                     // balance on station
                     case 3:
                         thisRobot.drivebase.autoBalance();
+
+                        thisRobot.arm.moveArm();
                         break;
                     // stop moving
                     case 4:
@@ -364,6 +370,8 @@ public class Auto {
                     // balance on station
                     case 3:
                         thisRobot.drivebase.autoBalance();
+
+                        thisRobot.arm.moveArm();
                         break;
                     // stop moving
                     case 4:
