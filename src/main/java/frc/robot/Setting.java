@@ -105,7 +105,7 @@ public class Setting {
     public static double clawPID_d = 0.01;
 
     // wrist PID
-    public static double wristPID_p = 0.125;
+    public static double wristPID_p = 0.13;
     public static double wristPID_i = 0.002;
     public static double wristPID_d = 0.01;
 
@@ -139,7 +139,7 @@ public class Setting {
     //POSITIONS (arm/claw/wrist)
     //pickup cube from floor
     public static double cubePickupFlrArmPosition = 188;
-    public static double cubePickupFlrWristPosition = 85; //-101.2
+    public static double cubePickupFlrWristPosition = 75; //-101.2
 
     //pickup cone from floor
     public static double conePickupFlrArmPosition = 189.3;

@@ -415,7 +415,7 @@ public class Auto {
                     case 2:
                         thisRobot.drivebaseAutomaticControl = true;
                         thisRobot.goalAngle = 0;
-                        thisRobot.goalPosition = -20;
+                        thisRobot.goalPosition = -62.4;
                         thisRobot.drivebase.driveDrivebase();
                         thisRobot.arm.moveArm();
 
@@ -466,7 +466,7 @@ public class Auto {
                     case 2:
                         thisRobot.drivebaseAutomaticControl = true;
                         thisRobot.goalAngle = 0;
-                        thisRobot.goalPosition = -20; // ths is -20 for testing. Should be -62.4 for competition
+                        thisRobot.goalPosition = -62.4; // ths is -20 for testing. Should be -62.4 for competition
                         thisRobot.drivebase.driveDrivebase();
                         thisRobot.arm.moveArm();
 
