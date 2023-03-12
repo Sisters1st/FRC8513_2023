@@ -139,7 +139,7 @@ public class Setting {
     //POSITIONS (arm/claw/wrist)
     //pickup cube from floor
     public static double cubePickupFlrArmPosition = 188;
-    public static double cubePickupFlrWristPosition = 75; //-101.2
+    public static double cubePickupFlrWristPosition = 75; //-101.2 
 
     //pickup cone from floor
     public static double conePickupFlrArmPosition = 189.3;
