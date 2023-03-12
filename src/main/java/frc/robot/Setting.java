@@ -170,7 +170,7 @@ public class Setting {
     public static double conePlaceMedWristPosition = 39.5; // -95.1
 
     // claw positions for cone
-    public static double clawClosedConePos = -2;
+    public static double clawClosedConePos = -0.5;
     public static double clawOpenConePos = -45;
 
     // claw positions for cube
