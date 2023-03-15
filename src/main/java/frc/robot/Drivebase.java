@@ -26,6 +26,12 @@ public class Drivebase {
             double turnOut = thisRobot.turnPID.calculate(thisRobot.currentAngle, thisRobot.goalAngle);
 
             double driveOut = thisRobot.drivePID.calculate(avgDist, thisRobot.goalPosition);
+            if(driveOut>0.4) {
+                driveOut = 0.4;
+            }
+            if(driveOut<-0.4) {
+                driveOut = -0.4;
+            }
             SmartDashboard.putNumber("Turnout", turnOut);
             SmartDashboard.putNumber("Driveout", driveOut);
             thisRobot.differentialDrivebase.arcadeDrive(-driveOut, turnOut);
