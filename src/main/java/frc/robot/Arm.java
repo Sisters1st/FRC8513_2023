@@ -45,7 +45,7 @@ public class Arm {
         boolean returnToStartingConfig = thisRobot.driverJoystick.getRawButtonPressed(Setting.startingConfigButton);
         if(returnToStartingConfig) {
             thisRobot.armGoal = 15;
-            thisRobot.wristGoal = 0;
+            thisRobot.wristGoal = Setting.wristFoldedInPosition;
         }
         // if in cone mode, use cone setpoints. If in cube mode use cube setpoints
         if (thisRobot.armInConeMode) {
@@ -128,32 +128,6 @@ public class Arm {
                 armPower = -1;
             double armSpeed = Math.abs(thisRobot.armPosition - thisRobot.prevArmPosition);
 
-            if(thisRobot.armPosition > Setting.armFoldedMax && thisRobot.firstTimeOver == false){
-                thisRobot.armPID.reset();
-                thisRobot.firstTimeOver = true;
-            }
-
-            if(thisRobot.armPosition < 50){
-                thisRobot.firstTimeOver = false;
-            }
-
-            if(thisRobot.armPosition > Setting.armFoldedMax){
-                if(armSpeed > Setting.armMaxSpeed / 2){
-                    if(armPower > 0){
-                        armPower = armPower - (armSpeed - Setting.armMaxSpeed / 2);
-                    } else {
-                        armPower = armPower + (armSpeed - Setting.armMaxSpeed / 2);
-                    }
-                }
-            } else {
-                if (armSpeed > Setting.armMaxSpeed) {
-                    if (armPower > 0) {
-                        armPower = armPower - (armSpeed - Setting.armMaxSpeed);
-                    } else {
-                        armPower = armPower + (armSpeed - Setting.armMaxSpeed);
-                    }
-                }
-            }
             thisRobot.armMotor.set(armPower);
 
         } else {
@@ -187,7 +161,7 @@ public class Arm {
             // wrist stays folded in so the robot doesnt break 6'6"
             double wristPower = 0;
             if (thisRobot.armPosition > Setting.armFoldedMin && thisRobot.armPosition < Setting.armFoldedMax) {
-                wristPower = thisRobot.wristPID.calculate(thisRobot.wristPosition, thisRobot.armPosition * Setting.armToWristRatio);
+                wristPower = thisRobot.wristPID.calculate(thisRobot.wristPosition, thisRobot.armPosition * Setting.armToWristRatio + Setting.wristFoldedInPosition);
                 thisRobot.calculatedWristGoal = thisRobot.wristPosition;
             } else if (thisRobot.armPosition > Setting.armTooLowToBringClawIn //this should make sure the wrist doesnt smack the robot when going from ground intake to starting config
                     && (thisRobot.wristGoal == Setting.cubePickupFlrWristPosition //if it doesnt work feel free to remove, just make sure you go to mid scoring, then back to starting config

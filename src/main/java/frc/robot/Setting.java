@@ -45,7 +45,7 @@ public class Setting {
     public static int armMotorPDPPort = 9;
     public static MotorType armMotorType = MotorType.kBrushless;
     public static IdleMode armMotorIdleMode = IdleMode.kBrake;
-    public static int armMotorCurrentLimit = 25;
+    public static int armMotorCurrentLimit = 20; 
     public static Boolean armMotorInverted = false;
     public static double armTHold = 7.5;
     public static double armForwardPower = 0.5;
@@ -96,8 +96,8 @@ public class Setting {
 
     // arm PID
     public static double armPID_p = 0.125;
-    public static double armPID_i = 0.075;
-    public static double armPID_d = 0.0;
+    public static double armPID_i = 0.0;
+    public static double armPID_d = 0.01;
 
     // claw PID
     public static double clawPID_p = 0.1;
@@ -138,12 +138,12 @@ public class Setting {
 
     //POSITIONS (arm/claw/wrist)
     //pickup cube from floor
-    public static double cubePickupFlrArmPosition = 188;
-    public static double cubePickupFlrWristPosition = 75; //-101.2 
+    public static double cubePickupFlrArmPosition = 191.0;
+    public static double cubePickupFlrWristPosition = cubePickupFlrArmPosition + -103.9; //-101.2 
 
     //pickup cone from floor
-    public static double conePickupFlrArmPosition = 189.3;
-    public static double conePickupFlrWristPosition = 88.1; //-101.2
+    public static double conePickupFlrArmPosition = 190.4;
+    public static double conePickupFlrWristPosition = conePickupFlrArmPosition + -102.8; //-101.2
 
     // pickup cube from human player station
     public static double cubePickupHPSArmPosition = 136.4;
@@ -154,20 +154,20 @@ public class Setting {
     public static double conePickupHPSWristPosition = 39.4; // -94.1
 
     // place cube on high
-    public static double cubePlaceHighArmPosition = 140.0;
-    public static double cubePlaceHighWristPosition = 67.5; // -77.5
+    public static double cubePlaceHighArmPosition = 140.8;
+    public static double cubePlaceHighWristPosition = cubePlaceHighArmPosition + -83.2; // -77.5
 
     // place cube on med
-    public static double cubePlaceMedArmPosition = 142;
-    public static double cubePlaceMedWristPosition = 50.9; // -95.9
+    public static double cubePlaceMedArmPosition = 150.5;
+    public static double cubePlaceMedWristPosition = cubePlaceMedArmPosition + -92.8; // -95.9
 
     // place cone on high
-    public static double conePlaceHighArmPosition = 133.9;
-    public static double conePlaceHighWristPosition = 60.5; // -73.4
+    public static double conePlaceHighArmPosition = 146.0;
+    public static double conePlaceHighWristPosition = conePlaceHighArmPosition + -66.7; // -73.4
 
     // place cone on med
-    public static double conePlaceMedArmPosition = 134.6;
-    public static double conePlaceMedWristPosition = 39.5; // -95.1
+    public static double conePlaceMedArmPosition = 138.7;
+    public static double conePlaceMedWristPosition = conePlaceMedArmPosition + -94.2; // -95.1
 
     // claw positions for cone
     public static double clawClosedConePos = -0.5;
@@ -181,7 +181,7 @@ public class Setting {
     public static double armFoldedMin = -5;
     public static double armFoldedMax = 130;
     public static double armTooLowToBringClawIn = 165;
-
+    public static double wristFoldedInPosition = -15; // figure out what this is 
     // CHARGING STATION THRESHOLDS & SPEEDS
     public static double pitchTHold = 4.0;
     public static double autoBalanceSpeed = 0.35;

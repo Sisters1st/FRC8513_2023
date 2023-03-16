@@ -1,5 +1,11 @@
 <xml version="1.0">
 <dashboard>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Image">
+		<location x="876" y="545"/>
+		<width>630</width>
+		<height>226</height>
+		<property name="Image File" value="C:\Users\Villa Walsh Roboics\Pictures\Camera Roll\WIN_20230315_19_35_58_Pro.jpg"/>
+	</static-widget>
 	<widget field="CalculatedwristGoal" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="703" y="492"/>
 	</widget>
@@ -140,10 +146,10 @@
 		<location x="551" y="436"/>
 	</widget>
 	<widget field="test1" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="120"/>
+		<location x="65" y="65"/>
 	</widget>
 	<widget field="balance count" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="100"/>
+		<location x="22" y="34"/>
 	</widget>
 	<widget field="LeftDriveMotor1Current" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="674" y="52"/>
@@ -155,7 +161,7 @@
 		<location x="900" y="54"/>
 	</widget>
 	<widget field="LimelightArea" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="20"/>
+		<location x="22" y="7"/>
 	</widget>
 	<widget field="RightDriveMotor2Ouput" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="907" y="189"/>
