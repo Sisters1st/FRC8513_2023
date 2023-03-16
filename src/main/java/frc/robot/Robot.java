@@ -63,6 +63,8 @@ public class Robot extends TimedRobot {
   int autoTholdCount = 0;
   boolean firstTimeOver = false;
 
+  double armSpeed;
+
   public PIDController turnPID = new PIDController(Setting.turnPID_p, Setting.turnPID_i, Setting.turnPID_d);
   public PIDController drivePID = new PIDController(Setting.drivePID_p, Setting.drivePID_i, Setting.drivePID_d);
 
@@ -398,6 +400,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("left drivebase position", leftPosition);
     SmartDashboard.putNumber("right drivebase position", rightPosition);
     SmartDashboard.putNumber("goal position", goalPosition);
+
+    SmartDashboard.putNumber("arm speed", armSpeed);
 
   }
 }

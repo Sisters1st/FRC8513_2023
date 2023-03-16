@@ -126,7 +126,7 @@ public class Arm {
                 armPower = 1;
             if(armPower < -1)
                 armPower = -1;
-            double armSpeed = Math.abs(thisRobot.armPosition - thisRobot.prevArmPosition);
+            thisRobot.armSpeed = Math.abs(thisRobot.armPosition - thisRobot.prevArmPosition);
 
             thisRobot.armMotor.set(armPower);
 
