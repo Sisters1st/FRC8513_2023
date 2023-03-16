@@ -31,7 +31,7 @@ public class Setting {
     public static int wristMotorPDPPort = 8;
     public static MotorType wristMotorType = MotorType.kBrushless;
     public static IdleMode wristMotorIdleMode = IdleMode.kBrake;
-    public static int wristMotorCurrentLimit = 20;
+    public static int wristMotorCurrentLimit = 25;
     public static Boolean wristMotorInverted = false;
     public static double wristTHold = 3;
     public static double wristForwardPower = 0.5;
@@ -45,7 +45,7 @@ public class Setting {
     public static int armMotorPDPPort = 9;
     public static MotorType armMotorType = MotorType.kBrushless;
     public static IdleMode armMotorIdleMode = IdleMode.kBrake;
-    public static int armMotorCurrentLimit = 20; 
+    public static int armMotorCurrentLimit = 30; 
     public static Boolean armMotorInverted = false;
     public static double armTHold = 7.5;
     public static double armForwardPower = 0.5;
@@ -178,10 +178,10 @@ public class Setting {
     public static double clawOpenCubePos = -45;
 
     // claw folded range
-    public static double armFoldedMin = 5;
+    public static double armFoldedMin = 20;
     public static double armFoldedMax = 130;
     public static double armTooLowToBringClawIn = 165;
-    public static double wristFoldedInPosition = 10; // figure out what this is 
+    public static double wristFoldedInPosition = 5; // figure out what this is 
     // CHARGING STATION THRESHOLDS & SPEEDS
     public static double pitchTHold = 4.0;
     public static double autoBalanceSpeed = 0.35;
