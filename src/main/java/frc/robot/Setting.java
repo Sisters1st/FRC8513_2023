@@ -178,10 +178,10 @@ public class Setting {
     public static double clawOpenCubePos = -45;
 
     // claw folded range
-    public static double armFoldedMin = -5;
+    public static double armFoldedMin = 5;
     public static double armFoldedMax = 130;
     public static double armTooLowToBringClawIn = 165;
-    public static double wristFoldedInPosition = -15; // figure out what this is 
+    public static double wristFoldedInPosition = 10; // figure out what this is 
     // CHARGING STATION THRESHOLDS & SPEEDS
     public static double pitchTHold = 4.0;
     public static double autoBalanceSpeed = 0.35;

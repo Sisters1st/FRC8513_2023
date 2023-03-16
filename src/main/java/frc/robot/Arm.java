@@ -161,12 +161,9 @@ public class Arm {
             // wrist stays folded in so the robot doesnt break 6'6"
             double wristPower = 0;
             if (thisRobot.armPosition > Setting.armFoldedMin && thisRobot.armPosition < Setting.armFoldedMax) {
-                wristPower = thisRobot.wristPID.calculate(thisRobot.wristPosition, thisRobot.armPosition * Setting.armToWristRatio + Setting.wristFoldedInPosition);
-                thisRobot.calculatedWristGoal = thisRobot.wristPosition;
-            } else if (thisRobot.armPosition > Setting.armTooLowToBringClawIn //this should make sure the wrist doesnt smack the robot when going from ground intake to starting config
-                    && (thisRobot.wristGoal == Setting.cubePickupFlrWristPosition //if it doesnt work feel free to remove, just make sure you go to mid scoring, then back to starting config
-                    || thisRobot.wristGoal == Setting.conePickupFlrWristPosition)) {
-                thisRobot.wristPID.calculate(thisRobot.wristPosition, thisRobot.armPosition * Setting.armToWristRatio + Setting.conePickupHPSWristPosition);
+                thisRobot.calculatedWristGoal = thisRobot.armPosition * Setting.armToWristRatio + Setting.wristFoldedInPosition;
+                wristPower = thisRobot.wristPID.calculate(thisRobot.wristPosition, thisRobot.calculatedWristGoal);
+           
             } else {
                 thisRobot.calculatedWristGoal = thisRobot.armPosition * Setting.armToWristRatio + thisRobot.wristGoal;
                 wristPower = thisRobot.wristPID.calculate(thisRobot.wristPosition, thisRobot.calculatedWristGoal);

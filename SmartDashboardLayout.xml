@@ -49,10 +49,10 @@
 		<location x="195" y="20"/>
 	</widget>
 	<widget field="pitch" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="195" y="0"/>
+		<location x="492" y="72"/>
 	</widget>
 	<widget field="leftDriveSpeed" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="740"/>
+		<location x="262" y="528"/>
 	</widget>
 	<widget field="RightDriveMotor2Current" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="900" y="80"/>
@@ -61,31 +61,31 @@
 		<location x="549" y="463"/>
 	</widget>
 	<widget field="wristCurrent" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="680"/>
+		<location x="60" y="413"/>
 	</widget>
 	<widget field="LimelightY" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="660"/>
+		<location x="55" y="666"/>
 	</widget>
 	<widget field="LimelightX" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="640"/>
+		<location x="54" y="637"/>
 	</widget>
 	<widget field="clawOutput" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="620"/>
+		<location x="310" y="415"/>
 	</widget>
 	<widget field="RightDriveMotor1Ouput" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="907" y="168"/>
 	</widget>
 	<widget field="clawPower" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="580"/>
+		<location x="83" y="581"/>
 	</widget>
 	<widget field="rightPosition" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="560"/>
+		<location x="368" y="601"/>
 	</widget>
 	<widget field="armOutput" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="540"/>
+		<location x="315" y="392"/>
 	</widget>
 	<widget field="coneMode" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="520"/>
+		<location x="41" y="495"/>
 	</widget>
 	<widget field="LeftDriveMotor3Current" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="674" y="106"/>
@@ -95,28 +95,28 @@
 		<location x="703" y="463"/>
 	</widget>
 	<widget field="clawCurrent" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="460"/>
+		<location x="58" y="438"/>
 	</widget>
 	<widget field="rightDriveSpeed" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="440"/>
+		<location x="264" y="500"/>
 	</widget>
 	<widget field="LeftDriveMotor2Ouput" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="682" y="191"/>
 	</widget>
 	<widget field="Wrist automatic control" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="400"/>
+		<location x="68" y="336"/>
 	</widget>
 	<widget field="RightDriveMotor3Current" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="899" y="106"/>
 	</widget>
 	<widget field="Drivebase Automatic" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="360"/>
+		<location x="67" y="308"/>
 	</widget>
 	<widget field="wristPosition" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="547" y="491"/>
 	</widget>
 	<widget field="wristOutput" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="320"/>
+		<location x="307" y="443"/>
 	</widget>
 	<widget field="LeftDriveMotor1Ouput" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="682" y="170"/>
@@ -125,22 +125,24 @@
 		<location x="355" y="273"/>
 	</widget>
 	<widget field="leftPosition" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="260"/>
+		<location x="374" y="578"/>
 	</widget>
 	<widget field="isClawClosed" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="240"/>
+		<location x="38" y="200"/>
 	</widget>
 	<widget field="wristGoal" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="975" y="381"/>
+		<location x="590" y="370"/>
 	</widget>
 	<widget field="roll" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="200"/>
+		<location x="22" y="163"/>
+		<height>22</height>
 	</widget>
 	<widget field="RightDriveMotor3Ouput" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="907" y="210"/>
 	</widget>
 	<widget field="test2" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="160"/>
+		<location x="23" y="134"/>
+		<width>116</width>
 	</widget>
 	<widget field="armPosition" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="551" y="436"/>
