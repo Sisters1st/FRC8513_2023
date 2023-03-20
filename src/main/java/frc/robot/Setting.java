@@ -51,6 +51,7 @@ public class Setting {
     public static double armForwardPower = 0.5;
     public static double armReversePower = -0.5;
     public static double armMaxSpeed = .66;
+    public static double armSlowdownConst = 0.95;
 
     // claw settings
     public static int clawMotorCANID = 9;
@@ -95,9 +96,9 @@ public class Setting {
     public static double drivePID_d = 0.0;
 
     // arm PID
-    public static double armPID_p = 0.125;
+    public static double armPID_p = 0.125; //0.125
     public static double armPID_i = 0.0;
-    public static double armPID_d = 0.01;
+    public static double armPID_d = 0.003; //0.003
 
     // claw PID
     public static double clawPID_p = 0.1;
@@ -107,7 +108,7 @@ public class Setting {
     // wrist PID
     public static double wristPID_p = 0.13;
     public static double wristPID_i = 0.002;
-    public static double wristPID_d = 0.01;
+    public static double wristPID_d = 0.005; //0.001
 
     // Operator button settings
     public static final int pickUpHPButtonNum = 1;
@@ -133,7 +134,7 @@ public class Setting {
     public static final int wristJoystickControlAxis = 5;
 
     // Driver button settings
-    public static final int startingConfigButton = 5;
+    public static final int startingConfigButtonNum = 5;
     public static final int autoBalanceButton = 6;
 
     //POSITIONS (arm/claw/wrist)
@@ -178,7 +179,7 @@ public class Setting {
     public static double clawOpenCubePos = -45;
 
     // claw folded range
-    public static double armFoldedMin = 20;
+    public static double armFoldedMin = 10;
     public static double armFoldedMax = 130;
     public static double armTooLowToBringClawIn = 165;
     public static double wristFoldedInPosition = 5; // figure out what this is 
@@ -188,5 +189,7 @@ public class Setting {
     public static double autoBalanceTHold = 1;
     public static double balanceCountTHold = 50;
     public static double inTholdCount = 10;
+
+    public static double startingConfigPos = 15;
 
 }

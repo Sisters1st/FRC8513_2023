@@ -42,9 +42,9 @@ public class Arm {
             thisRobot.isClawClosed = !thisRobot.isClawClosed;
         }
 
-        boolean returnToStartingConfig = thisRobot.driverJoystick.getRawButtonPressed(Setting.startingConfigButton);
+        boolean returnToStartingConfig = thisRobot.driverJoystick.getRawButtonPressed(Setting.startingConfigButtonNum);
         if(returnToStartingConfig) {
-            thisRobot.armGoal = 15;
+            thisRobot.armGoal = Setting.startingConfigPos;
             thisRobot.wristGoal = Setting.wristFoldedInPosition;
         }
         // if in cone mode, use cone setpoints. If in cube mode use cube setpoints
@@ -128,6 +128,18 @@ public class Arm {
                 armPower = -1;
             thisRobot.armSpeed = Math.abs(thisRobot.armPosition - thisRobot.prevArmPosition);
 
+
+            if(thisRobot.armGoal > thisRobot.armPosition && thisRobot.armSpeed > Setting.armMaxSpeed){
+
+                double overSpeed = thisRobot.armSpeed - Setting.armMaxSpeed;
+                if(armPower > 0) {
+                    armPower = armPower - overSpeed * Setting.armSlowdownConst;
+                }
+                if(armPower < 0) {
+                    armPower = armPower + overSpeed * Setting.armSlowdownConst;
+                }
+
+            }
             thisRobot.armMotor.set(armPower);
 
         } else {
