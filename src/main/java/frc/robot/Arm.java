@@ -45,7 +45,7 @@ public class Arm {
         boolean returnToStartingConfig = thisRobot.driverJoystick.getRawButtonPressed(Setting.startingConfigButtonNum);
         if(returnToStartingConfig) {
             thisRobot.armGoal = Setting.startingConfigPos;
-            thisRobot.wristGoal = Setting.wristFoldedInPosition;
+            thisRobot.wristGoal = Setting.wristStartingConfigPosition;
         }
         // if in cone mode, use cone setpoints. If in cube mode use cube setpoints
         if (thisRobot.armInConeMode) {
@@ -128,18 +128,18 @@ public class Arm {
                 armPower = -1;
             thisRobot.armSpeed = Math.abs(thisRobot.armPosition - thisRobot.prevArmPosition);
 
-
-            if(thisRobot.armGoal > thisRobot.armPosition && thisRobot.armSpeed > Setting.armMaxSpeed){
+            if(thisRobot.armSpeed > Setting.armMaxSpeed){
 
                 double overSpeed = thisRobot.armSpeed - Setting.armMaxSpeed;
-                if(armPower > 0) {
+                if(thisRobot.armGoal > thisRobot.armPosition) {
                     armPower = armPower - overSpeed * Setting.armSlowdownConst;
                 }
-                if(armPower < 0) {
+                else {
                     armPower = armPower + overSpeed * Setting.armSlowdownConst;
                 }
 
             }
+            
             thisRobot.armMotor.set(armPower);
 
         } else {
@@ -172,7 +172,7 @@ public class Arm {
             // the armFoldedMin and max check ensures when the arm is above the robot, the
             // wrist stays folded in so the robot doesnt break 6'6"
             double wristPower = 0;
-            if (thisRobot.armPosition > Setting.armFoldedMin && thisRobot.armPosition < Setting.armFoldedMax) {
+            if (thisRobot.armPosition > Setting.armFoldedMin && thisRobot.armPosition < Setting.armFoldedMax && thisRobot.armGoal != Setting.cubePlaceBackwardArmPosition) {
                 thisRobot.calculatedWristGoal = thisRobot.armPosition * Setting.armToWristRatio + Setting.wristFoldedInPosition;
                 wristPower = thisRobot.wristPID.calculate(thisRobot.wristPosition, thisRobot.calculatedWristGoal);
            

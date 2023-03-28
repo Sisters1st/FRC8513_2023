@@ -114,8 +114,8 @@ public class Auto {
                         thisRobot.clawAutomaticControl = true;
                         thisRobot.wristAutomaticControl = true;
 
-                        thisRobot.wristGoal = Setting.cubePlaceMedWristPosition;
-                        thisRobot.armGoal = Setting.cubePlaceMedArmPosition;
+                        thisRobot.wristGoal = Setting.cubePlaceBackwardWristPosition;
+                        thisRobot.armGoal = Setting.cubePlaceBackwardArmPosition;
                         thisRobot.clawGoal = Setting.clawClosedCubePos;
                         thisRobot.arm.moveArm();
 
@@ -126,7 +126,7 @@ public class Auto {
                         break;
                     // open claw to score cube
                     case 1:
-                        thisRobot.clawGoal = Setting.clawOpenCubePos;
+                        thisRobot.clawGoal = Setting.cubePlaceBackwardClawPosition;
                         thisRobot.arm.moveArm();
 
                         if (isRobotWithinThreshold()) {
@@ -149,7 +149,8 @@ public class Auto {
                     case 3:
                         thisRobot.drivebaseAutomaticControl = true;
                         thisRobot.goalAngle = 0;
-                        thisRobot.goalPosition = 50;
+                        thisRobot.goalPosition = 25;
+                        thisRobot.clawGoal = Setting.clawClosedCubePos;
                         thisRobot.drivebase.driveDrivebase();
 
                         if (isRobotWithinThreshold()) {
@@ -159,6 +160,7 @@ public class Auto {
                         break;
                     // balance on station
                     case 4:
+
                         thisRobot.drivebase.autoBalance();
 
                         thisRobot.arm.moveArm();
@@ -173,7 +175,7 @@ public class Auto {
                         break;
                 }
             }
-            if (thisRobot.m_autoSelected == thisRobot.kScoreConeReloadScore) {
+            if (thisRobot.m_autoSelected == thisRobot.kScoreConeReloadScore) { // CHANGE BASED ON CUBE VERSION
                 switch (thisRobot.autoStep) {
                     // get arm into mid position
                     case 0:
@@ -296,14 +298,14 @@ public class Auto {
             }
             if (thisRobot.m_autoSelected == thisRobot.kScoreCubeReloadScore) {
                 switch (thisRobot.autoStep) {
-                    // get arm into mid position
+                    // get arm into backward mid position
                     case 0:
                         thisRobot.armAutomaticControl = true;
                         thisRobot.clawAutomaticControl = true;
                         thisRobot.wristAutomaticControl = true;
 
-                        thisRobot.wristGoal = Setting.cubePlaceMedWristPosition;
-                        thisRobot.armGoal = Setting.cubePlaceMedArmPosition;
+                        thisRobot.wristGoal = Setting.cubePlaceBackwardWristPosition;
+                        thisRobot.armGoal = Setting.cubePlaceBackwardArmPosition;
                         thisRobot.clawGoal = Setting.clawClosedCubePos;
                         thisRobot.arm.moveArm();
 
@@ -314,7 +316,7 @@ public class Auto {
                         break;
                     // open claw to score cube
                     case 1:
-                        thisRobot.clawGoal = Setting.clawOpenCubePos;
+                        thisRobot.clawGoal = Setting.cubePlaceBackwardClawPosition;
                         thisRobot.arm.moveArm();
 
                         if (isRobotWithinThreshold()) {
@@ -322,15 +324,20 @@ public class Auto {
                             thisRobot.resetSensors();
                         }
                         break;
-                    // drive to get another cube and bring arm back to starting config
+                    // drive to get another cube, close claw, and bring arm to floor
                     case 2:
                         thisRobot.drivebaseAutomaticControl = true;
                         thisRobot.goalAngle = 0;
-                        thisRobot.goalPosition = 50;
+                        thisRobot.goalPosition = 30; 
                         thisRobot.drivebase.driveDrivebase(); 
 
-                        thisRobot.armGoal = Setting.startingConfigPos;
-                        thisRobot.wristGoal = Setting.wristFoldedInPosition;
+                        thisRobot.armAutomaticControl = true;
+                        thisRobot.clawAutomaticControl = true;
+                        thisRobot.wristAutomaticControl = true;
+
+                        thisRobot.armGoal = Setting.cubePickupFlrArmPosition;
+                        thisRobot.wristGoal = Setting.cubePickupFlrWristPosition;
+                        thisRobot.clawGoal = Setting.clawClosedCubePos;
                         thisRobot.arm.moveArm();
 
                         if (isRobotWithinThreshold()) {
@@ -338,14 +345,12 @@ public class Auto {
                             thisRobot.resetSensors();
                         }
                         break;
-                    // move arm to pickup from floor position
+                    // open claw 
                     case 3:
                         thisRobot.armAutomaticControl = true;
                         thisRobot.clawAutomaticControl = true;
                         thisRobot.wristAutomaticControl = true;
 
-                        thisRobot.wristGoal = Setting.cubePickupFlrWristPosition;
-                        thisRobot.armGoal = Setting.cubePickupFlrArmPosition;
                         thisRobot.clawGoal = Setting.clawOpenCubePos;
                         thisRobot.arm.moveArm();
 
@@ -353,26 +358,22 @@ public class Auto {
                             thisRobot.autoStep++;
                             thisRobot.resetSensors();
                         }
-                        break;              
-                    // open claw to get cube
-                    case 4:
-                        thisRobot.clawGoal = Setting.clawClosedCubePos;
-                        thisRobot.arm.moveArm();
-
-                        if (isRobotWithinThreshold()) {
-                            thisRobot.autoStep++;
-                            thisRobot.resetSensors();
-                        }
                         break;
-                    // drive back to score and move arm to starting config
-                    case 5:
+                    // drive forward
+                    case 4:
                         thisRobot.drivebaseAutomaticControl = true;
                         thisRobot.goalAngle = 0;
-                        thisRobot.goalPosition = 50;
-                        thisRobot.drivebase.driveDrivebase();
+                        thisRobot.goalPosition = 30; 
+                        thisRobot.drivebase.driveDrivebase(); 
 
-                        thisRobot.armGoal = Setting.startingConfigPos;
-                        thisRobot.wristGoal = Setting.wristFoldedInPosition;
+                        if (isRobotWithinThreshold()) {
+                            thisRobot.autoStep++;
+                            thisRobot.resetSensors();
+                        }
+                        break;
+                    // close claw to secure cube
+                    case 5:
+                        thisRobot.clawGoal = Setting.clawClosedCubePos;
                         thisRobot.arm.moveArm();
 
                         if (isRobotWithinThreshold()) {
@@ -380,15 +381,26 @@ public class Auto {
                             thisRobot.resetSensors();
                         }
                         break;
-                    // move arm to score mid position
+                    // turn 180 to go back
                     case 6:
-                        thisRobot.armAutomaticControl = true;
-                        thisRobot.clawAutomaticControl = true;
-                        thisRobot.wristAutomaticControl = true;
+                        thisRobot.drivebaseAutomaticControl = true;
+                        thisRobot.goalAngle = 180;
+                        thisRobot.drivebase.driveDrivebase();
 
-                        thisRobot.wristGoal = Setting.cubePlaceMedWristPosition;
-                        thisRobot.armGoal = Setting.cubePlaceMedArmPosition;
-                        thisRobot.clawGoal = Setting.clawClosedCubePos;
+                        if (isRobotWithinThreshold()) {
+                            thisRobot.autoStep++;
+                            thisRobot.resetSensors();
+                        }
+                        break;
+                    // drive back to score and move arm to high
+                    case 7:
+                        thisRobot.drivebaseAutomaticControl = true;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 60; //CHANGE
+                        thisRobot.drivebase.driveDrivebase();
+
+                        thisRobot.armGoal = Setting.cubePlaceHighArmPosition;
+                        thisRobot.wristGoal = Setting.cubePlaceHighWristPosition;
                         thisRobot.arm.moveArm();
 
                         if (isRobotWithinThreshold()) {
@@ -397,7 +409,7 @@ public class Auto {
                         }
                         break;
                     // open claw to score cube
-                    case 7:
+                    case 8:
                         thisRobot.clawGoal = Setting.clawOpenCubePos;
                         thisRobot.arm.moveArm();
 
@@ -407,7 +419,7 @@ public class Auto {
                         }
                         break;
                     // stop moving
-                    case 8:
+                    case 9:
                         thisRobot.drivebaseAutomaticControl = true;
                         thisRobot.goalAngle = 0;
                         thisRobot.goalPosition = 0;
@@ -554,6 +566,60 @@ public class Auto {
                         break;
                 }
             }
+            if (thisRobot.m_autoSelected == thisRobot.kScoreCubeHighAndBackUp) {
+                switch (thisRobot.autoStep) {
+                    // get arm into mid position
+                    case 0:
+                        thisRobot.armAutomaticControl = true;
+                        thisRobot.clawAutomaticControl = true;
+                        thisRobot.wristAutomaticControl = true;
+
+                        thisRobot.wristGoal = Setting.cubePlaceHighWristPosition;
+                        thisRobot.armGoal = Setting.cubePlaceHighArmPosition;
+                        thisRobot.clawGoal = Setting.clawClosedCubePos;
+                        thisRobot.arm.moveArm();
+
+                        if (isRobotWithinThreshold()) {
+                            thisRobot.autoStep++;
+                            thisRobot.resetSensors();
+                        }
+                        break;
+                    // open claw to score cube
+                    case 1:
+                        thisRobot.clawGoal = Setting.clawOpenCubePos;
+                        thisRobot.arm.moveArm();
+
+                        if (isRobotWithinThreshold()) {
+                            thisRobot.autoStep++;
+                            thisRobot.resetSensors();
+                        }
+                        break;
+                    // drive back and move arm back to starting config
+                    case 2: 
+                        thisRobot.drivebaseAutomaticControl = true;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = -62.4;
+                        thisRobot.drivebase.driveDrivebase();
+
+                        thisRobot.armGoal = Setting.startingConfigPos;
+                        thisRobot.wristGoal = Setting.wristFoldedInPosition;
+                        thisRobot.arm.moveArm();
+
+                        if (isRobotWithinThreshold()) {
+                            thisRobot.autoStep++;
+                            thisRobot.resetSensors();
+                        }
+                        break;
+                    // stop moving
+                    case 3:
+                        thisRobot.drivebaseAutomaticControl = true;
+                        thisRobot.goalAngle = 0;
+                        thisRobot.goalPosition = 0;
+
+                        thisRobot.arm.moveArm();
+                        break;
+                }
+            }
         } else {
             // wait for time to pass
         }
@@ -564,23 +630,30 @@ public class Auto {
         if (Math.abs(thisRobot.calculatedWristGoal - thisRobot.wristPosition) > Setting.wristTHold) {
             passedAllChecks = false;
         }
+        SmartDashboard.putBoolean("Wrist Bad", (Math.abs(thisRobot.calculatedWristGoal - thisRobot.wristPosition) > Setting.wristTHold));
 
         if (Math.abs(thisRobot.armGoal - thisRobot.armPosition) > Setting.armTHold) {
             passedAllChecks = false;
         }
+        SmartDashboard.putBoolean("Arm Bad", (Math.abs(thisRobot.armGoal - thisRobot.armPosition) > Setting.armTHold));
 
         if (Math.abs(thisRobot.clawGoal - thisRobot.clawPosition) > Setting.clawTHold) {
             passedAllChecks = false;
         }
+        SmartDashboard.putBoolean("Claw Bad", (Math.abs(thisRobot.clawGoal - thisRobot.clawPosition) > Setting.clawTHold));
 
-        if (Math.abs((thisRobot.leftPosition + thisRobot.rightPosition) / 2
+        if (Math.abs((-thisRobot.leftPosition + -thisRobot.rightPosition) / 2
                 - thisRobot.goalPosition) > Setting.drivebaseDistanceTHold) {
             passedAllChecks = false;
         }
+        SmartDashboard.putBoolean("Drivebase Bad", (Math.abs((thisRobot.leftPosition + thisRobot.rightPosition) / 2
+        - thisRobot.goalPosition) > Setting.drivebaseDistanceTHold));
 
         if (Math.abs(thisRobot.currentAngle - thisRobot.goalAngle) > Setting.drivebaseAngTHold) {
             passedAllChecks = false;
         }
+        SmartDashboard.putBoolean("Gyro bad", (Math.abs(thisRobot.currentAngle - thisRobot.goalAngle) > Setting.drivebaseAngTHold));
+        SmartDashboard.putBoolean("Passed All Checks", passedAllChecks);
         if(passedAllChecks){
            thisRobot.autoTholdCount++;
         } else {

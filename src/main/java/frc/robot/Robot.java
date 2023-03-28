@@ -18,8 +18,10 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.RobotController;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -41,7 +43,9 @@ public class Robot extends TimedRobot {
   public final String kScoreCubeReloadScore = "ScoreCubeReloadScoreAuto";
   public final String kStation = "StationAuto";
   public final String kScoreConeAndBackUp = "ScoreConeAndBackUpAuto";
-  public final String kScoreCubeAndBackUp = "ScoreCubeAndBackUpAuto";
+  public final String kScoreCubeAndBackUp = "ScoreCubeMidAndBackUpAuto";
+  public final String kScoreCubeHighAndBackUp = "ScoreCubeHighAndBackUpAuto";
+
 
   String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
@@ -52,6 +56,7 @@ public class Robot extends TimedRobot {
   double currentAngle;
   double goalAngle;
   float pitch;
+  float previousPitch;
   float roll;
   // Position settings
   double goalPosition;
@@ -149,7 +154,8 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("Score Cube Reload Score", kScoreCubeReloadScore);
     m_chooser.addOption("Station", kStation);
     m_chooser.addOption("Score Cone and BackUp", kScoreConeAndBackUp);
-    m_chooser.addOption("Score Cube and BackUp", kScoreCubeAndBackUp);
+    m_chooser.addOption("Score Cube Mid and BackUp", kScoreCubeAndBackUp);
+    m_chooser.addOption("Score Cube High and BackUp", kScoreCubeHighAndBackUp);
     SmartDashboard.putData("Auto choices", m_chooser);
 
     leftDriveMotor1.setIdleMode(Setting.drivebaseIdleMode);
@@ -225,8 +231,22 @@ public class Robot extends TimedRobot {
     clawPosition = clawMotor.getEncoder().getPosition();
     wristPosition = wristMotor.getEncoder().getPosition();
     currentAngle = ahrs.getAngle();
-    pitch = ahrs.getPitch();
+    previousPitch = pitch;
+    pitch = ahrs.getPitch()-2.5f;
     roll = ahrs.getRoll();
+
+   if(RobotController.getUserButton()) {
+      armMotor.setIdleMode(IdleMode.kCoast);
+      wristMotor.setIdleMode(IdleMode.kCoast);
+      clawMotor.setIdleMode(IdleMode.kCoast);
+   }
+   else
+   {
+      armMotor.setIdleMode(Setting.armMotorIdleMode);
+      wristMotor.setIdleMode(Setting.wristMotorIdleMode);
+      clawMotor.setIdleMode(Setting.clawMotorIdleMode);
+   }
+  
 
 
 
@@ -332,6 +352,9 @@ public class Robot extends TimedRobot {
     leftDriveMotor1.getEncoder().setPosition(0);
     rightDriveMotor1.getEncoder().setPosition(0);
     ahrs.reset();
+    goalAngle = 0;
+    goalPosition = 0;
+    
   }
 
   public void putToSmartDashboard() {
@@ -397,6 +420,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("LimelightArea", LL_Area);
 
     SmartDashboard.putNumber("pitch", pitch);
+    SmartDashboard.putNumber("pitch rate", drivebase.pitchRate);
     SmartDashboard.putNumber("balance count", balanceCount);
     SmartDashboard.putNumber("roll", roll);
 
@@ -405,6 +429,10 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("goal position", goalPosition);
 
     SmartDashboard.putNumber("arm speed", armSpeed);
+    
+    SmartDashboard.putNumber("LL sum", drivebase.sum);
+
+    SmartDashboard.putNumber("Auto THold Count", autoTholdCount);
 
   }
 }
