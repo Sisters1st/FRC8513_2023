@@ -195,12 +195,9 @@ public class Arm {
                 thisRobot.wristMotor.set(wristJoystickPower);
             }
         }
-        SmartDashboard.putNumber("test1", 1);
         if (thisRobot.clawAutomaticControl) {
-            SmartDashboard.putNumber("test2", 2);
             double clawPower = thisRobot.clawPID.calculate(thisRobot.clawPosition, thisRobot.clawGoal);
             thisRobot.clawMotor.set(clawPower);
-            SmartDashboard.putNumber("clawPower", clawPower);
         } else {
             boolean clawForward = thisRobot.manualJoystick.getRawButton(Setting.clawForwardButtonNum);
             boolean clawBackward = thisRobot.manualJoystick.getRawButton(Setting.clawBackwardButtonNum);

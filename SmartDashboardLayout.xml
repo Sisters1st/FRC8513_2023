@@ -1,22 +1,10 @@
 <xml version="1.0">
 <dashboard>
-	<widget field="test2" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="80"/>
-	</widget>
-	<widget field="test1" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="20"/>
-	</widget>
 	<widget field="autoStartingAngle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="0"/>
-	</widget>
-	<widget field="Claw Bad" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="60"/>
-	</widget>
-	<widget field="Arm Bad" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="40"/>
+		<location x="414" y="95"/>
 	</widget>
 	<widget field="LL sum" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="338" y="48"/>
+		<location x="300" y="33"/>
 	</widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
 		<location x="1497" y="5"/>
@@ -101,7 +89,7 @@
 		<location x="1116" y="309"/>
 	</widget>
 	<widget field="coneMode" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="15" y="163"/>
+		<location x="104" y="104"/>
 	</widget>
 	<widget field="LeftDriveMotor3Current" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="851" y="65"/>
@@ -201,7 +189,17 @@
 	<widget field="pitch rate" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="545" y="434"/>
 	</widget>
+	<widget field="Auto Step" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="457" y="168"/>
+	</widget>
+	<widget field="Auto Step Timer" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="426" y="188"/>
+	</widget>
 </dashboard>
 <live-window>
 </live-window>
+	<hidden field="test2"/>
+	<hidden field="Claw Bad"/>
+	<hidden field="Arm Bad"/>
+	<hidden field="test1"/>
 </xml>
