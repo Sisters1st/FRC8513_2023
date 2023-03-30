@@ -10,15 +10,11 @@ public class Arm {
     }
 
     public void teleopInit() {
-        // set the goals to the current position so the bot doesnt move when you enable,
-        // default claw to close
-
         thisRobot.isClawClosed = true;
     }
 
     public void teleopPeriodic() {
-        boolean toggleAutomaticControlButtonPressed = thisRobot.opperatorJoystick
-                .getRawButtonPressed(Setting.toggleAutomaticArmControlButtonNum);
+        boolean toggleAutomaticControlButtonPressed = thisRobot.opperatorJoystick.getRawButtonPressed(Setting.toggleAutomaticArmControlButtonNum);
         if (toggleAutomaticControlButtonPressed) {
             thisRobot.armAutomaticControl = !thisRobot.armAutomaticControl;
             thisRobot.clawAutomaticControl = !thisRobot.clawAutomaticControl;
@@ -29,21 +25,19 @@ public class Arm {
         }
 
         // If toggle button pressed on the operator jostick, toggle cube cone mode
-        boolean toggleCubeConeButtonPressed = thisRobot.opperatorJoystick
-                .getRawButtonPressed(Setting.toggleConeCubeModeButton);
+        boolean toggleCubeConeButtonPressed = thisRobot.opperatorJoystick.getRawButtonPressed(Setting.toggleConeCubeModeButton);
         if (toggleCubeConeButtonPressed) {
             thisRobot.armInConeMode = !thisRobot.armInConeMode;
         }
 
         // toggel claw open close
-        boolean toggleClawButtonPressed = thisRobot.opperatorJoystick
-                .getRawButtonPressed(Setting.toggleClawPositionButton);
+        boolean toggleClawButtonPressed = thisRobot.opperatorJoystick.getRawButtonPressed(Setting.toggleClawPositionButton);
         if (toggleClawButtonPressed) {
             thisRobot.isClawClosed = !thisRobot.isClawClosed;
         }
 
         boolean returnToStartingConfig = thisRobot.driverJoystick.getRawButtonPressed(Setting.startingConfigButtonNum);
-        if(returnToStartingConfig) {
+        if (returnToStartingConfig) {
             thisRobot.armGoal = Setting.startingConfigPos;
             thisRobot.wristGoal = Setting.wristStartingConfigPosition;
         }
@@ -56,8 +50,7 @@ public class Arm {
                 thisRobot.clawGoal = Setting.clawOpenConePos;
             }
 
-            boolean pickupFloorButtonPressed = thisRobot.opperatorJoystick
-                    .getRawButtonPressed(Setting.pickUpFloorButtonNum);
+            boolean pickupFloorButtonPressed = thisRobot.opperatorJoystick.getRawButtonPressed(Setting.pickUpFloorButtonNum);
             if (pickupFloorButtonPressed) {
                 thisRobot.armGoal = Setting.conePickupFlrArmPosition;
                 thisRobot.wristGoal = Setting.conePickupFlrWristPosition;
@@ -69,8 +62,7 @@ public class Arm {
                 thisRobot.wristGoal = Setting.conePickupHPSWristPosition;
             }
 
-            boolean scoreHighButtonPressed = thisRobot.opperatorJoystick
-                    .getRawButtonPressed(Setting.scoreHighButtonNum);
+            boolean scoreHighButtonPressed = thisRobot.opperatorJoystick.getRawButtonPressed(Setting.scoreHighButtonNum);
             if (scoreHighButtonPressed) {
                 thisRobot.armGoal = Setting.conePlaceHighArmPosition;
                 thisRobot.wristGoal = Setting.conePlaceHighWristPosition;
@@ -90,8 +82,7 @@ public class Arm {
                 thisRobot.clawGoal = Setting.clawOpenCubePos;
             }
 
-            boolean pickupFloorButtonPressed = thisRobot.opperatorJoystick
-                    .getRawButtonPressed(Setting.pickUpFloorButtonNum);
+            boolean pickupFloorButtonPressed = thisRobot.opperatorJoystick.getRawButtonPressed(Setting.pickUpFloorButtonNum);
             if (pickupFloorButtonPressed) {
                 thisRobot.armGoal = Setting.cubePickupFlrArmPosition;
                 thisRobot.wristGoal = Setting.cubePickupFlrWristPosition;
@@ -103,8 +94,7 @@ public class Arm {
                 thisRobot.wristGoal = Setting.cubePickupHPSWristPosition;
             }
 
-            boolean scoreHighButtonPressed = thisRobot.opperatorJoystick
-                    .getRawButtonPressed(Setting.scoreHighButtonNum);
+            boolean scoreHighButtonPressed = thisRobot.opperatorJoystick.getRawButtonPressed(Setting.scoreHighButtonNum);
             if (scoreHighButtonPressed) {
                 thisRobot.armGoal = Setting.cubePlaceHighArmPosition;
                 thisRobot.wristGoal = Setting.cubePlaceHighWristPosition;
@@ -122,24 +112,20 @@ public class Arm {
     public void moveArm() {
         if (thisRobot.armAutomaticControl) {
             double armPower = thisRobot.armPID.calculate(thisRobot.armPosition, thisRobot.armGoal);
-            if(armPower > 1)
-                armPower = 1;
-            if(armPower < -1)
-                armPower = -1;
+            if (armPower > 1) armPower = 1;
+            if (armPower < -1) armPower = -1;
             thisRobot.armSpeed = Math.abs(thisRobot.armPosition - thisRobot.prevArmPosition);
 
-            if(thisRobot.armSpeed > Setting.armMaxSpeed){
+            if (thisRobot.armSpeed > Setting.armMaxSpeed) {
 
                 double overSpeed = thisRobot.armSpeed - Setting.armMaxSpeed;
-                if(thisRobot.armGoal > thisRobot.armPosition) {
+                if (thisRobot.armGoal > thisRobot.armPosition) {
                     armPower = armPower - overSpeed * Setting.armSlowdownConst;
-                }
-                else {
+                } else {
                     armPower = armPower + overSpeed * Setting.armSlowdownConst;
                 }
 
             }
-            
             thisRobot.armMotor.set(armPower);
 
         } else {
@@ -175,7 +161,7 @@ public class Arm {
             if (thisRobot.armPosition > Setting.armFoldedMin && thisRobot.armPosition < Setting.armFoldedMax && thisRobot.armGoal != Setting.cubePlaceBackwardArmPosition) {
                 thisRobot.calculatedWristGoal = thisRobot.armPosition * Setting.armToWristRatio + Setting.wristFoldedInPosition;
                 wristPower = thisRobot.wristPID.calculate(thisRobot.wristPosition, thisRobot.calculatedWristGoal);
-           
+
             } else {
                 thisRobot.calculatedWristGoal = thisRobot.armPosition * Setting.armToWristRatio + thisRobot.wristGoal;
                 wristPower = thisRobot.wristPID.calculate(thisRobot.wristPosition, thisRobot.calculatedWristGoal);

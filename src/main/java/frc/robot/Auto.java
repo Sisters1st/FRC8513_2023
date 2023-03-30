@@ -10,7 +10,9 @@ public class Auto {
         thisRobot = thisRobotParameter;
     }
 
-    /** This function is run once at the beginning of each autonomous mode. */
+    /**
+     * This function is run once at the beginning of each autonomous mode.
+     */
     public void autoInit() {
         thisRobot.m_timer.reset();
         thisRobot.m_timer.start();
@@ -163,9 +165,7 @@ public class Auto {
                         break;
                     // balance on station
                     case 4:
-
                         thisRobot.drivebase.autoBalance();
-
                         thisRobot.arm.moveArm();
                         break;
                     // stop moving
@@ -237,7 +237,7 @@ public class Auto {
                             thisRobot.autoStep++;
                             thisRobot.resetSensors();
                         }
-                    // open claw to get cone
+                        // open claw to get cone
                     case 4:
                         thisRobot.clawGoal = Setting.clawClosedConePos;
                         thisRobot.arm.moveArm();
@@ -331,8 +331,8 @@ public class Auto {
                     case 2:
                         thisRobot.drivebaseAutomaticControl = true;
                         thisRobot.goalAngle = 0;
-                        thisRobot.goalPosition = 30; 
-                        thisRobot.drivebase.driveDrivebase(); 
+                        thisRobot.goalPosition = 30;
+                        thisRobot.drivebase.driveDrivebase();
 
                         thisRobot.armAutomaticControl = true;
                         thisRobot.clawAutomaticControl = true;
@@ -366,8 +366,8 @@ public class Auto {
                     case 4:
                         thisRobot.drivebaseAutomaticControl = true;
                         thisRobot.goalAngle = 0;
-                        thisRobot.goalPosition = 30; 
-                        thisRobot.drivebase.driveDrivebase(); 
+                        thisRobot.goalPosition = 30;
+                        thisRobot.drivebase.driveDrivebase();
 
                         if (isRobotWithinThreshold()) {
                             thisRobot.autoStep++;
@@ -490,7 +490,7 @@ public class Auto {
                         }
                         break;
                     // drive back and move arm back to starting config
-                    case 2: 
+                    case 2:
                         thisRobot.drivebaseAutomaticControl = true;
                         thisRobot.goalAngle = 0;
                         thisRobot.goalPosition = -62.4;
@@ -544,7 +544,7 @@ public class Auto {
                         }
                         break;
                     // drive back and move arm back to starting config
-                    case 2: 
+                    case 2:
                         thisRobot.drivebaseAutomaticControl = true;
                         thisRobot.goalAngle = 0;
                         thisRobot.goalPosition = -62.4;
@@ -595,7 +595,7 @@ public class Auto {
                         thisRobot.arm.moveArm();
                         break;
                     case 2:
-                        if(System.currentTimeMillis()-thisRobot.autoStepTime>100) {
+                        if (System.currentTimeMillis() - thisRobot.autoStepTime > 100) {
                             thisRobot.autoStep++;
                         }
                         thisRobot.arm.moveArm();
@@ -610,7 +610,7 @@ public class Auto {
                         }
                         break;
                     // drive back and move arm back to starting config
-                    case 4: 
+                    case 4:
                         thisRobot.drivebaseAutomaticControl = true;
                         thisRobot.goalAngle = 0;
                         thisRobot.goalPosition = -67; //-62.4
@@ -646,38 +646,33 @@ public class Auto {
         if (Math.abs(thisRobot.calculatedWristGoal - thisRobot.wristPosition) > Setting.wristTHold) {
             passedAllChecks = false;
         }
-        SmartDashboard.putBoolean("Wrist Bad", (Math.abs(thisRobot.calculatedWristGoal - thisRobot.wristPosition) > Setting.wristTHold));
 
         if (Math.abs(thisRobot.armGoal - thisRobot.armPosition) > Setting.armTHold) {
             passedAllChecks = false;
         }
-        SmartDashboard.putBoolean("Arm Bad", (Math.abs(thisRobot.armGoal - thisRobot.armPosition) > Setting.armTHold));
 
         if (Math.abs(thisRobot.clawGoal - thisRobot.clawPosition) > Setting.clawTHold) {
             passedAllChecks = false;
         }
-        SmartDashboard.putBoolean("Claw Bad", (Math.abs(thisRobot.clawGoal - thisRobot.clawPosition) > Setting.clawTHold));
 
-        if (Math.abs((-thisRobot.leftPosition + -thisRobot.rightPosition) / 2
-                - thisRobot.goalPosition) > Setting.drivebaseDistanceTHold) {
+        if (Math.abs((-thisRobot.leftPosition + -thisRobot.rightPosition) / 2 - thisRobot.goalPosition) > Setting.drivebaseDistanceTHold) {
             passedAllChecks = false;
         }
-        SmartDashboard.putBoolean("Drivebase Bad", (Math.abs((thisRobot.leftPosition + thisRobot.rightPosition) / 2
-        - thisRobot.goalPosition) > Setting.drivebaseDistanceTHold));
 
         if (Math.abs(thisRobot.currentAngle - thisRobot.goalAngle) > Setting.drivebaseAngTHold) {
             passedAllChecks = false;
         }
-        SmartDashboard.putBoolean("Gyro bad", (Math.abs(thisRobot.currentAngle - thisRobot.goalAngle) > Setting.drivebaseAngTHold));
+
         SmartDashboard.putBoolean("Passed All Checks", passedAllChecks);
-        if(passedAllChecks){
-           thisRobot.autoTholdCount++;
+
+        if (passedAllChecks) {
+            thisRobot.autoTholdCount++;
         } else {
             thisRobot.autoTholdCount = 0;
         }
-        if(thisRobot.autoTholdCount > Setting.inTholdCount)
-            return true;
 
+        if (thisRobot.autoTholdCount > Setting.inTholdCount)
+            return true;
         return false;
     }
 }

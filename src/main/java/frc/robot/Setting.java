@@ -36,8 +36,6 @@ public class Setting {
     public static double wristTHold = 3;
     public static double wristForwardPower = 0.5;
     public static double wristReversePower = -0.5;
-
-    public static double WristToArmRatio = 28 / 46; // this is made up and needs to be determined experimentally
     public static double armToWristRatio = -1; // this is made up and needs to be determined experimentally
 
     // arm settings
@@ -45,7 +43,7 @@ public class Setting {
     public static int armMotorPDPPort = 9;
     public static MotorType armMotorType = MotorType.kBrushless;
     public static IdleMode armMotorIdleMode = IdleMode.kBrake;
-    public static int armMotorCurrentLimit = 30; 
+    public static int armMotorCurrentLimit = 30;
     public static Boolean armMotorInverted = false;
     public static double armTHold = 5;
     public static double armForwardPower = 0.5;
@@ -64,7 +62,7 @@ public class Setting {
     public static double clawForwardPower = 0.5;
     public static double clawReversePower = -0.5;
 
-    // drivebase settings
+    //drivebase settings
     public static MotorType drivebMotorType = MotorType.kBrushless;
     public static IdleMode drivebaseIdleMode = IdleMode.kBrake;
     public static int drivebaseCurrentLimit = 40;
@@ -73,13 +71,14 @@ public class Setting {
     public static double drivebaseDistanceTHold = 2;
     public static double drivebaseAngTHold = 3;
 
+    //PDP settings
     public static int PDPCANID = 0;
     public static ModuleType PDPType = ModuleType.kCTRE;
 
+    //joystick settings
     public static int driverJoystickPort = 0;
     public static int opperatorJotstickPort = 1;
     public static int manualJoystickPort = 2;
-
     public static int driverJoystickDriveAxis = 1;
     public static int driverJoystickTurnAxis = 4;
 
@@ -116,7 +115,6 @@ public class Setting {
     public static final int toggleConeCubeModeButton = 5;
     public static final int toggleClawPositionButton = 6;
     public static final int toggleAutomaticArmControlButtonNum = 7;
-    public static final int resetSensorsButton = 8;
 
     // Manual Button Settings
     public static final int armForwardButtonNum = 2;
@@ -159,6 +157,8 @@ public class Setting {
     // place cube on med
     public static double cubePlaceMedArmPosition = 145.0; // 158
     public static double cubePlaceMedWristPosition = cubePlaceMedArmPosition + -92.8; // -95.9
+
+    //place cube mid backwards
     public static double cubePlaceBackwardArmPosition = 52; // 47.65
     public static double cubePlaceBackwardWristPosition = cubePlaceBackwardArmPosition + 38.78;
     public static double cubePlaceBackwardClawPosition = -30;
@@ -184,7 +184,9 @@ public class Setting {
     public static double armFoldedMax = 130;
     public static double armTooLowToBringClawIn = 165;
     public static double wristStartingConfigPosition = 0;
-    public static double wristFoldedInPosition = 10; // figure out what this is 
+    public static double wristFoldedInPosition = 10; // this is the position of the wrist when its folded over the top
+    public static double startingConfigPos = 7.5; //arm starting config position
+
     // CHARGING STATION THRESHOLDS & SPEEDS
     public static double pitchTHold = 10.0;
     public static double PRTHold = 0.15;
@@ -192,15 +194,13 @@ public class Setting {
     public static double autoBalanceTHold = 1;
     public static double balanceCountTHold = 50;
     public static double inTholdCount = 10;
-
-    public static double startingConfigPos = 7.5;
-
-    public static double lowerGoalX = -11.2; 
-    public static double upperGoalX = -11.2; 
-    public static double midLLY = 0; 
-    public static int LLButtonNum = 1;
-
     public static double maxDrivebasePow = 0.4;
     public static double maxTurnPow = 0.5;
+
+    //LL Settings
+    public static double lowerGoalX = -11.2;
+    public static double upperGoalX = -11.2;
+    public static double midLLY = 0;
+    public static int LLButtonNum = 1;
 
 }
