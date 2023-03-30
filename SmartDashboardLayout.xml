@@ -1,5 +1,11 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="test2" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="80"/>
+	</widget>
+	<widget field="test1" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="20"/>
+	</widget>
 	<widget field="autoStartingAngle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="0"/>
 	</widget>
@@ -198,11 +204,4 @@
 </dashboard>
 <live-window>
 </live-window>
-	<hidden field="Wrist Bad"/>
-	<hidden field="test2"/>
-	<hidden field="bool"/>
-	<hidden field="Passed All Checks"/>
-	<hidden field="Drivebase Bad"/>
-	<hidden field="test1"/>
-	<hidden field="Gyro bad"/>
 </xml>

@@ -43,7 +43,7 @@ public class Robot extends TimedRobot {
   public final String kScoreCubeReloadScore = "ScoreCubeReloadScoreAuto";
   public final String kStation = "StationAuto";
   public final String kScoreConeAndBackUp = "ScoreConeAndBackUpAuto";
-  public final String kScoreCubeAndBackUp = "ScoreCubeMidAndBackUpAuto";
+  public final String kScoreCubeMidAndBackUp = "ScoreCubeMidAndBackUpAuto";
   public final String kScoreCubeHighAndBackUp = "ScoreCubeHighAndBackUpAuto";
 
 
@@ -100,6 +100,8 @@ public class Robot extends TimedRobot {
   public Auto auto;
   public Drivebase drivebase;
 
+  public long autoStepTime;
+
   public boolean drivebaseAutomaticControl = false;
 
   // CAN Spark Max settings
@@ -154,7 +156,7 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("Score Cube Reload Score", kScoreCubeReloadScore);
     m_chooser.addOption("Station", kStation);
     m_chooser.addOption("Score Cone and BackUp", kScoreConeAndBackUp);
-    m_chooser.addOption("Score Cube Mid and BackUp", kScoreCubeAndBackUp);
+    m_chooser.addOption("Score Cube Mid and BackUp", kScoreCubeMidAndBackUp);
     m_chooser.addOption("Score Cube High and BackUp", kScoreCubeHighAndBackUp);
     SmartDashboard.putData("Auto choices", m_chooser);
 
@@ -239,12 +241,24 @@ public class Robot extends TimedRobot {
       armMotor.setIdleMode(IdleMode.kCoast);
       wristMotor.setIdleMode(IdleMode.kCoast);
       clawMotor.setIdleMode(IdleMode.kCoast);
+      rightDriveMotor1.setIdleMode(IdleMode.kCoast);
+      rightDriveMotor2.setIdleMode(IdleMode.kCoast);
+      rightDriveMotor3.setIdleMode(IdleMode.kCoast);
+      leftDriveMotor1.setIdleMode(IdleMode.kCoast);
+      leftDriveMotor2.setIdleMode(IdleMode.kCoast);
+      leftDriveMotor3.setIdleMode(IdleMode.kCoast);
    }
    else
    {
       armMotor.setIdleMode(Setting.armMotorIdleMode);
       wristMotor.setIdleMode(Setting.wristMotorIdleMode);
       clawMotor.setIdleMode(Setting.clawMotorIdleMode);
+      rightDriveMotor1.setIdleMode(Setting.drivebaseIdleMode);
+      rightDriveMotor2.setIdleMode(Setting.drivebaseIdleMode);
+      rightDriveMotor3.setIdleMode(Setting.drivebaseIdleMode);
+      leftDriveMotor1.setIdleMode(Setting.drivebaseIdleMode);
+      leftDriveMotor2.setIdleMode(Setting.drivebaseIdleMode);
+      leftDriveMotor3.setIdleMode(Setting.drivebaseIdleMode);
    }
   
 
@@ -433,6 +447,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("LL sum", drivebase.sum);
 
     SmartDashboard.putNumber("Auto THold Count", autoTholdCount);
+    SmartDashboard.putNumber("Auto Step Timer", autoStepTime);
+    SmartDashboard.putNumber("Auto Step", autoStep);
 
   }
 }

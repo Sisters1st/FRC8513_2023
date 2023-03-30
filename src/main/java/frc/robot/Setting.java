@@ -159,7 +159,7 @@ public class Setting {
     // place cube on med
     public static double cubePlaceMedArmPosition = 145.0; // 158
     public static double cubePlaceMedWristPosition = cubePlaceMedArmPosition + -92.8; // -95.9
-    public static double cubePlaceBackwardArmPosition = 47.65; // 41.3
+    public static double cubePlaceBackwardArmPosition = 52; // 47.65
     public static double cubePlaceBackwardWristPosition = cubePlaceBackwardArmPosition + 38.78;
     public static double cubePlaceBackwardClawPosition = -30;
 
@@ -187,7 +187,7 @@ public class Setting {
     public static double wristFoldedInPosition = 10; // figure out what this is 
     // CHARGING STATION THRESHOLDS & SPEEDS
     public static double pitchTHold = 10.0;
-    public static double PRTHold = 0.5;
+    public static double PRTHold = 0.15;
     public static double autoBalanceSpeed = 0.3;
     public static double autoBalanceTHold = 1;
     public static double balanceCountTHold = 50;

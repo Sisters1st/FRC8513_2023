@@ -71,6 +71,7 @@ public class Auto {
                     case 2:
                         thisRobot.armGoal = Setting.startingConfigPos;
                         thisRobot.wristGoal = Setting.wristFoldedInPosition;
+                        thisRobot.clawGoal = Setting.clawClosedConePos;
                         thisRobot.arm.moveArm();
 
                         if (isRobotWithinThreshold()) {
@@ -82,8 +83,9 @@ public class Auto {
                     case 3:
                         thisRobot.drivebaseAutomaticControl = true;
                         thisRobot.goalAngle = 0;
-                        thisRobot.goalPosition = 100;
+                        thisRobot.goalPosition = 30;
                         thisRobot.drivebase.driveDrivebase();
+                        thisRobot.arm.moveArm();
 
                         if (isRobotWithinThreshold()) {
                             thisRobot.autoStep++;
@@ -138,6 +140,7 @@ public class Auto {
                     case 2:
                         thisRobot.armGoal = Setting.startingConfigPos;
                         thisRobot.wristGoal = Setting.wristFoldedInPosition;
+                        thisRobot.clawGoal = Setting.clawClosedConePos;
                         thisRobot.arm.moveArm();
 
                         if (isRobotWithinThreshold()) {
@@ -149,9 +152,9 @@ public class Auto {
                     case 3:
                         thisRobot.drivebaseAutomaticControl = true;
                         thisRobot.goalAngle = 0;
-                        thisRobot.goalPosition = 25;
-                        thisRobot.clawGoal = Setting.clawClosedCubePos;
+                        thisRobot.goalPosition = 30;
                         thisRobot.drivebase.driveDrivebase();
+                        thisRobot.arm.moveArm();
 
                         if (isRobotWithinThreshold()) {
                             thisRobot.autoStep++;
@@ -512,7 +515,7 @@ public class Auto {
                         break;
                 }
             }
-            if (thisRobot.m_autoSelected == thisRobot.kScoreCubeAndBackUp) {
+            if (thisRobot.m_autoSelected == thisRobot.kScoreCubeMidAndBackUp) {
                 switch (thisRobot.autoStep) {
                     // get arm into mid position
                     case 0:
@@ -548,6 +551,7 @@ public class Auto {
                         thisRobot.drivebase.driveDrivebase();
 
                         thisRobot.armGoal = Setting.startingConfigPos;
+                        thisRobot.clawGoal = Setting.clawClosedConePos;
                         thisRobot.wristGoal = Setting.wristFoldedInPosition;
                         thisRobot.arm.moveArm();
 
@@ -586,6 +590,17 @@ public class Auto {
                         break;
                     // open claw to score cube
                     case 1:
+                        thisRobot.autoStepTime = System.currentTimeMillis();
+                        thisRobot.autoStep++;
+                        thisRobot.arm.moveArm();
+                        break;
+                    case 2:
+                        if(System.currentTimeMillis()-thisRobot.autoStepTime>100) {
+                            thisRobot.autoStep++;
+                        }
+                        thisRobot.arm.moveArm();
+                        break;
+                    case 3:
                         thisRobot.clawGoal = Setting.clawOpenCubePos;
                         thisRobot.arm.moveArm();
 
@@ -595,14 +610,15 @@ public class Auto {
                         }
                         break;
                     // drive back and move arm back to starting config
-                    case 2: 
+                    case 4: 
                         thisRobot.drivebaseAutomaticControl = true;
                         thisRobot.goalAngle = 0;
-                        thisRobot.goalPosition = -62.4;
+                        thisRobot.goalPosition = -67; //-62.4
                         thisRobot.drivebase.driveDrivebase();
 
                         thisRobot.armGoal = Setting.startingConfigPos;
                         thisRobot.wristGoal = Setting.wristFoldedInPosition;
+                        thisRobot.clawGoal = Setting.clawClosedConePos;
                         thisRobot.arm.moveArm();
 
                         if (isRobotWithinThreshold()) {
@@ -611,7 +627,7 @@ public class Auto {
                         }
                         break;
                     // stop moving
-                    case 3:
+                    case 5:
                         thisRobot.drivebaseAutomaticControl = true;
                         thisRobot.goalAngle = 0;
                         thisRobot.goalPosition = 0;
